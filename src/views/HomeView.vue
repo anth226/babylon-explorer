@@ -37,72 +37,75 @@ export default {
 </script>
 
 <template>
-    <div class="homeview-container">
-        <div class="top-stats">
-            <div class="top-stats-content">
-                <div class="top-stats-content-title">Blocks</div>
-                <RouterLink to="/blocks" style="text-decoration: none">
-                    <div class="top-stats-content-value">{{ chainHeight }}</div>
-                </RouterLink>
-            </div>
-            <div class="top-stats-content">
-                <div class="top-stats-content-title">Total Txs</div>
-                <div class="top-stats-content-value">{{ numTotalTxs }}</div>
-            </div>
-            <div class="top-stats-content">
-                <div class="top-stats-content-title">Latest Epoch</div>
-                <RouterLink to="/epochs" style="text-decoration: none">
-                    <div class="top-stats-content-value">{{ latestEpoch }}</div>
-                </RouterLink>
-            </div>
-            <div class="top-stats-content">
-                <div class="top-stats-content-title">Validators</div>
-                <div class="top-stats-content-value">{{ numValidators }}</div>
-            </div>
-        </div>
+<!--    <div class="homeview-container">-->
+<!--        <div class="top-stats">-->
+<!--            <div class="top-stats-content">-->
+<!--                <div class="top-stats-content-title">Blocks</div>-->
+<!--                <RouterLink to="/blocks" style="text-decoration: none">-->
+<!--                    <div class="top-stats-content-value">{{ chainHeight }}</div>-->
+<!--                </RouterLink>-->
+<!--            </div>-->
+<!--            <div class="top-stats-content">-->
+<!--                <div class="top-stats-content-title">Total Txs</div>-->
+<!--                <div class="top-stats-content-value">{{ numTotalTxs }}</div>-->
+<!--            </div>-->
+<!--            <div class="top-stats-content">-->
+<!--                <div class="top-stats-content-title">Latest Epoch</div>-->
+<!--                <RouterLink to="/epochs" style="text-decoration: none">-->
+<!--                    <div class="top-stats-content-value">{{ latestEpoch }}</div>-->
+<!--                </RouterLink>-->
+<!--            </div>-->
+<!--            <div class="top-stats-content">-->
+<!--                <div class="top-stats-content-title">Validators</div>-->
+<!--                <div class="top-stats-content-value">{{ numValidators }}</div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="latest-blocks">
-            <div
-                style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                "
-            >
-                <div style="font-weight: 700; font-size: 1.5em">
-                    Latest Blocks
-                </div>
-                <RouterLink to="/blocks" class="moreButton">more</RouterLink>
-            </div>
-            <table class="styled-table">
-                <thead>
-                    <tr>
-                        <th>Height</th>
-                        <th>Hash</th>
-                        <th>Time</th>
-                        <th>Num Txs</th>
-                        <th>Proposer Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--use a for loop here-->
-                    <tr v-for="block in latestBlocks" :key="block.height">
-                        <td>
-                            <RouterLink
-                                :to="{ path: '/blocks/' + block.height }"
-                            >
-                                {{ block.height }}
-                            </RouterLink>
-                        </td>
-                        <td>{{ block.hash }}</td>
-                        <td>{{ block.timestamp }}</td>
-                        <td>{{ block.txDecoded.length }}</td>
-                        <td>{{ block.proposer }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<!--        <div class="latest-blocks">-->
+<!--            <div-->
+<!--                style="-->
+<!--                    display: flex;-->
+<!--                    justify-content: space-between;-->
+<!--                    align-items: center;-->
+<!--                "-->
+<!--            >-->
+<!--                <div style="font-weight: 700; font-size: 1.5em">-->
+<!--                    Latest Blocks-->
+<!--                </div>-->
+<!--                <RouterLink to="/blocks" class="moreButton">more</RouterLink>-->
+<!--            </div>-->
+<!--            <table class="styled-table">-->
+<!--                <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Height</th>-->
+<!--                        <th>Hash</th>-->
+<!--                        <th>Time</th>-->
+<!--                        <th>Num Txs</th>-->
+<!--                        <th>Proposer Address</th>-->
+<!--                    </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    &lt;!&ndash;use a for loop here&ndash;&gt;-->
+<!--                    <tr v-for="block in latestBlocks" :key="block.height">-->
+<!--                        <td>-->
+<!--                            <RouterLink-->
+<!--                                :to="{ path: '/blocks/' + block.height }"-->
+<!--                            >-->
+<!--                                {{ block.height }}-->
+<!--                            </RouterLink>-->
+<!--                        </td>-->
+<!--                        <td>{{ block.hash }}</td>-->
+<!--                        <td>{{ block.timestamp }}</td>-->
+<!--                        <td>{{ block.txDecoded.length }}</td>-->
+<!--                        <td>{{ block.proposer }}</td>-->
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+  <div id="home-veiw">
+    123213
+  </div>
 </template>
 
 <style scoped>

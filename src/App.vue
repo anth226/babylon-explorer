@@ -15,16 +15,15 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div id="app" class="">
         <NavBarComponent />
-
-        <div class="router-container">
+        <div class="router-container container mt-5">
             <RouterView class="router-view" />
         </div>
     </div>
 </template>
 
-<style scoped>
+<style>
 .router-container {
     display: flex;
     justify-content: center;
@@ -34,4 +33,5 @@ export default {
 .router-view {
     width: 100%;
 }
+
 </style>
