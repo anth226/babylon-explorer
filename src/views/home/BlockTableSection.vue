@@ -60,6 +60,7 @@ export default {
 <style scoped>
     .section {
         padding: 30px;
+        border-right: 1px solid rgba(51, 51, 51, 0.05);
     }
     .heading {
         font-weight: 600;
