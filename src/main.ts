@@ -6,6 +6,7 @@ import router from './router'
 import store from './stores'
 import './styles/index.css'
 import './styles/globals.css'
+import 'animate.css';
 
 const app = createApp(App)
 // app.use(createPinia())
