@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="block-table flex flex-row mx-auto bg-white">
+    <div class="block-table flex  mx-auto bg-white">
         <div class="w-1/4">
             <BlockTableSection
                 heading="Latest BBN Block"
