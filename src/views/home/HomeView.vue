@@ -1,6 +1,7 @@
 <script>
 import ApprovalTable from './ApprovalTable.vue'
 import BlockItems from '@/views/home/BlockGrid.vue'
+import EpochGrid from '@/views/home/EpochGrid.vue'
 import BlockTable from '@/views/home/BlockTable.vue'
 
 export default {
@@ -8,6 +9,7 @@ export default {
     components: {
         ApprovalTable,
         BlockItems,
+        EpochGrid,
         BlockTable
     },
     beforeMount() {
@@ -46,9 +48,10 @@ export default {
 </script>
 
 <template>
-  <div id="home-veiw">
+  <div id="home-view">
       <ApprovalTable />
       <BlockItems />
+      <EpochGrid />
       <BlockTable />
   </div>
 </template>
