@@ -5,18 +5,20 @@ export default {
 </script>
 
 <template>
-    <div class="card flex flex-row gap-2 mx-auto">
+    <div class="card flex flex-row gap-2 mx-auto relative">
         <div class="w-1/3">
             <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
             <img src="../../assets/clock.svg" alt="clock">
             <img class="clock" src="../../assets/clock-ring.svg" alt="clock">
             <img class="clock-child" src="../../assets/clock.svg" alt="clock">
-            <div class="subheading">
-                Average Unbonding Time
-            </div>
-            <div class="heading z-50">
-                5 minutes
-            </div>
+                <div class="subheading">
+                    Average Unbonding Time
+                </div>
+                <div class="heading">
+                    <div>
+                        5 minutes
+                    </div>
+                </div>
         </div>
         <div class="w-2/3 table">
             <div class="grid grid-cols-4 gap-4">
@@ -81,8 +83,10 @@ export default {
 
 .home-img {
     position: absolute;
-    align-items: center;
     border-radius: 9px;
+    z-index: 1;
+    bottom: 8px;
+    left: 8px;
 }
 
 .clock {
@@ -90,6 +94,7 @@ export default {
     left: 42%;
     width: 54px;
     height: 54px;
+    z-index: 2;
 }
 
 .clock-child {
@@ -98,6 +103,29 @@ export default {
     bottom:42.6px;
     width: 32px;
     height: 32px;
+    z-index: 2;
+}
+
+.subheading {
+    z-index: 3;
+    position: absolute;
+    top: 108px;
+    left: 65px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #f3f3f3;
+    line-height: 20px;
+}
+
+.heading {
+    z-index: 3;
+    position: absolute;
+    top: 135px;
+    left: 71px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 29px;
+    color: #23A5DC;
 }
 
 .grid-item {

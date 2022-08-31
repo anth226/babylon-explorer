@@ -40,6 +40,12 @@ export default {
     line-height: 24px;
     color: #f3f3f3;
 }
+
+.subheading {
+    margin-top: 8px;
+    font-weight: 300;
+}
+
 .long-arrow-left {
     width: 212px;
     height: 12px;

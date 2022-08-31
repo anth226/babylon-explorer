@@ -17,7 +17,7 @@ export default {
     },
     computed: {
         chainHeight() {
-              return this.$store.getters["common/blocks/getHeight"];
+            return this.$store.getters["common/blocks/getHeight"];
         },
 
         numTotalTxs() {
@@ -48,11 +48,11 @@ export default {
 </script>
 
 <template>
-  <div id="home-view">
-      <ApprovalTable />
-      <BlockItems />
-      <EpochGrid />
-      <BlockTable />
-  </div>
+    <div id="home-view">
+        <ApprovalTable />
+        <BlockItems />
+        <EpochGrid />
+        <BlockTable />
+    </div>
 </template>
 
