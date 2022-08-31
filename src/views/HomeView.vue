@@ -104,73 +104,157 @@ export default {
 <!--        </div>-->
 <!--    </div>-->
   <div id="home-veiw">
-    123213
+    <div class="card flex flex-row gap-2 mx-auto">
+     <div class="w-1/3">
+       <img class="home-img" src="../assets/homeimg.png" alt="homeimg">
+     </div>
+      <div class="w-2/3 table">
+
+<!--        <div class="overflow-x-auto relative">-->
+<!--          <table class="w-full text-left">-->
+<!--            <thead class="uppercase bg-gray-50">-->
+<!--            <tr>-->
+<!--              <th scope="col" class="py-3 px-6 table-heading">-->
+<!--                Unbonding validators-->
+<!--              </th>-->
+<!--              <th scope="col" class="py-3 px-6">-->
+<!--                Color-->
+<!--              </th>-->
+<!--              <th scope="col" class="py-3 px-6">-->
+<!--                Category-->
+<!--              </th>-->
+<!--              <th scope="col" class="py-3 px-6">-->
+<!--                Price-->
+<!--              </th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">-->
+<!--              <th scope="row" class="px-6 whitespace-nowrap">-->
+<!--                Apple MacBook Pro 17"-->
+<!--              </th>-->
+<!--              <td class="px-6">-->
+<!--                Sliver-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                Laptop-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                $2999-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">-->
+<!--              <th scope="row" class="px-6 whitespace-nowrap">-->
+<!--                Microsoft Surface Pro-->
+<!--              </th>-->
+<!--              <td class="px-6">-->
+<!--                White-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                Laptop PC-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                $1999-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--            <tr class="bg-white dark:bg-gray-800">-->
+<!--              <th scope="row" class="px-6 whitespace-nowrap">-->
+<!--                Magic Mouse 2-->
+<!--              </th>-->
+<!--              <td class="px-6">-->
+<!--                Black-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                Accessories-->
+<!--              </td>-->
+<!--              <td class="px-6">-->
+<!--                $99-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="grid-item grid-header">Unbounding validators</div>
+          <div class="grid-item grid-header">
+            Equested @
+            <br>
+            epoch #
+          </div>
+          <div class="grid-item grid-header">
+            Checkpointed
+            <br>
+            @BTC block
+          </div>
+          <div class="grid-item grid-header">
+            Approved
+          </div>
+          <div class="grid-item">A1B2C3D4</div>
+          <div class="grid-item">13</div>
+          <div class="grid-item">—</div>
+          <!--Dynamic class-->
+          <div class="grid-item text-left flex items-center ml-1 not-approved">
+            <img class="p-0 mr-2" src="../assets/not-approved.svg" alt="x">
+            <span class="text-notApproved p-0">Not approved</span>
+          </div>
+          <div class="grid-item">E5F6G7H8</div>
+          <div class="grid-item">12</div>
+          <div class="grid-item">1220</div>
+          <div class="grid-item">
+            <!--Dynamic class-->
+            <div class="grid-item border-0 text-left flex items-center not-approved p-0 ml-1 pending">
+              <img class="p-0 mr-2" src="../assets/pending.svg" alt="x">
+              <span class="text-pending">Pending</span>
+            </div>
+          </div>
+          <div class="grid-item">I9J0K1L2</div>
+          <div class="grid-item">10</div>
+          <div class="grid-item">1200</div>
+          <div class="grid-item">
+            <!--Dynamic class-->
+            <div class="grid-item border-0 text-left flex items-center not-approved p-0 ml-1 pending">
+              <img class="p-0 mr-2" src="../assets/approved.svg" alt="x">
+              <span class="text-approved">Approved</span>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.homeview-container {
-    max-width: 1280px;
+.card {
+  display: flex;
+  width: 800px;
+  height: 200px;
+  background: #FFFFFF;
+  box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
+  border-radius: 9px;
+  padding-top: 11px;
+  padding-left: 11px;
 }
 
-.homeview-container > div {
-    margin-bottom: 3em;
-}
-.top-stats {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.top-stats-content {
-    display: flex;
-    flex-direction: column;
-}
-.top-stats-content-title {
-    color: #666666;
-}
-.top-stats-content-value {
-    color: #2170ff;
+.home-img {
+  align-items: center;
+  border-radius: 9px;
 }
 
-.moreButton {
-    color: #333333;
-    text-decoration: none;
-}
-.moreButton:hover {
-    color: #2170ff;
-    text-decoration: underline;
+
+.grid-item {
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    width: 100%;
+.grid-header {
+  font-weight: 700;
+  line-height: 16px;
 }
 
-.styled-table thead tr {
-    /* background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);; */
-    background-color: black;
-    color: #ffffff;
-    text-align: left;
-}
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid black;
-}
 </style>

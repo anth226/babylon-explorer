@@ -34,6 +34,7 @@ const router = createRouter({
             component: EpochingView,
         },
     ],
+    linkActiveClass: 'active-link'
 });
 
 export default router;
