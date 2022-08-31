@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'NavbarComponent'
+    name: 'NavbarComponent'
 }
 </script>
 
@@ -27,17 +27,17 @@ nav {
 }
 
 .active-link {
-  border-bottom: 3px solid #23A5DC;
+    border-bottom: 3px solid #23A5DC;
 }
 
 a {
-  padding: 40px 0;
-  margin: 0 17px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 3px;
-  text-align: right;
+    padding: 40px 0;
+    margin: 0 17px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 3px;
+    text-align: right;
 }
 
 </style>
