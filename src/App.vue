@@ -18,7 +18,13 @@ export default {
     <div id="app" class="">
         <NavBarComponent />
         <div class="router-container container mt-5">
-            <RouterView class="router-view" />
+            <transition
+                mode="out-in"
+                enter-active-class="animate__animated animate__fadeIn"
+                leave-active-class="animate__animated animate__fadeOut"
+            >
+                <RouterView />
+            </transition>
         </div>
     </div>
 </template>
@@ -28,10 +34,6 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-}
-
-.router-view {
-    width: 100%;
 }
 
 </style>
