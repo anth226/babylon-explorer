@@ -40,6 +40,13 @@ a {
     text-align: right;
 }
 
+a:hover {
+    transition: ease-in-out;
+    transition-duration: 200ms;
+    color: white;
+    opacity: 0.7;
+}
+
 @media only screen and (max-width: 1034px) {
     a {
         display: none;
