@@ -21,7 +21,7 @@ export default {
             <BlockItem name="BTC" value="1201" :has-arrow-up="true" :has-arrow-left="true" />
             <BlockItem name="BTC" value="1202" :has-arrow-left="true" />
             <BlockItem name="BTC" value="1200" :has-arrow-left="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" />
+            <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />
             <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />
             <BlockItem :isDisabled="true" :has-arrow-left="true" />
             <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />

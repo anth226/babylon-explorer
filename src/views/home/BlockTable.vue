@@ -7,7 +7,7 @@ export default {
         BlockTableSection
     },
     data: () => ({
-        hasThreeCols: false
+        hasThreeCols: true
     })
 }
 </script>
@@ -18,6 +18,7 @@ export default {
             <BlockTableSection
                 heading="Latest BBN Block"
                 count="123"
+                :has-three-cols="true"
                 col1="#"
                 col2="Hash"
                 col3="Timestamp"
@@ -27,7 +28,7 @@ export default {
             <BlockTableSection
                 heading="Latest BTC Block"
                 count="123"
-                :hasThreeCols="true"
+                :has-three-cols="true"
                 col1="#"
                 col2="Hash"
                 col3="Has ckpts"
