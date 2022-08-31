@@ -1,9 +1,11 @@
 <script>
-import BlockItems from '@/views/home/BlockItems.vue';
+import BlockItems from '@/views/home/BlockGrid.vue'
+import BlockTable from '@/views/home/BlockTable.vue'
 
 export default {
   components: {
-    BlockItems
+      BlockItems,
+      BlockTable
   },
     beforeMount() {
         this.$store.dispatch("addresses/validatorStats/getNumValidators");
@@ -92,11 +94,10 @@ export default {
             </div>
           </div>
         </div>
-
-
       </div>
-    </div>
-    <BlockItems />
+      </div>
+      <BlockItems />
+      <BlockTable />
   </div>
 </template>
 
