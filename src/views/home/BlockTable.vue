@@ -1,17 +1,53 @@
+<script>
+import BlockTableSection from './BlockTableSection.vue'
+
+export default {
+    name: 'BlockTable',
+    components: {
+        BlockTableSection
+    },
+    data: () => ({
+        hasThreeCols: false
+    })
+}
+</script>
+
 <template>
     <div class="block-table flex flex-row mx-auto bg-white">
-        <div class="1/4 section">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda cupiditate laudantium ullam. Dignissimos excepturi exercitationem pariatur quam qui temporibus voluptatibus?
+        <div class="w-1/4">
+            <BlockTableSection
+                heading="Latest BBN Block"
+                count="123"
+                col1="#"
+                col2="Hash"
+                col3="Timestamp"
+            />
         </div>
-        <civ class="1/4 section">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, deleniti fugiat. Earum facere fuga, fugit maxime molestiae molestias quae tempore!
-        </civ>
-        <civ class="1/4 section">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, deleniti fugiat. Earum facere fuga, fugit maxime molestiae molestias quae tempore!
-        </civ>
-        <civ class="1/4 section">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, deleniti fugiat. Earum facere fuga, fugit maxime molestiae molestias quae tempore!
-        </civ>
+        <div class="w-1/4">
+            <BlockTableSection
+                heading="Latest BTC Block"
+                count="123"
+                :hasThreeCols="true"
+                col1="#"
+                col2="Hash"
+                col3="Has ckpts"
+            />
+        </div>
+        <div class="w-1/4">
+            <BlockTableSection
+                heading="Epoch number"
+                count="13"
+                col1="Status"
+                col2="Epoch"
+
+            />
+        </div>
+        <div class="w-1/4">
+            <BlockTableSection
+                heading="Validators"
+                count="20"
+            />
+        </div>
     </div>
 </template>
 
@@ -22,8 +58,5 @@
         height: 405px;
         box-shadow: 0 4px 94px rgba(0, 0, 0, 0.11);
         border-radius: 20px;
-    }
-    .section {
-        padding: 30px;
     }
 </style>
