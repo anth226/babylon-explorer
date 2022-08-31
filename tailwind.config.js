@@ -9,7 +9,8 @@ module.exports = {
       colors: {
         notApproved: "#BC2727",
         pending: "#E28937",
-        approved: "#1AA179"
+        approved: "#1AA179",
+        secondary: "#010CC2"
       }
     },
   },
