@@ -5,10 +5,8 @@
 <template>
     <nav class="navbar-expand-lg">
         <div class="flex justify-around items-center">
-            <RouterLink to="/">
-                <img src="../assets/Vector.svg" alt="logo">
-            </RouterLink>
-            <div class="navbar-nav text-white" style="margin: 0em 1em">
+            <img src="../assets/Vector.svg" alt="logo">
+            <div class="navbar-nav text-white" style="margin: 0 1em">
                 <RouterLink to="/">HOME</RouterLink>
                 <RouterLink to="/about">BLOCKS & TXS</RouterLink>
                 <RouterLink to="/epochs">CHECKPOINTS</RouterLink>
@@ -20,9 +18,14 @@
 
 <style scoped>
 nav {
-    height: 125px;
-    padding: 40px 0;
+    padding: 0;
+    margin: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.active-link {
+  border-bottom: 3px solid #23A5DC;
 }
 
 .navbar-brand {
@@ -51,12 +54,13 @@ nav {
 /*}*/
 
 a {
+  padding: 40px 0;
+  margin: 0 17px;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: 3px;
   text-align: right;
-  margin: 0 14px;
 }
 </style>
 
