@@ -40,6 +40,15 @@ a {
     text-align: right;
 }
 
+@media only screen and (max-width: 1034px) {
+    a {
+        display: none;
+    }
+    nav {
+        padding: 30px 0;
+    }
+}
+
 </style>
 
 
