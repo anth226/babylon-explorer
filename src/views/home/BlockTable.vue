@@ -46,6 +46,8 @@ export default {
             <BlockTableSection
                 heading="Validators"
                 count="20"
+                col1="Type"
+                col2="Number"
             />
         </div>
     </div>
