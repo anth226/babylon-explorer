@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router"
-import BlockView from "../views/blocks/BlockView.vue"
-import EpochingView from "../views/EpochingView.vue"
 
+// import BlockView from "@/views/blocks/BlockView"
+// import EpochingView from "@/views/EpochingView"
 
-// @ts-ignore
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
+    routes:  [
         {
             path: "/",
             name: "home",
@@ -27,16 +26,16 @@ const router = createRouter({
             name: 'Validators',
             component: () => import(/* webpackChunkName: "ValidatorsView" */ '../views/validators/ValidatorsView.vue')
         },
-        {
-            path: "/blocks/:blockID",
-            name: "specificBlock",
-            component: BlockView,
-        },
-        {
-            path: "/epochs",
-            name: "epochs",
-            component: EpochingView,
-        },
+        // {
+        //     path: "/blocks/:blockID",
+        //     name: "specificBlock",
+        //     component: BlockView,
+        // },
+        // {
+        //     path: "/epochs",
+        //     name: "epochs",
+        //     component: EpochingView,
+        // }
     ],
     linkActiveClass: 'active-link'
 })
