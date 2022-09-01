@@ -73,9 +73,6 @@ export default {
     <div class="card p-2 mx-auto">
         <div class="img-container">
             <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
-            <div class="center-text">
-                12321321
-            </div>
         </div>
         <div>
 
