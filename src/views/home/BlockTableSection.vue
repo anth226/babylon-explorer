@@ -81,7 +81,7 @@ export default {
     }
     .item {
         border-top: 1px solid rgba(51, 51, 51, 0.05);
-        padding: 8px;
+        padding: 8px 0;
         font-weight: 400;
         font-size: 14px;
         line-height: 32px;

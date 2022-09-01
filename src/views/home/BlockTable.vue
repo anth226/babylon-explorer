@@ -13,89 +13,46 @@ export default {
 </script>
 
 <template>
-    <!-- <div class="block-table mx-auto bg-white">
-        <div class="w-1/4">
-            <BlockTableSection
-                heading="Latest BBN Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Timestamp"
-            />
-        </div>
-        <div class="w-1/4">
-            <BlockTableSection
-                heading="Latest BTC Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Has ckpts"
-            />
-        </div>
-        <div class="w-1/4">
-            <BlockTableSection
-                heading="Epoch number"
-                count="13"
-                col1="Status"
-                col2="Epoch"
-
-            />
-        </div>
-        <div class="w-1/4">
-            <BlockTableSection
-                heading="Validators"
-                count="20"
-                col1="Type"
-                col2="Number"
-            />
-        </div>
-    </div> -->
-
-
-<div>
-    <div class="main-grid bg-white">
-        <div>
-            <BlockTableSection
-                heading="Latest BBN Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Timestamp"
-            />
-        </div>
-        <div>
-            <BlockTableSection
-                heading="Latest BTC Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Has ckpts"
-            />
-        </div>
-        <div>
-            <BlockTableSection
-                heading="Epoch number"
-                count="13"
-                col1="Status"
-                col2="Epoch"
-            />
-        </div>
-        <div>
-            <BlockTableSection
-                heading="Validators"
-                count="20"
-                col1="Type"
-                col2="Number"
-            />
+    <div>
+        <div class="main-grid bg-white">
+            <div>
+                <BlockTableSection
+                    heading="Latest BBN Block"
+                    count="123"
+                    :has-three-cols="true"
+                    col1="#"
+                    col2="Hash"
+                    col3="Timestamp"
+                />
+            </div>
+            <div>
+                <BlockTableSection
+                    heading="Latest BTC Block"
+                    count="123"
+                    :has-three-cols="true"
+                    col1="#"
+                    col2="Hash"
+                    col3="Has ckpts"
+                />
+            </div>
+            <div>
+                <BlockTableSection
+                    heading="Epoch number"
+                    count="13"
+                    col1="Status"
+                    col2="Epoch"
+                />
+            </div>
+            <div>
+                <BlockTableSection
+                    heading="Validators"
+                    count="20"
+                    col1="Type"
+                    col2="Number"
+                />
+            </div>
         </div>
     </div>
-</div>
-
-
 </template>
 
 <style scoped>
