@@ -48,16 +48,3 @@ export default {
         </div>
     </div>
 </template>
-
-<style scoped>
-
-
-@media screen
-and (min-device-width: 100px)
-and (max-device-width: 1500px)
-and (-webkit-min-device-pixel-ratio: 1) {
-    .epoch-grid {
-        scale: 0.8;
-    }
-}
-</style>

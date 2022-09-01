@@ -40,7 +40,7 @@ export default {
             try {
                 return this.$store.getters["common/blocks/getBlocks"](8);
             } catch {
-                return [];
+                return []
             }
         },
       },
@@ -50,9 +50,19 @@ export default {
 <template>
     <div id="home-view">
         <ApprovalTable />
-<!--        <BlockItems />-->
-        <EpochGrid />
-<!--        <BlockTable />-->
+        <div class="main-body">
+<!--            <BlockItems />-->
+<!--            <EpochGrid />-->
+            <BlockTable />
+        </div>
     </div>
 </template>
+
+<style scoped>
+/*@media(max-width: 1430px) {*/
+/*    .main-body {*/
+/*        scale: 0.9;*/
+/*    }*/
+/*}*/
+</style>
 
