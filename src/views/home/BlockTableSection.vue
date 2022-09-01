@@ -47,10 +47,10 @@ export default {
             <div>
                 1234
             </div>
-            <div>
+            <div v-if="hasThreeCols">
                 0x231293810928
             </div>
-            <div v-if="hasThreeCols" class="font-bold">
+            <div class="font-bold">
                 1231423498
             </div>
         </div>

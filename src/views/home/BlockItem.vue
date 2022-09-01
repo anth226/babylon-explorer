@@ -27,7 +27,10 @@
 
 <template>
     <div>
-        <div :class="isDisabled ? 'opacity-20' : ''" class="box">
+        <div
+            class="box"
+            :class="isDisabled ? 'opacity-20' : ''"
+        >
             <div class="type">
                 {{ name }}
             </div>
@@ -35,8 +38,21 @@
                 {{ value }}
             </div>
         </div>
-        <img v-if="hasArrowUp" :class="isDisabled ? 'opacity-20' : ''" class="arrow-up" src="../../assets/arrow-up.svg" alt="arrow">
-        <img v-if="hasArrowLeft" :class="isDisabled ? 'opacity-20' : ''" :style="hasArrowUp ? 'top: -51%;' : 'top: -45%'" class="arrow-left" src="../../assets/arrow-left.svg" alt="arrow">
+        <img
+            src="../../assets/arrow-up.svg"
+            v-if="hasArrowUp"
+            class="arrow-up"
+            :class="isDisabled ? 'opacity-20' : ''"
+            alt="arrow"
+        >
+        <img
+            src="../../assets/arrow-left.svg"
+            v-if="hasArrowLeft"
+            class="arrow-left"
+            :class="isDisabled ? 'opacity-20' : ''"
+            :style="hasArrowUp ? 'top: -51%;' : 'top: -45%'"
+            alt="arrow"
+        >
     </div>
 </template>
 
@@ -73,10 +89,6 @@
     line-height: 28px;
     display: flex;
     align-items: center;
-}
-
-.fix {
-    border: 3px solid black;
 }
 
 .value {
