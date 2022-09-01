@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="block-table flex  mx-auto bg-white">
+    <!-- <div class="block-table mx-auto bg-white">
         <div class="w-1/4">
             <BlockTableSection
                 heading="Latest BBN Block"
@@ -51,15 +51,75 @@ export default {
                 col2="Number"
             />
         </div>
+    </div> -->
+
+
+<div>
+    <div class="main-grid bg-white">
+        <div>
+            <BlockTableSection
+                heading="Latest BBN Block"
+                count="123"
+                :has-three-cols="true"
+                col1="#"
+                col2="Hash"
+                col3="Timestamp"
+            />
+        </div>
+        <div>
+            <BlockTableSection
+                heading="Latest BBN Block"
+                count="123"
+                :has-three-cols="true"
+                col1="#"
+                col2="Hash"
+                col3="Timestamp"
+            />
+        </div>
+        <div>
+            <BlockTableSection
+                heading="Latest BBN Block"
+                count="123"
+                :has-three-cols="true"
+                col1="#"
+                col2="Hash"
+                col3="Timestamp"
+            />
+        </div>
+        <div>
+            <BlockTableSection
+                heading="Latest BBN Block"
+                count="123"
+                :has-three-cols="true"
+                col1="#"
+                col2="Hash"
+                col3="Timestamp"
+            />
+        </div>
     </div>
+</div>
+
+
 </template>
 
 <style scoped>
-    .block-table {
-        margin-top: 35px;
-        width: 1380px;
-        height: 405px;
+    .main-grid {
+        margin: 35px 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         box-shadow: 0 4px 94px rgba(0, 0, 0, 0.11);
         border-radius: 20px;
+    }
+
+    @media(max-width: 1280px) {
+        .main-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media(max-width: 642px) {
+        .main-grid {
+            display: block;
+        }
     }
 </style>

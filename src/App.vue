@@ -15,9 +15,9 @@ export default {
 </script>
 
 <template>
-    <div id="app" class="">
+    <div id="app">
         <NavBarComponent />
-        <div class="router-container container mt-5">
+        <div class="container mx-auto mt-5">
             <transition
                 mode="out-in"
                 enter-active-class="animate__animated animate__fadeIn"
