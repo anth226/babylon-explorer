@@ -36,8 +36,8 @@ export default {
             />
             <BlockItem
                 :isDisabled="true"
-                :has-arrow-left="true" :
-                has-arrow-up="true"
+                :has-arrow-left="true"
+                :has-arrow-up="true"
             />
             <BlockItem
                 :isDisabled="true"
@@ -50,8 +50,8 @@ export default {
             />
             <BlockItem
                 :isDisabled="true"
-                :has-arrow-left="true" :
-                has-arrow-up="true" />
+                :has-arrow-left="true"
+                :has-arrow-up="true" />
             <BlockItem :isDisabled="true" :has-arrow-left="true"
             />
             <BlockItem
