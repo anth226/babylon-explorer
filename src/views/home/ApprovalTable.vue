@@ -14,7 +14,7 @@ export default {
                         <img class="ring" src="../../assets/clock-ring.svg" alt="ring">
                         <img class="ring" src="../../assets/clock.svg" alt="clock">
                         <div class="subheading">Average Unbonding Time</div>
-                        <div class="heading">5 minutes</div>
+                        <div class="heading mt-2">5 minutes</div>
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@ export default {
 
 .ring {
     position: absolute;
-    top: -85%;
+    top: -72%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
