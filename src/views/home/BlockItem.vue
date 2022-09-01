@@ -66,6 +66,13 @@
     color: #f3f3f3;
 }
 
+.box:hover {
+    scale: 1.05;
+    transition: ease-in-out;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+
 .arrow-left {
     position: relative;
     width: 17px;
