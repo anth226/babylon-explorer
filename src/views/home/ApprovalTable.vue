@@ -12,14 +12,6 @@ export default {
 <!--            </div>-->
 <!--            <img class="clock" src="../../assets/clock-ring.svg" alt="clock">-->
 <!--            <img class="clock-child" src="../../assets/clock.svg" alt="clock">-->
-<!--                <div class="subheading">-->
-<!--                    Average Unbonding Time-->
-<!--                </div>-->
-<!--                <div class="heading">-->
-<!--                    <div>-->
-<!--                        5 minutes-->
-<!--                    </div>-->
-<!--                </div>-->
 <!--        </div>-->
 <!--        <div class="w-2/3 table">-->
 <!--&lt;!&ndash;            <div class="grid grid-cols-4 gap-4">&ndash;&gt;-->
@@ -71,8 +63,20 @@ export default {
 
 
     <div class="card p-2 mx-auto">
-        <div class="img-container">
-            <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
+        <div>
+            <div>
+                <div class="imgcont">
+                    <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
+                    <div class="centered">
+                        <div class="subheading">Average Unbonding Time</div>
+                        <div class="heading">5 minutes</div>
+                    </div>
+                </div>
+<!--                <div class="img-svgs">-->
+<!--                    <img class="clock" src="../../assets/clock-ring.svg" alt="clock">-->
+<!--                    <img class="clock-child" src="../../assets/clock.svg" alt="clock">-->
+<!--                </div>-->
+            </div>
         </div>
         <div>
 
@@ -83,7 +87,8 @@ export default {
                 </div>
                 <div class="w-1/4 table-item">
                     Equested @
-                    <span class="ml-1">epoch #</span>
+                    <br>
+                    <span class="ml-2">epoch #</span>
                 </div>
                 <div class="w-1/4 table-item">
                     Checkpointed
@@ -93,7 +98,7 @@ export default {
                     Approved
                 </div>
             </div>
-            <div class="table-content border-bottom flex px-3 pt-2 items-center">
+            <div class="table-content border-bottom flex px-3 pt-3 items-center">
                 <div class="w-1/4 item">A1B2C3D4</div>
                 <div class="w-1/4 item flex justify-center pr-3">13</div>
                 <div class="w-1/4 item flex justify-center pr-3">—</div>
@@ -128,29 +133,14 @@ export default {
 
 <style scoped>
 
-
-
-
-
-
-.img-container {
-    position: relative;
-}
-
-.center-text {
-    z-index: 100;
-    position: absolute;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    left: 150px;
-    top: 350px;
+.img-svgs {
+    position: fixed;
+    top: 15%;
 }
 
 .home-img {
-    position: absolute;
     border-radius: 9px;
-    z-index: 1;
+    z-index: 1000;
     height: 100%;
     left: 0;
     top: 0;
@@ -158,8 +148,17 @@ export default {
     /*left: 8px;*/
 }
 
+.imgcont {
+    position: relative;
+    text-align: center;
+}
 
-
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .card {
     display: grid;
@@ -168,11 +167,6 @@ export default {
     background: #FFFFFF;
     box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
     border-radius: 9px;
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
 }
 
 .table>:not(caption)>*>* {
@@ -227,21 +221,14 @@ export default {
 }
 
 .subheading {
-    z-index: 3;
-    position: absolute;
-    top: 108px;
-    left: 50px;
     font-weight: 300;
+    width: 200px;
     font-size: 14px;
     color: #f3f3f3;
     line-height: 20px;
 }
 
 .heading {
-    z-index: 3;
-    position: absolute;
-    top: 135px;
-    left: 57px;
     font-weight: 800;
     font-size: 32px;
     line-height: 29px;
@@ -251,14 +238,9 @@ export default {
 
 @media(max-width: 800px) {
     .card {
-        display: block;
+        display: none;
     }
 }
 
-@media(max-width: 520px) {
-    .card {
-        display: block;
-    }
-}
 
 </style>
