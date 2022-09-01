@@ -50,19 +50,19 @@ export default {
 <template>
     <div id="home-view">
         <ApprovalTable />
-        <div class="main-body">
-<!--            <BlockItems />-->
-<!--            <EpochGrid />-->
-            <BlockTable />
+        <div class="complex">
+            <BlockItems />
+            <EpochGrid />
         </div>
+        <BlockTable />
     </div>
 </template>
 
 <style scoped>
-/*@media(max-width: 1430px) {*/
-/*    .main-body {*/
-/*        scale: 0.9;*/
-/*    }*/
-/*}*/
+@media(max-width: 1538px) {
+    .complex {
+        display: none;
+    }
+}
 </style>
 
