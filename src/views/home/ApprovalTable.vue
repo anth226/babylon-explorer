@@ -144,7 +144,7 @@ export default {
 
 .ring {
     position: absolute;
-    top: -100%;
+    top: -85%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
