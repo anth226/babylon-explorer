@@ -68,32 +68,28 @@ export default {
         </div>
         <div>
             <BlockTableSection
-                heading="Latest BBN Block"
+                heading="Latest BTC Block"
                 count="123"
                 :has-three-cols="true"
                 col1="#"
                 col2="Hash"
-                col3="Timestamp"
+                col3="Has ckpts"
             />
         </div>
         <div>
             <BlockTableSection
-                heading="Latest BBN Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Timestamp"
+                heading="Epoch number"
+                count="13"
+                col1="Status"
+                col2="Epoch"
             />
         </div>
         <div>
             <BlockTableSection
-                heading="Latest BBN Block"
-                count="123"
-                :has-three-cols="true"
-                col1="#"
-                col2="Hash"
-                col3="Timestamp"
+                heading="Validators"
+                count="20"
+                col1="Type"
+                col2="Number"
             />
         </div>
     </div>
