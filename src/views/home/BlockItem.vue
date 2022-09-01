@@ -36,7 +36,7 @@
             </div>
         </div>
         <img v-if="hasArrowUp" :class="isDisabled ? 'opacity-20' : ''" class="arrow-up" src="../../assets/arrow-up.svg" alt="arrow">
-        <img v-if="hasArrowLeft" :class="isDisabled ? 'opacity-20' : ''" class="arrow-left" src="../../assets/arrow-left.svg" alt="arrow">
+        <img v-if="hasArrowLeft" :class="isDisabled ? 'opacity-20' : ''" :style="hasArrowUp ? 'top: -51%;' : 'top: -45%'" class="arrow-left" src="../../assets/arrow-left.svg" alt="arrow">
     </div>
 </template>
 
@@ -54,8 +54,7 @@
     position: relative;
     width: 17px;
     height: 15px;
-    top: -45%;
-    right: 26px;
+    right: 30px;
 }
 
 .arrow-up {
@@ -74,6 +73,10 @@
     line-height: 28px;
     display: flex;
     align-items: center;
+}
+
+.fix {
+    border: 3px solid black;
 }
 
 .value {
