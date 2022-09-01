@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-    <div class="flex mt-4">
+    <div class="flex mt-4 epoch-grid">
         <div class="flex mx-auto">
             <EpochItem
                 epoch-num="10"
@@ -43,8 +43,21 @@ export default {
                 epoch-num="13"
                 blocks-num="10"
                 :has-arrow="false"
-                position="-105"
+                position="-105" flex justify-end
             />
         </div>
     </div>
 </template>
+
+<style scoped>
+
+
+@media screen
+and (min-device-width: 100px)
+and (max-device-width: 1500px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    .epoch-grid {
+        scale: 0.8;
+    }
+}
+</style>

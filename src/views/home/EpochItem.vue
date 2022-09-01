@@ -47,7 +47,7 @@ export default {
 }
 
 .long-arrow-left {
-    width: 212px;
+    width: 230px;
     height: 12px;
     margin-left: 50px;
 }
