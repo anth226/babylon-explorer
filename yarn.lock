@@ -1855,6 +1855,11 @@
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.5.tgz"
   "version" "0.13.5"
 
+"vue-lazyload@^3.0.0-rc.2":
+  "integrity" "sha512-Cg7Gqb7jAoiImMPH3EMfAwJ8gZuFoBJCEtA7+TGRljrtktDtV7JAHIyKvuTgQR8DFAd7MhKi1Ys8QHdSrnGdZQ=="
+  "resolved" "https://registry.npmjs.org/vue-lazyload/-/vue-lazyload-3.0.0-rc.2.tgz"
+  "version" "3.0.0-rc.2"
+
 "vue-router@^4.1.2":
   "integrity" "sha512-5BP1qXFncVRwgV/XnqzsKApdMjQPqWIpoUBdL1ynz8HyLxIX/UDAx7Ql2BjmA5CXT/p61JfZvkpiFWFpaqcfag=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.1.2.tgz"

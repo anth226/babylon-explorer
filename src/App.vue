@@ -29,11 +29,3 @@ export default {
     </div>
 </template>
 
-<style>
-.router-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-</style>

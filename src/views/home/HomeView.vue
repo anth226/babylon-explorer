@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import ApprovalTable from './ApprovalTable.vue'
 import BlockItems from '@/views/home/BlockGrid.vue'
 import EpochGrid from '@/views/home/EpochGrid.vue'

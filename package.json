@@ -23,6 +23,7 @@
     "pinia": "^2.0.16",
     "reconnecting-websocket": "^4.4.0",
     "vue": "^3.2.37",
+    "vue-lazyload": "^3.0.0-rc.2",
     "vue-router": "^4.1.2",
     "vuex": "^4.0.2"
   },
