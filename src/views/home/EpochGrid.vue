@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import EpochItem from './EpochItem.vue'
 
 export default {
@@ -15,7 +15,6 @@ export default {
         ],
     })
 }
-
 </script>
 
 <template>

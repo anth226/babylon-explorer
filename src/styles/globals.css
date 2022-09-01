@@ -1,6 +1,11 @@
+:root {
+    --primary-blue: #010CC2;
+    --text-dark: #212121;
+}
+
 html body {
     font-family: 'Poppins', serif;
-    background-color: #010CC2;
+    background-color: var(--primary-blue);
     height: 100%;
     font-style: normal;
 }

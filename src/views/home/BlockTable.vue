@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import BlockTableSection from './BlockTableSection.vue'
 
 export default {

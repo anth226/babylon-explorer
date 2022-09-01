@@ -4,6 +4,15 @@ import BlockItems from '@/views/home/BlockGrid.vue'
 import EpochGrid from '@/views/home/EpochGrid.vue'
 import BlockTable from '@/views/home/BlockTable.vue'
 
+function getTitle (vm) {
+    const { title } = vm.$options
+    if (title) {
+        return typeof title === 'function'
+            ? title.call(vm)
+            : title
+    }
+}
+
 export default {
     name: 'HomeView',
     components: {
@@ -11,6 +20,12 @@ export default {
         BlockItems,
         EpochGrid,
         BlockTable
+    },
+    created () {
+        const title = getTitle(this)
+        if (title) {
+            document.title = title
+        }
     },
     beforeMount() {
         this.$store.dispatch("addresses/validatorStats/getNumValidators");
@@ -43,7 +58,7 @@ export default {
                 return []
             }
         },
-      },
+    },
 };
 </script>
 

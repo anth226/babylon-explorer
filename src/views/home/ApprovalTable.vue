@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
     name: 'ApprovalTable',
 }
@@ -106,7 +106,7 @@ export default {
     font-weight: 900;
     line-height: 16px;
     font-size: 12px;
-    color: #212121;
+    color: var(--text-dark);
     border-radius: 5px;
 }
 
@@ -124,7 +124,7 @@ export default {
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    color: #212121;
+    color: var(--text-dark);
 }
 
 .subheading {
@@ -148,7 +148,6 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 .ring {
     --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);

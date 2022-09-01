@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import BlockItem from './BlockItem.vue'
 
 export default {
@@ -15,18 +15,49 @@ export default {
 </script>
 
 <template>
-    <div id="block-items" class="justify-center">
+    <div class="justify-center">
         <div class="blocks">
             <BlockItem />
-            <BlockItem name="BTC" value="1201" :has-arrow-up="true" :has-arrow-left="true" />
-            <BlockItem name="BTC" value="1202" :has-arrow-left="true" />
-            <BlockItem name="BTC" value="1200" :has-arrow-left="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" :has-arrow-up="true" />
-            <BlockItem :isDisabled="true" :has-arrow-left="true" />
-            <BlockItem :isDisabled="true" :has-arrow-up="true" />
+            <BlockItem
+                name="BTC"
+                value="1201"
+                :has-arrow-up="true"
+                :has-arrow-left="true"
+            />
+            <BlockItem
+                name="BTC"
+                value="1202"
+                :has-arrow-left="true"
+            />
+            <BlockItem
+                name="BTC"
+                value="1200"
+                :has-arrow-left="true"
+            />
+            <BlockItem
+                :isDisabled="true"
+                :has-arrow-left="true" :
+                has-arrow-up="true"
+            />
+            <BlockItem
+                :isDisabled="true"
+                :has-arrow-left="true"
+                :has-arrow-up="true"
+            />
+            <BlockItem
+                :isDisabled="true"
+                :has-arrow-left="true"
+            />
+            <BlockItem
+                :isDisabled="true"
+                :has-arrow-left="true" :
+                has-arrow-up="true" />
+            <BlockItem :isDisabled="true" :has-arrow-left="true"
+            />
+            <BlockItem
+                :isDisabled="true"
+                :has-arrow-up="true"
+            />
         </div>
     </div>
 </template>

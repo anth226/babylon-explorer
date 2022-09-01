@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
     name: 'BlockTableSection',
     props: {
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <div class="section">
+        <div class="section font-semibold">
         <div class="heading flex justify-between">
             <div>
                 {{ heading }}
@@ -63,21 +63,19 @@ export default {
         border-right: 1px solid rgba(51, 51, 51, 0.05);
     }
     .heading {
-        font-weight: 600;
         font-size: 18px;
         line-height: 32px;
         letter-spacing: 0.11em;
         text-transform: uppercase;
-        color: #010CC2;
-        border-bottom: 2px solid #010CC2;
+        color: var(--primary-blue);
+        border-bottom: 2px solid var(--primary-blue);
         padding-bottom: 15px;
     }
     .subheading {
         padding: 15px 0 10px 0;
-        font-weight: 600;
         font-size: 16px;
         line-height: 32px;
-        color: #212121;
+        color: var(--text-dark);
     }
     .item {
         border-top: 1px solid rgba(51, 51, 51, 0.05);
@@ -85,6 +83,6 @@ export default {
         font-weight: 400;
         font-size: 14px;
         line-height: 32px;
-        color: #212121;
+        color: var(--text-dark);
     }
 </style>

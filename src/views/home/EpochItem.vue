@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <div :style="{right: position + 'px'}" class="item flex items-center ml-1">
+    <div :style="{right: position + 'px'}" class="relative flex items-center ml-1">
         <div class="epoch">
             <div class="heading font-bold">epoch {{ epochNum }}</div>
             <div class="subheading font-light">{{ blocksNum }} blocks</div>
@@ -29,10 +29,6 @@ export default {
 </template>
 
 <style scoped>
-
-.item {
-    position: relative;
-}
 
 .epoch {
     left: 20px;
