@@ -87,5 +87,4 @@ export default {
         line-height: 32px;
         color: #212121;
     }
-
 </style>

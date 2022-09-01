@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <div :style="{right: position + 'px'}" class="item flex items-center">
+    <div :style="{right: position + 'px'}" class="item flex items-center ml-1">
         <div class="epoch">
             <div class="heading font-bold">epoch {{ epochNum }}</div>
             <div class="subheading font-light">{{ blocksNum }} blocks</div>
@@ -54,13 +54,14 @@ export default {
 .short-arrow-left {
     width: 78px;
     height: 12px;
-    margin-left: 50px;
+    margin-left: 90px;
 }
 
 .medium-arrow-left {
     width: 155px;
     height: 12px;
-    margin-left: 60px;
+    margin-left: 50px;
+    margin-right: 20px;
 }
 
 </style>
