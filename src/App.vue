@@ -11,7 +11,7 @@ export default {
     beforeMount() {
         this.$store.dispatch("common/env/init");
     },
-};
+}
 </script>
 
 <template>

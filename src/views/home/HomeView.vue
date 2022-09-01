@@ -50,9 +50,9 @@ export default {
 <template>
     <div id="home-view">
         <ApprovalTable />
-        <BlockItems />
+<!--        <BlockItems />-->
         <EpochGrid />
-        <BlockTable />
+<!--        <BlockTable />-->
     </div>
 </template>
 
