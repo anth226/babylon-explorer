@@ -23,7 +23,6 @@ export default {
 nav {
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .active-link {

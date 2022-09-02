@@ -5,7 +5,6 @@
 
 html body {
     font-family: 'Poppins', serif;
-    background-color: var(--primary-blue);
     height: 100%;
     font-style: normal;
 }
