@@ -1,6 +1,6 @@
 <script lang="ts">
 import ApprovalTable from './ApprovalTable.vue'
-import BlockItems from '@/views/home/BlockGrid.vue'
+import BlockItems from '@/views/home/BtcBlockGrid.vue'
 import EpochGrid from '@/views/home/EpochGrid.vue'
 import BlockTable from '@/views/home/BlockTable.vue'
 

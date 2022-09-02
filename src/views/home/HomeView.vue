@@ -2,6 +2,7 @@
 import ApprovalTable from './ApprovalTable.vue'
 import NavBarComponent from '../../components/NavBarComponent.vue'
 import BlockTable from './BlockTable.vue'
+import BtcBlockGrid from '../home/BtcBlockGrid.vue'
 
 import MainLayout from '../../layouts/main-layout/MainLayout.vue'
 
@@ -11,20 +12,30 @@ export default {
         ApprovalTable,
         NavBarComponent,
         BlockTable,
-        MainLayout
+        MainLayout,
+        BtcBlockGrid
     }
 }
 </script>
 
 <template>
     <MainLayout />
-    <div class="container">
-        <BlockTable />
+    <div class="container mx-auto">
+        <div class="content">
+            <BtcBlockGrid />
+            <BlockTable />
+        </div>
     </div>
 </template>
 
 <style scoped>
-.main {
-    background-image: url('../../assets/nav-overlay.jpg');
+.content {
+    margin: 0 85px;
+}
+
+@media(max-width: 1200px) {
+    .content {
+        margin: 0;
+    }
 }
 </style>
