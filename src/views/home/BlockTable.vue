@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="container mx-auto">
         <div class="main-grid bg-white">
             <div>
                 <BlockTableSection
@@ -57,13 +57,12 @@ export default {
 
 <style scoped>
     .main-grid {
-        margin: 35px 0;
+        margin-top: 80px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         box-shadow: 0 4px 94px rgba(0, 0, 0, 0.11);
         border-radius: 20px;
     }
-
     @media(max-width: 1280px) {
         .main-grid {
             grid-template-columns: repeat(2, 1fr);

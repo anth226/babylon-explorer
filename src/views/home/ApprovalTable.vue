@@ -90,18 +90,18 @@ export default {
     position: relative;
     width: 146px;
     height: 163px;
-    left: -118px;
-    top: 58px;
-    z-index: ;
+    left: -133px;
+    top: 50px;
+    z-index: 1;
 }
 
 .right-badge {
-    position: absolute;
+    position: relative;
     width: 117px;
     height: 130px;
-    right: -102px;
+    right: -517px;
     top: -37px;
-    z-index: 1;
+    z-index: -1;
 }
 
 .imgcont {
@@ -179,7 +179,7 @@ export default {
     --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);
 }
 
-@media(max-width: 800px) {
+@media(max-width: 1040px) {
     .card {
         display: none;
     }
