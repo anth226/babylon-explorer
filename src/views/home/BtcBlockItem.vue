@@ -11,8 +11,10 @@ export default {
 </script>
 
 <template>
-    <div class="block-content items-center absolute">
-        <img class="item" src="../../assets/btc-logo.svg" alt="item" />
+    <div class="block-item">
+        <div class="block-content items-center absolute">
+            <img class="item" src="../../assets/btc-logo.svg" alt="item" />
+        </div>
     </div>
 </template>
 
@@ -28,6 +30,13 @@ export default {
     left: 22px;
     width: 39px;
     height: 51px;
+}
+
+.block-item {
+    width: 90px;
+    height: 91px;
+    background: #F7931A;
+    border-radius: 20px;
 }
 
 .disabled {
