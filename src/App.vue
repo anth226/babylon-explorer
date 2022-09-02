@@ -9,28 +9,19 @@ export default {
         NavBarComponent,
     },
     beforeMount() {
-        this.$store.dispatch("common/env/init");
+        this.$store.dispatch("common/env/init")
     },
 }
 </script>
 
 <template>
-    <div id="app" class="main">
-        <div class="container mx-auto">
-            <transition
-                mode="out-in"
-                enter-active-class="animate__animated animate__fadeIn"
-                leave-active-class="animate__animated animate__fadeOut"
-            >
-                <RouterView />
-            </transition>
-        </div>
+    <div id="app">
+        <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+        >
+            <RouterView />
+        </transition>
     </div>
 </template>
-
-<style scoped>
-.main {
-    background-image: url('./assets/nav-overlay.jpg');
-}
-</style>
-
