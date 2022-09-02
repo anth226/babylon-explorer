@@ -7,47 +7,46 @@ export default {
         BtcBlockItem
     },
     data: () => ({
-        hasLogo: false,
-        isDisabled: false
-    })
+        isDisabled: true,
+        hasLogo: true,
+    }),
 }
 </script>
 
 <template>
-    <div class="mt-5 bg-red-600 wrapper">
+    <div class="mt-5 wrapper">
         <div class="blocks justify-items-center">
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                has-logo
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                is-disabled
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                is-disabled
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                is-disabled
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                is-disabled
             />
             <BtcBlockItem
-                :has-logo="hasLogo = true"
+                is-disabled
             />
         </div>
     </div>
