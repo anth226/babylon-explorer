@@ -3,24 +3,22 @@ import ApprovalTable from './ApprovalTable.vue'
 import NavBarComponent from '../../components/NavBarComponent.vue'
 import BlockTable from './BlockTable.vue'
 
+import MainLayout from '../../layouts/main-layout/MainLayout.vue'
+
 export default {
     name: 'HomeView',
     components: {
         ApprovalTable,
         NavBarComponent,
-        BlockTable
+        BlockTable,
+        MainLayout
     }
 }
 </script>
 
 <template>
-    <div>
-        <div class="main">
-            <NavBarComponent />
-            <div class="mt-5 pb-4">
-                <ApprovalTable />
-            </div>
-        </div>
+    <MainLayout />
+    <div class="container">
         <BlockTable />
     </div>
 </template>
