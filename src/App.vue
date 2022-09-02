@@ -15,9 +15,8 @@ export default {
 </script>
 
 <template>
-    <div id="app">
-        <NavBarComponent />
-        <div class="container mx-auto mt-5">
+    <div id="app" class="main">
+        <div class="container mx-auto">
             <transition
                 mode="out-in"
                 enter-active-class="animate__animated animate__fadeIn"
@@ -28,4 +27,10 @@ export default {
         </div>
     </div>
 </template>
+
+<style scoped>
+.main {
+    background-image: url('./assets/nav-overlay.jpg');
+}
+</style>
 

@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from "axios"
 
 export default {
     namespaced: true,
     state() {
         return {
             num_validators: 0
-        };
+        }
     },
 	getters: {
 		numValidators: (state) => {
@@ -22,12 +22,12 @@ export default {
 			try{
 				const num = await axios.get(
                     rootGetters["common/env/apiCosmos"] + "/validatorsets/latest"
-                );
+                )
 				commit("SET_NUM_VALIDATORS", num.data.result.total)
 			} catch {
 				throw new Error(
                     "Validators: Can not get the latest set of validators"
-                );
+                )
 			}
 		}
 	}

@@ -1,8 +1,8 @@
-import type { OfflineDirectSigner, Registry } from '@cosmjs/proto-signing'
-import { SigningStargateClient } from '@cosmjs/stargate'
+import type {OfflineDirectSigner, Registry} from '@cosmjs/proto-signing'
+import {SigningStargateClient} from '@cosmjs/stargate'
+import type {AxiosPromise, AxiosResponse} from 'axios'
 import axios from 'axios'
-import type { AxiosPromise, AxiosResponse } from 'axios'
-import { EventEmitter } from 'events'
+import {EventEmitter} from 'events'
 import ReconnectingWebSocket from 'reconnecting-websocket'
 
 export interface IClientConfig {
@@ -35,8 +35,8 @@ export default class SPClient extends EventEmitter {
   private apiAddr: string
   private rpcAddr: string
   private wsAddr: string
-  private offline: boolean
-  private refresh: number
+  private readonly offline: boolean
+  private readonly refresh: number
   private socket: ReconnectingWebSocket
 
   public signingClient: any
@@ -213,8 +213,7 @@ export default class SPClient extends EventEmitter {
           'Content-Type': 'application/json;charset=UTF-8'
         }
       })
-      const data: AxiosResponse<T> = await response
-      return data
+      return await response
     } catch (e) {
       console.error(new Error('Client-js:API Could not access API: ' + url))
     }

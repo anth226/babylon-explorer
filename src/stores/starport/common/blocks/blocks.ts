@@ -1,5 +1,5 @@
-import { sha256 } from '@cosmjs/crypto'
-import { fromBase64, toHex } from '@cosmjs/encoding'
+import {sha256} from '@cosmjs/crypto'
+import {fromBase64, toHex} from '@cosmjs/encoding'
 import axios from 'axios'
 
 function formatTx({
@@ -145,12 +145,11 @@ export default {
       try {
         const txDecoded = blockData.data.result.block.data.txs.map(
           async (tx) => {
-            const dec = await decodeTx(
-              rootGetters['common/env/apiCosmos'],
-              rootGetters['common/env/apiTendermint'],
-              tx
+            return await decodeTx(
+                rootGetters['common/env/apiCosmos'],
+                rootGetters['common/env/apiTendermint'],
+                tx
             )
-            return dec
           }
         )
         const txs = await Promise.all(txDecoded)
@@ -182,12 +181,11 @@ export default {
         )
         const txDecoded = blockData.data.value.block.data.txs.map(
           async (tx) => {
-            const dec = await decodeTx(
-              rootGetters['common/env/apiCosmos'],
-              rootGetters['common/env/apiTendermint'],
-              tx
+            return await decodeTx(
+                rootGetters['common/env/apiCosmos'],
+                rootGetters['common/env/apiTendermint'],
+                tx
             )
-            return dec
           }
         )
         const txs = await Promise.all(txDecoded)

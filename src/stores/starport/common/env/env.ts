@@ -1,11 +1,11 @@
-import Client from "../../client/SPClient";
+import Client from "../../client/SPClient"
 
-const apiNode = "http://localhost:1317";
-const rpcNode = "http://localhost:26657";
-const wsNode = "ws://localhost:26657/websocket";
-const prometheusNode = "http://localhost:26661/prometheus";
-const addrPrefix = "cosmos";
-const chainId = "chain-test";
+const apiNode = "http://localhost:1317"
+const rpcNode = "http://localhost:26657"
+const wsNode = "ws://localhost:26657/websocket"
+const prometheusNode = "http://localhost:26661/prometheus"
+const addrPrefix = "cosmos"
+const chainId = "chain-test"
 
 export default {
     namespaced: true,
@@ -25,7 +25,7 @@ export default {
             wsConnected: false,
             getTXApi: "",
             initialized: false,
-        };
+        }
     },
     getters: {
         client: (state) => state.client,
@@ -44,49 +44,49 @@ export default {
     },
     mutations: {
         SET_CONFIG(state, config) {
-            state.apiNode = config.apiNode;
+            state.apiNode = config.apiNode
             if (config.rpcNode || config.offline) {
-                state.rpcNode = config.rpcNode;
+                state.rpcNode = config.rpcNode
             }
             if (config.wsNode || config.offline) {
-                state.wsNode = config.wsNode;
+                state.wsNode = config.wsNode
             }
             if (config.chainId || config.offline) {
-                state.chainId = config.chainId;
+                state.chainId = config.chainId
             }
             if (config.addrPrefix || config.offline) {
-                state.addrPrefix = config.addrPrefix;
+                state.addrPrefix = config.addrPrefix
             }
             if (config.sdkVersion || config.offline) {
-                state.sdkVersion = config.sdkVersion;
+                state.sdkVersion = config.sdkVersion
             }
             if (config.getTXApi || config.offline) {
-                state.getTXApi = config.getTXApi;
+                state.getTXApi = config.getTXApi
             }
         },
         CONNECT(state, { client }) {
-            state.client = client;
+            state.client = client
         },
         INITIALIZE_WS_COMPLETE(state) {
-            state.initialized = true;
+            state.initialized = true
         },
         SET_CHAIN_ID(state, chainId) {
-            state.chainId = chainId;
+            state.chainId = chainId
         },
         SET_CHAIN_NAME(state, chainName) {
-            state.chainName = chainName;
+            state.chainName = chainName
         },
         SET_WS_STATUS(state, status) {
-            state.wsConnected = status;
+            state.wsConnected = status
         },
         SET_API_STATUS(state, status) {
-            state.apiConnected = status;
+            state.apiConnected = status
         },
         SET_RPC_STATUS(state, status) {
-            state.rpcConnected = status;
+            state.rpcConnected = status
         },
         SET_TX_API(state, txapi) {
-            state.getTXApi = txapi;
+            state.getTXApi = txapi
         },
     },
     actions: {
@@ -107,36 +107,36 @@ export default {
             }
         ) {
             try {
-                await dispatch("config", config);
-                console.log("Vuex module: common.env initialized!");
+                await dispatch("config", config)
+                console.log("Vuex module: common.env initialized!")
             } catch (e) {
-                throw new Error("Env:Config Could not configure environment");
+                throw new Error("Env:Config Could not configure environment")
             }
         },
         setTxAPI({ commit }, payload) {
-            commit("SET_TX_API", payload);
+            commit("SET_TX_API", payload)
         },
         async setConnectivity({ commit }, payload) {
             switch (payload.connection) {
                 case "ws":
-                    commit("SET_WS_STATUS", payload.status);
-                    break;
+                    commit("SET_WS_STATUS", payload.status)
+                    break
                 case "api":
-                    commit("SET_API_STATUS", payload.status);
-                    break;
+                    commit("SET_API_STATUS", payload.status)
+                    break
                 case "rpc":
-                    commit("SET_RPC_STATUS", payload.status);
-                    break;
+                    commit("SET_RPC_STATUS", payload.status)
+                    break
             }
         },
         async signIn({ state }, signer) {
             try {
-                await state.client.useSigner(signer);
+                await state.client.useSigner(signer)
             } catch (e) {
                 throw new Error(
                     "Env:Client:Wallet Could not create signing client with signer: " +
                         signer
-                );
+                )
             }
         },
         async config(
@@ -155,7 +155,7 @@ export default {
             }
         ) {
             try {
-                let client;
+                let client
                 if (!state.client) {
                     client = new Client({
                         apiAddr: config.apiNode,
@@ -163,37 +163,37 @@ export default {
                         wsAddr: config.wsNode,
                         offline: config.offline,
                         refresh: config.refresh,
-                    });
-                    client.setMaxListeners(0);
+                    })
+                    client.setMaxListeners(0)
                     client.on("chain-id", (id) => {
                         if (id) {
-                            commit("SET_CHAIN_ID", id);
+                            commit("SET_CHAIN_ID", id)
                         }
-                    });
+                    })
                     client.on("chain-name", (name) => {
                         if (name) {
-                            commit("SET_CHAIN_NAME", name);
+                            commit("SET_CHAIN_NAME", name)
                         }
-                    });
+                    })
                     client.on("ws-status", (status) =>
                         dispatch("setConnectivity", {
                             connection: "ws",
                             status: status,
                         })
-                    );
+                    )
                     client.on("api-status", (status) =>
                         dispatch("setConnectivity", {
                             connection: "api",
                             status: status,
                         })
-                    );
+                    )
                     client.on("rpc-status", (status) =>
                         dispatch("setConnectivity", {
                             connection: "rpc",
                             status: status,
                         })
-                    );
-                    commit("SET_CONFIG", config);
+                    )
+                    commit("SET_CONFIG", config)
                     // await dispatch(
                     //   'cosmos.staking.v1beta1/QueryParams',
                     //   {
@@ -212,51 +212,51 @@ export default {
                     //   },
                     //   { root: true }
                     // )
-                    commit("CONNECT", { client });
-                    commit("INITIALIZE_WS_COMPLETE");
+                    commit("CONNECT", { client })
+                    commit("INITIALIZE_WS_COMPLETE")
                 } else {
-                    client = state.client;
-                    let reconnectWS = false;
-                    let reconnectSigningClient = false;
-                    let reconnectClient = false;
+                    client = state.client
+                    let reconnectWS = false
+                    let reconnectSigningClient = false
+                    let reconnectClient = false
                     if (config.wsNode != state.wsNode) {
-                        reconnectWS = true;
+                        reconnectWS = true
                     }
                     if (config.rpcNode != state.rpcNode) {
-                        reconnectSigningClient = true;
+                        reconnectSigningClient = true
                     }
                     if (config.apiNode != state.apiNode) {
-                        reconnectClient = true;
+                        reconnectClient = true
                     }
-                    commit("SET_CONFIG", config);
+                    commit("SET_CONFIG", config)
 
                     if (reconnectWS && config.wsNode) {
                         try {
-                            await client.switchWS(config.wsNode);
+                            await client.switchWS(config.wsNode)
                         } catch (e) {
                             throw new Error(
                                 "Env:Client:Websocket Could not switch to websocket node:" +
                                     config.wsNode
-                            );
+                            )
                         }
                     }
                     if (reconnectClient && config.apiNode) {
-                        client.switchAPI(config.apiNode);
+                        client.switchAPI(config.apiNode)
                     }
                     if (reconnectSigningClient && config.rpcNode) {
                         try {
-                            await client.switchRPC(config.rpcNode);
+                            await client.switchRPC(config.rpcNode)
                         } catch (e) {
                             throw new Error(
                                 "Env:Client:TendermintRPC Could not switch to Tendermint RPC node:" +
                                     config.rpcNode
-                            );
+                            )
                         }
                     }
                 }
             } catch (e) {
-                console.error(e);
+                console.error(e)
             }
         },
     },
-};
+}
