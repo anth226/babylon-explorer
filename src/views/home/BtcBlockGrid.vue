@@ -16,41 +16,39 @@ export default {
 <template>
     <div class="mt-5 bg-red-600 wrapper">
         <div class="blocks justify-items-center">
-            <div class="block-item">
-                <BtcBlockItem
-                    :has-logo="hasLogo = true"
-                />
-                <BtcBlockItem
-
-                />
-                <BtcBlockItem
-
-                />
-                <BtcBlockItem
-
-                />
-                <BtcBlockItem
-
-                />
-                <BtcBlockItem
-
-                />
-                <BtcBlockItem
-                    :is-disabled="isDisabled = true"
-                />
-                <BtcBlockItem
-                    :is-disabled="isDisabled = true"
-                />
-                <BtcBlockItem
-                    :is-disabled="isDisabled = true"
-                />
-                <BtcBlockItem
-                    :is-disabled="isDisabled = true"
-                />
-                <BtcBlockItem
-                    :is-disabled="isDisabled = true"
-                />
-            </div>
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
+            <BtcBlockItem
+                :has-logo="hasLogo = true"
+            />
         </div>
     </div>
 </template>
@@ -60,13 +58,6 @@ export default {
     .blocks {
         display: grid;
         grid-template-columns: repeat(11, 1fr);
-    }
-
-    .block-item {
-        width: 90px;
-        height: 91px;
-        background: #F7931A;
-        border-radius: 20px;
     }
 
     @media (max-width: 1538px) {
