@@ -1,10 +1,10 @@
 <script lang="ts">
-import EpochSection from './EpochSection.vue'
+// import EpochSection from './EpochSection.vue'
 
 export default {
     name: 'Epochgrid',
     components: {
-        EpochSection
+        // EpochSection
     }
 }
 </script>
@@ -32,20 +32,115 @@ export default {
 <!--        </div>-->
 <!--    </div>-->
 
-    <div class="wrapper">
+<!--    <div class="wrapper">-->
+<!--        <div class="flex">-->
+<!--            <div class="big-block">-->
+<!--                <img class="item" src="../../assets/bbl-logo.svg" />-->
+<!--            </div>-->
+<!--            <EpochSection />-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="mt-5 container mx-auto">
         <div class="flex">
             <div class="big-block">
                 <img class="item" src="../../assets/bbl-logo.svg" />
             </div>
-            <EpochSection />
-        </div>
+            <div class="main-section">
+                <div class="flex items-center">
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                    <div class="mx-3">
+                        ...
+                    </div>
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                </div>
+                <div class="blank w-full bg-red-400">
+                </div>
+                <div class="title-section w-full mt-3">
+                    <div class="heading">
+                        Epoch
+                    </div>
+                    <div class="subheading">
+                        (100 blocks)
+                    </div>
+                </div>
+            </div>
 
+            <div class="main-section">
+                <div class="flex items-center">
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                    <div class="mx-3">
+                        ...
+                    </div>
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                </div>
+                <div class="blank w-full bg-red-400">
+                </div>
+                <div class="title-section w-full mt-3">
+                    <div class="heading">
+                        Epoch
+                    </div>
+                    <div class="subheading">
+                        (100 blocks)
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <div class="flex items-center">
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                    <div class="mx-3">
+                        ...
+                    </div>
+                    <div class="small-block"></div>
+                    <div class="small-block"></div>
+                </div>
+                <div class="blank w-full">
+                </div>
+                <div class="title-section w-full mt-3">
+                    <div class="heading">
+                        Epoch
+                    </div>
+                    <div class="subheading">
+                        (100 blocks)
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
 
 
 <style scoped>
+
+.title-section {
+    text-align: center;
+}
+
+.heading {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.subheading {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.blank {
+    height: 10px;
+    background: var(--primary-blue);
+    opacity: 0.1;
+    border-radius: 15px;
+    position: relative;
+    top: 9px;
+}
 
 .item {
     position: relative;
@@ -64,6 +159,13 @@ export default {
     height: 91px;
     background: var(--primary-blue);
     border-radius: 20px;
+}
+
+.main-section {
+    align-items: center;
+    margin-left: 15px;
+    position: relative;
+    top: 27px;
 }
 
 
@@ -88,5 +190,7 @@ export default {
     height: 40px;
     background: var(--primary-blue);
     border-radius: 10px;
+    margin: 0 10px;
+    opacity: 0.4;
 }
 </style>
