@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar-expand-lg px-5">
+    <nav class="navbar-expand-lg px-5 bg-blue-900">
         <div class="flex justify-around items-center">
             <img src="../assets/nav-logo.svg" alt="logo">
             <div class="navbar-nav" style="margin: 0 1em">
@@ -33,7 +33,6 @@ nav {
 a {
     padding: 40px 0;
     margin: 0 17px;
-    font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 3px;
@@ -57,6 +56,6 @@ a:hover {
     }
 }
 
-</style>
+</style>x`z`
 
 

@@ -52,7 +52,7 @@ export default {
             </div>
             <div class="font-bold">
                 1231423498
-            </div>
+            </div>  
         </div>
     </div>
 </template>

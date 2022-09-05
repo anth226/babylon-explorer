@@ -22,7 +22,7 @@ export default {
 </template>
 
 <style scoped>
-    .wrapper {
-        background-image: url("../../assets/nav-overlay.jpg")
-    }
+    /*.wrapper {*/
+    /*    background-image: url("../../assets/nav-overlay.jpg")*/
+    /*}*/
 </style>
