@@ -1,23 +1,37 @@
 <script lang="ts">
+import EpochItem from './EpochItem.vue'
 
 export default {
-    name: 'EpochSection'
+    name: 'EpochSection',
+    components: {
+        EpochItem
+    }
 }
 </script>
 
 <template>
-    <div class="section bg-yellow-600 w-full">
-        <div class="small-block flex items-center">
-        </div>
+    <div class="main-section bg-yellow-600">
+<!--        <div class="small-block items-center">-->
+<!--        </div>-->
+        <EpochItem />
+    </div>
+    <div class="main-section bg-yellow-600">
+        <!--        <div class="small-block items-center">-->
+        <!--        </div>-->
+        <EpochItem />
+    </div>
+    <div class="main-section bg-yellow-600">
+        <!--        <div class="small-block items-center">-->
+        <!--        </div>-->
+        <EpochItem />
     </div>
 </template>
 
 <style scoped>
 
-    .small-block {
-        width: 40px;
-        height: 40px;
-        background: var(--primary-blue);
-        border-radius: 10px;
+    .main-section {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
     }
 </style>
