@@ -6,8 +6,6 @@ export default {
 
 <template>
     <div>
-        <div class="absolute">
-        </div>
         <div class="card p-2 mx-auto">
             <div class="left-badge">
                 <img src="../../assets/approval-badge-left.svg" alt="approval-badge-left" />
@@ -15,66 +13,66 @@ export default {
             <div class="right-badge">
                 <img src="../../assets/approval-badge-right.svg" alt="approval-badge-right" />
             </div>
-<!--            <div>-->
-<!--                <div>-->
-<!--                    <div class="imgcont">-->
-<!--                        <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">-->
-<!--                        <div class="centered">-->
-<!--                            <img class="ring" src="../../assets/clock-ring.svg" alt="ring">-->
-<!--                            <img class="ring" src="../../assets/clock.svg" alt="clock">-->
-<!--                            <div class="subheading">Average Unbonding Time</div>-->
-<!--                            <div class="heading mt-2">5 minutes</div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <div class="table-heading flex items-center">-->
-<!--                    <div class="w-1/4 table-item">-->
-<!--                        Unbonding-->
-<!--                        validators-->
-<!--                    </div>-->
-<!--                    <div class="w-1/4 table-item">-->
-<!--                        Equested @-->
-<!--                        <br>-->
-<!--                        <span class="ml-2">epoch #</span>-->
-<!--                    </div>-->
-<!--                    <div class="w-1/4 table-item">-->
-<!--                        Checkpointed-->
-<!--                        <span class="ml-1">@BTC block</span>-->
-<!--                    </div>-->
-<!--                    <div class="w-1/4 table-item">-->
-<!--                        Approved-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="table-content border-bottom flex px-3 items-center">-->
-<!--                    <div class="w-1/4 item">A1B2C3D4</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">13</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">—</div>-->
-<!--                    <div class="w-1/4 item ml-3">-->
-<!--                        <img class="p-0 mr-2" src="../../assets/not-approved.svg" alt="x">-->
-<!--                        <span class="text-notApproved p-0 font-bold">Not approved</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="table-content border-bottom flex px-3 pt-2 items-center">-->
-<!--                    <div class="w-1/4 item">A1B2C3D4</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">13</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">1220</div>-->
-<!--                    <div class="w-1/4 item ml-3">-->
-<!--                        <img class="p-0 mr-2" src="../../assets/pending.svg" alt="x">-->
-<!--                        <span class="text-pending p-0 font-bold">Pending</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="table-content flex px-3 items-center">-->
-<!--                    <div class="w-1/4 item">A1B2C3D4</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">13</div>-->
-<!--                    <div class="w-1/4 item flex justify-center pr-3">1220</div>-->
-<!--                    <div class="w-1/4 item ml-3">-->
-<!--                        <img class="p-0 mr-2" src="../../assets/approved.svg" alt="x">-->
-<!--                        <span class="text-approved p-0 font-bold">Approved</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div>
+                <div>
+                    <div class="imgcont">
+                        <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
+                        <div class="centered">
+                            <img class="ring" src="../../assets/clock-ring.svg" alt="ring">
+                            <img class="ring" src="../../assets/clock.svg" alt="clock">
+                            <div class="subheading">Average Unbonding Time</div>
+                            <div class="heading mt-2">5 minutes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-heading flex items-center">
+                    <div class="w-1/4 table-item">
+                        Unbonding
+                        validators
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Equested @
+                        <br>
+                        <span class="ml-2">epoch #</span>
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Checkpointed
+                        <span class="ml-1">@BTC block</span>
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Approved
+                    </div>
+                </div>
+                <div class="table-content border-bottom flex px-3 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">—</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/not-approved.svg" alt="x">
+                        <span class="text-notApproved p-0 font-bold">Not approved</span>
+                    </div>
+                </div>
+                <div class="table-content border-bottom flex px-3 pt-2 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">1220</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/pending.svg" alt="x">
+                        <span class="text-pending p-0 font-bold">Pending</span>
+                    </div>
+                </div>
+                <div class="table-content flex px-3 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">1220</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/approved.svg" alt="x">
+                        <span class="text-approved p-0 font-bold">Approved</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -87,7 +85,7 @@ export default {
 }
 
 .left-badge {
-    position: relative;
+    position: absolute;
     width: 146px;
     height: 163px;
     left: -133px;
@@ -96,11 +94,11 @@ export default {
 }
 
 .right-badge {
-    position: relative;
+    position: absolute;
     width: 117px;
     height: 130px;
-    right: -517px;
-    top: -37px;
+    left:790px;
+    top: -50px;
     z-index: -1;
 }
 
@@ -174,6 +172,7 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 .ring {
     --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);

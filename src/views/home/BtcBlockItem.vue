@@ -35,9 +35,6 @@ export default {
 
 <style scoped>
 
-.block-content {
-    text-align: center;;
-}
 
 .capsul {
     border-radius: 20px;
