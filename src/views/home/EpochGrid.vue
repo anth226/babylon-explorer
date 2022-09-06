@@ -11,13 +11,19 @@ export default {
     data: () => ({
         hasArrow: false,
         hasLongArrow: false,
+        hasCurvedArrow: false,
         isDisabled: false
     })
 }
 </script>
 
 <template>
-    <div class="mt-5 container mx-auto">
+    <div class="container mx-auto">
+        <div class="absolute">
+            <div class="curved-arrow-section">
+                <img src="../../assets/curved-arrow.svg" />
+            </div>
+        </div>
         <div class="flex">
             <div class="big-block">
                 <img class="item" src="../../assets/bbl-logo.svg" />
@@ -38,6 +44,7 @@ export default {
                         />
                         <EpochBlock
                             has-arrow
+                            has-curved-arrow
                         />
                     </div>
                     <div class="blank w-full bg-red-400"></div>
@@ -143,7 +150,9 @@ export default {
 }
 
 
-
+.container {
+    margin-top: 70px;
+}
 
 .title-section {
     text-align: center;
@@ -191,6 +200,12 @@ export default {
 .s3 {
     position: relative;
     left: 307px;
+}
+
+.curved-arrow-section {
+    position: relative;
+    left: 393px;
+    top: -52px;
 }
 
 </style>

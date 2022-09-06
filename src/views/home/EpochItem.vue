@@ -68,7 +68,7 @@ export default {
 }
 
 .dots {
-    margin: 0 17px;
+    margin: 0 22px;
 }
 
 .main-section {

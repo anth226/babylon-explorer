@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto mb-5">
         <div class="main-grid bg-white">
             <div>
                 <BlockTableSection
