@@ -1,5 +1,5 @@
 <script lang="ts">
-import EpochSmallBlock from './EpochSmallBlock.vue'
+import EpochSmallBlock from './EpochBlock.vue'
 
 export default {
     name: 'EpochItem',

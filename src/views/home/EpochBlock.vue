@@ -18,10 +18,9 @@ export default {
 <template>
     <div class="small-block">
         <div v-if="hasArrow" class="absolute">
-            <div class="capsul">
+            <div :class="hasLongArrow ? 'capsul-long' : 'capsul'">
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
-                <img class="capsul-line" src="../../assets/capsul-line.svg" />
-                <img v-if="hasLongArrow" src="../../assets/epoch-long-right-arrow.svg" alt="">
+                <img :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'"  src="../../assets/epoch-long-right-arrow.svg" alt="">
                 <img class="capsul-circle" src="../../assets/capsul-circle.svg" />
             </div>
         </div>
@@ -47,6 +46,20 @@ export default {
     left: 3px;
 }
 
+.capsul-long{
+    border-radius: 20px;
+    display: flex;
+    width: 35px;
+    background: white;
+    position: absolute;
+    top: 13px;
+    right: 20px;
+}
+
+.capsul-long-line {
+
+}
+
 .capsul-arrow {
     position: relative;
     left: 5px;
@@ -57,7 +70,7 @@ export default {
     height: 40px;
     background: rgba(1, 12, 194, 0.4);
     border-radius: 10px;
-    margin: 0 20px
+    margin: 0 13px
 }
 
 </style>
