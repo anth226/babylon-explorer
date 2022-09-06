@@ -1,9 +1,9 @@
 <script lang="ts">
 import ApprovalTable from './ApprovalTable.vue'
 import NavBarComponent from '../../components/NavBarComponent.vue'
-import BlockTable from './BlockTable.vue'
-import BtcBlockGrid from '../home/BtcBlockGrid.vue'
-import EpochGrid from '../home/EpochGrid.vue'
+import BlockTable from './block-table/BlockTable.vue'
+import BtcBlockGrid from './btc-block/BtcBlockGrid.vue'
+import EpochGrid from './epoch/EpochGrid.vue'
 
 export default {
     name: 'HomeView',
@@ -19,7 +19,7 @@ export default {
 
 <template>
     <div class="wrapper pb-4">
-        <img class="overlay" src="../../assets/nav-overlay.png" />
+        <img class="overlay" src="../../assets/nav-overlay.png" alt="nav-overlay" />
         <div class="container mx-auto pt-5">
             <ApprovalTable />
         </div>

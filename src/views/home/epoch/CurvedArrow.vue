@@ -31,20 +31,20 @@ export default {
     <div class="absolute">
         <img
             v-if="longerArrow"
-            src="../../assets/curved-long-arrow.svg"
+            src="../../../assets/curved-long-arrow.svg"
             :style="{ left: curveCoordinatesLeft + 'px', top: curveCoordinatesTop + 'px' }"
             class="relative"
             alt="curved-long-arrow"
         />
         <img
             v-else
-            src="../../assets/curved-arrow.svg"
+            src="../../../assets/curved-arrow.svg"
             :style="{ left: curveCoordinatesLeft + 'px', top: curveCoordinatesTop + 'px' }"
             class="relative"
             alt="curved-arrow"
         />
         <img
-            src="../../assets/arrow-up.svg"
+            src="../../../assets/arrow-up.svg"
             :style="{ left: arrowCoordinatesLeft + 'px', top: arrowCoordinatesTop + 'px' }"
             class="relative"
             alt="arrow-up"
