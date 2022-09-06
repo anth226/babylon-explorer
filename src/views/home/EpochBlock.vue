@@ -77,7 +77,7 @@ export default {
     height: 40px;
     background: rgba(1, 12, 194);
     border-radius: 10px;
-    margin: 0 13px
+    margin: 0 14px
 }
 
 .disabled {
