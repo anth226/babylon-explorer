@@ -27,7 +27,7 @@ export default {
             <div class="capsul">
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
                 <img class="capsul-line" src="../../assets/capsul-line.svg" />
-                <img class="capsul-circle" src="../../assets/capsul-circle.svg" />
+                <img class="capsul-circle" src="../../assets/ellipse.svg" />
             </div>
         </div>
     </div>
@@ -37,13 +37,14 @@ export default {
 
 
 .capsul {
-    border-radius: 20px;
+    border-radius: 50px;
     display: flex;
-    width: 35px;
+    width: 43px;
     background: white;
     position: absolute;
     top: 36px;
-    right: -6px;
+    right: -11px;
+    height: 18px;
 }
 
 .capsul-line {
@@ -55,6 +56,18 @@ export default {
 .capsul-arrow {
     position: relative;
     left: 5px;
+}
+
+.capsul-circle {
+    border: 2px solid black;
+    position: relative;
+    top: 2.9px;
+    right: -3px;
+    height: 12px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 12px;
 }
 
 .item {
@@ -71,11 +84,6 @@ export default {
     background: #F7931A;
     border-radius: 20px;
     cursor: pointer;
-}
-
-.block-item:hover {
-    scale: 1.03;
-    transition-duration: 200ms;
 }
 
 .disabled {

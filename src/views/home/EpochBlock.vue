@@ -26,7 +26,7 @@ export default {
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
                 <img v-if="!hasLongArrow" :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'" src="../../assets/capsul-line.svg" alt="">
                 <img v-else-if="hasLongArrow" class="capsul-long-line" src="../../assets/epoch-long-right-arrow.svg" />
-                <img class="capsul-circle" src="../../assets/capsul-circle.svg" />
+                <img class="capsul-circle" src="../../assets/ellipse.svg" />
             </div>
         </div>
     </div>
@@ -36,40 +36,52 @@ export default {
 <style scoped>
 
 .capsul {
-    border-radius: 20px;
+    border-radius: 50px;
     display: flex;
-    width: 32px;
+    width: 36px;
     background: white;
     position: absolute;
     top: 13px;
-    right: -6px;
+    right: -8px;
 }
 
 .capsul-line {
     position: relative;
     width: 8px;
-    left: 3px;
+    left: 5px;
 }
 
 .capsul-long{
-    border-radius: 20px;
+    border-radius: 50px;
     display: flex;
-    width: 165px;
+    width: 168px;
     background: white;
     position: absolute;
     top: 13px;
-    right: -6px;
+    right: -8px;
+}
+
+.capsul-circle {
+    border: 2px solid black;
+    position: relative;
+    top: 2px;
+    right: -5px;
+    height: 10px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 10px;
 }
 
 .capsul-long-line {
     position: relative;
     width: 140px;
-    left: 3px;
+    left: 6px;
 }
 
 .capsul-arrow {
     position: relative;
-    left: 5px;
+    left: 8px;
 }
 
 .small-block {
