@@ -12,6 +12,10 @@ export default {
         },
         disable: {
             type: Boolean
+        },
+        disableArrow: {
+            type: Boolean,
+            default: true
         }
     },
 }
@@ -23,7 +27,7 @@ export default {
             <img class="item" src="../../assets/btc-logo.svg" alt="item" />
         </div>
 
-        <div class="absolute">
+        <div v-if="!disableArrow" class="absolute">
             <div class="capsul">
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
                 <img class="capsul-line" src="../../assets/capsul-line.svg" />

@@ -9,6 +9,7 @@ export default {
     data: () => ({
         isDisabled: true,
         hasLogo: true,
+        disableArrow: false
     }),
 }
 </script>
@@ -18,6 +19,7 @@ export default {
         <div class="blocks justify-items-center">
             <BtcBlockItem
                 has-logo
+                disable-arrow
             />
             <BtcBlockItem
             />
