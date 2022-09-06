@@ -23,15 +23,14 @@ export default {
     <div :class="isDisabled ? 'disabled' : ''" class="small-block">
         <div v-if="hasArrow" class="absolute">
             <div :class="hasLongArrow ? 'capsul-long' : 'capsul'">
-                <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
-                <img v-if="!hasLongArrow" :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'" src="../../assets/capsul-line.svg" alt="">
-                <img v-else-if="hasLongArrow" class="capsul-long-line" src="../../assets/epoch-long-right-arrow.svg" />
-                <img class="capsul-circle" src="../../assets/ellipse.svg" />
+                <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />
+                <img v-if="!hasLongArrow" :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'" src="../../../assets/capsul-line.svg" alt="">
+                <img v-else-if="hasLongArrow" class="capsul-long-line" src="../../../assets/epoch-long-right-arrow.svg" alt="capsul-long-arrow" />
+                <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />
             </div>
         </div>
     </div>
 </template>
-
 
 <style scoped>
 
@@ -95,4 +94,5 @@ export default {
 .disabled {
     background: rgba(1, 12, 194, 0.4);
 }
+
 </style>

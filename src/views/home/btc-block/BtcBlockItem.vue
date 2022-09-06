@@ -24,14 +24,14 @@ export default {
 <template>
     <div :class="isDisabled ? 'disabled' : ''" class="block-item">
             <div v-if="hasLogo" class="block-content items-center absolute">
-            <img class="item" src="../../assets/btc-logo.svg" alt="item" />
+            <img class="item" src="../../../assets/btc-logo.svg" alt="item" />
         </div>
 
         <div v-if="!disableArrow" class="absolute">
             <div class="capsul">
-                <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" alt="capsul-arrow" />
-                <img class="capsul-line" src="../../assets/capsul-line.svg" alt="capsul-line" />
-                <img class="capsul-circle" src="../../assets/ellipse.svg" alt="capsul-circle" />
+                <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />
+                <img class="capsul-line" src="../../../assets/capsul-line.svg" alt="capsul-line" />
+                <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />
             </div>
         </div>
     </div>

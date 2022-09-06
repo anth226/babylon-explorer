@@ -1,12 +1,10 @@
 <script lang="ts">
-import EpochItem from './EpochItem.vue'
 import EpochBlock from './EpochBlock.vue'
 import CurvedArrow from './CurvedArrow.vue'
 
 export default {
     name: 'Epochgrid',
     components: {
-        EpochItem,
         EpochBlock,
         CurvedArrow
     },
@@ -24,7 +22,7 @@ export default {
     <div class="container mx-auto">
         <div class="flex">
             <div class="big-block">
-                <img class="item" src="../../assets/bbl-logo.svg" />
+                <img class="item" src="../../../assets/bbl-logo.svg" />
             </div>
             <div class="flex">
                 <div class="main-section s1">
@@ -45,7 +43,7 @@ export default {
                             has-curved-arrow
                         />
                         <div class="capsul">
-                            <img class="circle" src="../../assets/ellipse.svg" />
+                            <img class="circle" src="../../../assets/ellipse.svg" />
                         </div>
                     </div>
                     <div class="blank w-full bg-red-400"></div>
@@ -80,7 +78,7 @@ export default {
                             is-disabled
                         />
                         <div class="capsul">
-                            <img class="circle" src="../../assets/ellipse.svg" />
+                            <img class="circle" src="../../../assets/ellipse.svg" />
                         </div>
                     </div>
                     <div class="blank w-full bg-red-400"></div>

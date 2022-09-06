@@ -1,8 +1,8 @@
 <script lang="ts">
 import ApprovalTable from './ApprovalTable.vue'
-import BlockItems from '@/views/home/BtcBlockGrid.vue'
-import EpochGrid from '@/views/home/EpochGrid.vue'
-import BlockTable from '@/views/home/BlockTable.vue'
+import BlockItems from '@/views/home/btc-block/BtcBlockGrid.vue'
+import EpochGrid from '@/views/home/epoch/EpochGrid.vue'
+import BlockTable from '@/views/home/block-table/BlockTable.vue'
 
 function getTitle (vm) {
     const { title } = vm.$options
