@@ -1,7 +1,17 @@
 <script lang="ts">
 
 export default {
-    name: 'EpochSmallBlock'
+    name: 'EpochSmallBlock',
+    props: {
+        hasArrow: {
+            type: Boolean,
+            default: false
+        },
+        hasLongArrow: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
 </script>
 
@@ -11,6 +21,7 @@ export default {
             <div class="capsul">
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
                 <img class="capsul-line" src="../../assets/capsul-line.svg" />
+                <img v-if="hasLongArrow" src="../../assets/epoch-long-right-arrow.svg" alt="">
                 <img class="capsul-circle" src="../../assets/capsul-circle.svg" />
             </div>
         </div>
@@ -31,7 +42,14 @@ export default {
 }
 
 .capsul-line {
-    width: 9px;
+    position: relative;
+    width: 12px;
+    left: 3px;
+}
+
+.capsul-arrow {
+    position: relative;
+    left: 5px;
 }
 
 .small-block {
@@ -39,7 +57,7 @@ export default {
     height: 40px;
     background: rgba(1, 12, 194, 0.4);
     border-radius: 10px;
-    margin: 0 15px
+    margin: 0 20px
 }
 
 </style>
