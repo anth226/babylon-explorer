@@ -5,15 +5,12 @@ import BlockTable from './BlockTable.vue'
 import BtcBlockGrid from '../home/BtcBlockGrid.vue'
 import EpochGrid from '../home/EpochGrid.vue'
 
-import MainLayout from '../../layouts/main-layout/MainLayout.vue'
-
 export default {
     name: 'HomeView',
     components: {
         ApprovalTable,
         NavBarComponent,
         BlockTable,
-        MainLayout,
         BtcBlockGrid,
         EpochGrid
     }
