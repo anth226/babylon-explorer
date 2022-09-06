@@ -19,9 +19,9 @@ export default {
                         <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
                         <div class="centered">
                             <img class="ring" src="../../assets/clock-ring.svg" alt="ring">
-                            <img class="ring" src="../../assets/clock.svg" alt="clock">
+                            <img class="clock" src="../../assets/clock.svg" alt="clock">
                             <div class="subheading">Average Unbonding Time</div>
-                            <div class="heading mt-2">5 minutes</div>
+                            <div class="heading mt-2">5 mins ± 30s</div>
                         </div>
                     </div>
                 </div>
@@ -160,19 +160,29 @@ export default {
 }
 
 .heading {
-    font-weight: 800;
-    font-size: 32px;
+    font-weight: 700;
+    font-size: 31px;
     line-height: 29px;
     color: #23A5DC;
 }
 
 .ring {
     position: absolute;
-    top: -72%;
+    top: -73.4%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
 }
 
+.clock {
+    position: absolute;
+    top: -71.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+}
 
 .ring {
     --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);
