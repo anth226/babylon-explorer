@@ -11,9 +11,9 @@ export default {
             <img src="../assets/nav-logo.svg" alt="logo">
             <div class="navbar-nav" style="margin: 0 1em">
                 <RouterLink to="/">HOME</RouterLink>
-                <RouterLink to="/blocks-and-txs">BLOCKS & TXS</RouterLink>
-                <RouterLink to="/checkpoints">CHECKPOINTS</RouterLink>
-                <RouterLink to="/validators">VALIDATORS</RouterLink>
+                <RouterLink to="/some-page">BLOCKS & TXS</RouterLink>
+                <RouterLink to="/some-page">CHECKPOINTS</RouterLink>
+                <RouterLink to="/some-page">VALIDATORS</RouterLink>
             </div>
         </div>
     </nav>

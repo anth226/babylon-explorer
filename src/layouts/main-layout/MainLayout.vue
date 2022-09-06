@@ -1,12 +1,10 @@
 <script lang="ts">
-import NavBarComponent from '../../components/NavBarComponent.vue'
 import ApprovalTable from '../../views/home/ApprovalTable.vue'
 
 
 export default {
     name: 'MainLayout',
     components: {
-        NavBarComponent,
         ApprovalTable
     }
 }
