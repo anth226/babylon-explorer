@@ -1,29 +1,26 @@
 <script lang="ts">
 import EpochItem from './EpochItem.vue'
 import EpochBlock from './EpochBlock.vue'
+import CurvedArrow from './CurvedArrow.vue'
 
 export default {
     name: 'Epochgrid',
     components: {
         EpochItem,
-        EpochBlock
+        EpochBlock,
+        CurvedArrow
     },
     data: () => ({
         hasArrow: false,
         hasLongArrow: false,
         hasCurvedArrow: false,
-        isDisabled: false
+        isDisabled: false,
     })
 }
 </script>
 
 <template>
     <div class="container mx-auto">
-        <div class="absolute">
-            <div class="curved-arrow-section">
-                <img src="../../assets/curved-arrow.svg" />
-            </div>
-        </div>
         <div class="flex">
             <div class="big-block">
                 <img class="item" src="../../assets/bbl-logo.svg" />
@@ -49,7 +46,6 @@ export default {
                         <div class="capsul">
                             <img class="circle" src="../../assets/ellipse.svg" />
                         </div>
-
                     </div>
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
@@ -82,6 +78,9 @@ export default {
                             has-arrow
                             is-disabled
                         />
+                        <div class="capsul">
+                            <img class="circle" src="../../assets/ellipse.svg" />
+                        </div>
                     </div>
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
@@ -93,6 +92,18 @@ export default {
                         </div>
                     </div>
                 </div>
+                <CurvedArrow
+                    curve-coordinates-top=-52
+                    curve-coordinates-left=300
+                    arrow-coordinates-top=-132
+                    arrow-coordinates-left=431
+                />
+                <CurvedArrow
+                    curve-coordinates-top=-52
+                    curve-coordinates-left=760
+                    arrow-coordinates-top=-132
+                    arrow-coordinates-left=891
+                />
                 <div class="main-section s3">
                     <div class="flex items-center">
                         <EpochBlock
@@ -155,7 +166,7 @@ export default {
 
 
 .container {
-    margin-top: 70px;
+    margin-top: 62px;
 }
 
 .title-section {
@@ -206,12 +217,6 @@ export default {
     left: 307px;
 }
 
-.curved-arrow-section {
-    position: relative;
-    left: 391px;
-    top: -52px;
-}
-
 .circle {
     border: 2px solid black;
     position: relative;
@@ -236,5 +241,6 @@ export default {
     padding: 3px;
     z-index: 2;
 }
+
 
 </style>
