@@ -47,9 +47,15 @@ export default {
 }
 
 .capsul-line {
-    width: 9px;
+    position: relative;
+    width: 12px;
+    left: 3px;
 }
 
+.capsul-arrow {
+    position: relative;
+    left: 5px;
+}
 
 .item {
     position: relative;
@@ -71,9 +77,4 @@ export default {
     scale: 1.03;
     transition-duration: 200ms;
 }
-
-.disabled {
-    background: rgba(247, 147, 26, 0.3);
-}
-
 </style>

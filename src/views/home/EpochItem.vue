@@ -6,25 +6,29 @@ export default {
     components: {
         EpochSmallBlock
     },
-    props: {
-        hasArrow: {
-            type: Boolean,
-            default: false
-        }
-    }
+    data: () => ({
+        hasArrow: false,
+        hasLongArrow: false
+    })
 }
 </script>
 
 <template>
     <div class="main-section">
         <div class="flex items-center">
-            <EpochSmallBlock />
-            <div class="small-block"></div>
-            <div class="mx-3">
+            <EpochSmallBlock
+                has-arrow
+            />
+            <EpochSmallBlock
+                has-long-arrow
+            />
+            <div class="dots">
                 ...
             </div>
-            <div class="small-block"></div>
-            <div class="small-block"></div>
+            <EpochSmallBlock />
+            <EpochSmallBlock
+                has-arrow
+            />
         </div>
         <div class="blank w-full bg-red-400"></div>
         <div class="title-section w-full mt-3">
@@ -63,20 +67,14 @@ export default {
     top: 9px;
 }
 
+.dots {
+    margin: 0 17px;
+}
 
 .main-section {
     align-items: center;
     position: relative;
     top: 27px;
-    margin: 0 20px;
+    margin: 0 15px;
 }
-
-.small-block {
-    width: 40px;
-    height: 40px;
-    background: rgba(1, 12, 194, 0.4);
-    border-radius: 10px;
-    margin: 0 15px
-}
-
 </style>
