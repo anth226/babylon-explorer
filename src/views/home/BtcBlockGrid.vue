@@ -9,7 +9,7 @@ export default {
     data: () => ({
         isDisabled: true,
         hasLogo: true,
-        disableArrow: false
+        disableArrow: true
     }),
 }
 </script>
