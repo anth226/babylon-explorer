@@ -233,7 +233,7 @@ export default {
     display: flex;
     position: absolute;
     left: 274px;
-    top: -5px;
+    top: -7px;
     justify-content: center;
     border-radius: 50px;
     background: white;
