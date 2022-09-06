@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-    <nav class="navbar-expand-lg px-5 bg-blue-900">
+    <nav class="navbar-expand-lg px-5">
         <div class="flex justify-around items-center">
             <img src="../assets/nav-logo.svg" alt="logo">
             <div class="navbar-nav" style="margin: 0 1em">
@@ -23,7 +23,8 @@ export default {
 
 nav {
     padding: 0;
-    margin: 0
+    margin: 0;
+    z-index: 100;
 }
 
 .active-link {
