@@ -13,8 +13,6 @@ export default {
                 <RouterLink to="/">HOME</RouterLink>
                 <RouterLink to="/blocks-and-txs">BLOCKS & TXS</RouterLink>
                 <RouterLink to="/checkpoints">CHECKPOINTS</RouterLink>
-                <img class="ellipse" src="../assets/ellipse.svg" />
-
                 <RouterLink to="/validators">VALIDATORS</RouterLink>
             </div>
         </div>
@@ -40,16 +38,6 @@ a {
     letter-spacing: 3px;
     text-align: right;
     color: white;
-}
-
-.ellipse {
-    background-color:#fff;
-    border:2px solid black;
-    height:10px;
-    border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    width:10px;
 }
 
 a:hover {
