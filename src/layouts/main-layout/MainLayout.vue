@@ -14,15 +14,18 @@ export default {
 
 <template>
     <div class="wrapper pb-4">
-        <NavBarComponent />
-        <div class="container mx-auto mt-5">
+        <img class="overlay" src="../../assets/nav-overlay.png" />
+        <div class="container mx-auto pt-5">
             <ApprovalTable />
         </div>
     </div>
 </template>
 
 <style scoped>
-    /*.wrapper {*/
-    /*    background-image: url("../../assets/nav-overlay.jpg")*/
-    /*}*/
+    .overlay {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        z-index: -1;
+    }
 </style>

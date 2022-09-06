@@ -101,9 +101,9 @@ export default {
                 />
                 <CurvedArrow
                     curve-coordinates-top=-52
-                    curve-coordinates-left=752
+                    curve-coordinates-left=748
                     arrow-coordinates-top=-132
-                    arrow-coordinates-left=925
+                    arrow-coordinates-left=921
                     longer-arrow
                 />
                 <div class="main-section s3">
