@@ -88,8 +88,8 @@ export default {
     position: absolute;
     width: 146px;
     height: 163px;
-    left: -133px;
-    top: 50px;
+    left: -116px;
+    top: 90px;
     z-index: 1;
 }
 
@@ -97,8 +97,8 @@ export default {
     position: absolute;
     width: 117px;
     height: 130px;
-    left:790px;
-    top: -50px;
+    left: 784px;
+    top: -26px;
     z-index: -1;
 }
 
