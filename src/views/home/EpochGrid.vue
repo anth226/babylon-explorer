@@ -46,6 +46,10 @@ export default {
                             has-arrow
                             has-curved-arrow
                         />
+                        <div class="capsul">
+                            <img class="circle" src="../../assets/ellipse.svg" />
+                        </div>
+
                     </div>
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
@@ -204,8 +208,33 @@ export default {
 
 .curved-arrow-section {
     position: relative;
-    left: 393px;
+    left: 391px;
     top: -52px;
+}
+
+.circle {
+    border: 2px solid black;
+    position: relative;
+    top: 0;
+    right: 0;
+    height: 10px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 10px;
+}
+
+.capsul {
+    display: flex;
+    position: absolute;
+    left: 274px;
+    top: -5px;
+    justify-content: center;
+    border-radius: 50px;
+    background: white;
+    width: fit-content;
+    padding: 3px;
+    z-index: 2;
 }
 
 </style>
