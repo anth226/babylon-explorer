@@ -11,9 +11,9 @@ export default {
             type: String,
             default: '0'
         },
-        col1:String,
-        col2:String,
-        col3:String,
+        col1: String,
+        col2: String,
+        col3: String,
         hasThreeCols: {
             type: Boolean,
             default: false
@@ -52,7 +52,7 @@ export default {
             </div>
             <div class="font-bold">
                 1231423498
-            </div>  
+            </div>
         </div>
     </div>
 </template>

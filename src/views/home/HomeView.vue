@@ -24,8 +24,10 @@ export default {
     <MainLayout />
     <div class="container mx-auto">
         <div class="content">
-            <BtcBlockGrid />
-            <EpochGrid />
+            <div class="wrapper">
+                <BtcBlockGrid />
+                <EpochGrid />
+            </div>
             <BlockTable />
         </div>
     </div>
@@ -39,6 +41,12 @@ export default {
 @media(max-width: 1200px) {
     .content {
         margin: 0;
+    }
+}
+
+@media (max-width: 1538px) {
+    .wrapper {
+        display: none;
     }
 }
 </style>
