@@ -29,9 +29,9 @@ export default {
 
         <div v-if="!disableArrow" class="absolute">
             <div class="capsul">
-                <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
-                <img class="capsul-line" src="../../assets/capsul-line.svg" />
-                <img class="capsul-circle" src="../../assets/ellipse.svg" />
+                <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" alt="capsul-arrow" />
+                <img class="capsul-line" src="../../assets/capsul-line.svg" alt="capsul-line" />
+                <img class="capsul-circle" src="../../assets/ellipse.svg" alt="capsul-circle" />
             </div>
         </div>
     </div>

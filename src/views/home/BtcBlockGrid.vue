@@ -21,20 +21,7 @@ export default {
                 has-logo
                 disable-arrow
             />
-            <BtcBlockItem
-            />
-            <BtcBlockItem
-
-            />
-            <BtcBlockItem
-
-            />
-            <BtcBlockItem
-
-            />
-            <BtcBlockItem
-
-            />
+            <BtcBlockItem v-for="index in 5" :key="index" />
             <BtcBlockItem
                 is-disabled
             />
@@ -55,16 +42,8 @@ export default {
 </template>
 
 <style scoped>
-
     .blocks {
         display: grid;
         grid-template-columns: repeat(11, 1fr);
     }
-
-    @media (max-width: 1538px) {
-        .wrapper {
-            display: none;
-        }
-    }
-
 </style>
