@@ -15,7 +15,7 @@ export default {
         },
         disableArrow: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
 }
