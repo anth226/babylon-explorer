@@ -15,6 +15,7 @@ export default {
         hasLongArrow: false,
         hasCurvedArrow: false,
         isDisabled: false,
+        longerArrow: false
     })
 }
 </script>
@@ -102,7 +103,8 @@ export default {
                     curve-coordinates-top=-52
                     curve-coordinates-left=760
                     arrow-coordinates-top=-132
-                    arrow-coordinates-left=891
+                    arrow-coordinates-left=933
+                    longer-arrow
                 />
                 <div class="main-section s3">
                     <div class="flex items-center">

@@ -19,13 +19,18 @@ export default {
             type: Number,
             default: 0
         },
+        longerArrow: {
+            type: Boolean,
+            default: false
+        }
     }
 }
 </script>
 
 <template>
     <div class="absolute">
-        <img :style="{ left: curveCoordinatesLeft + 'px', top: curveCoordinatesTop + 'px' }" class="curved-arrow-section" src="../../assets/curved-arrow.svg" />
+        <img v-if="longerArrow" :style="{ left: curveCoordinatesLeft + 'px', top: curveCoordinatesTop + 'px' }" class="curved-arrow-section" src="../../assets/curved-long-arrow.svg" />
+        <img v-else :style="{ left: curveCoordinatesLeft + 'px', top: curveCoordinatesTop + 'px' }" class="curved-arrow-section" src="../../assets/curved-arrow.svg" />
         <img :style="{ left: arrowCoordinatesLeft + 'px', top: arrowCoordinatesTop + 'px' }" class="arrow-up" src="../../assets/arrow-up.svg" />
     </div>
 </template>
