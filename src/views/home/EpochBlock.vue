@@ -10,17 +10,22 @@ export default {
         hasLongArrow: {
             type: Boolean,
             default: false
+        },
+        isDisabled: {
+            type: Boolean,
+            default: false
         }
     }
 }
 </script>
 
 <template>
-    <div class="small-block">
+    <div :class="isDisabled ? 'disabled' : ''" class="small-block">
         <div v-if="hasArrow" class="absolute">
             <div :class="hasLongArrow ? 'capsul-long' : 'capsul'">
                 <img class="capsul-arrow" src="../../assets/capsul-arrow.svg" />
-                <img :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'"  src="../../assets/epoch-long-right-arrow.svg" alt="">
+                <img v-if="!hasLongArrow" :class="hasLongArrow ? 'capsul-long-line' : 'capsul-line'" src="../../assets/capsul-line.svg" alt="">
+                <img v-else-if="hasLongArrow" class="capsul-long-line" src="../../assets/epoch-long-right-arrow.svg" />
                 <img class="capsul-circle" src="../../assets/capsul-circle.svg" />
             </div>
         </div>
@@ -33,7 +38,7 @@ export default {
 .capsul {
     border-radius: 20px;
     display: flex;
-    width: 35px;
+    width: 32px;
     background: white;
     position: absolute;
     top: 13px;
@@ -42,22 +47,24 @@ export default {
 
 .capsul-line {
     position: relative;
-    width: 12px;
+    width: 8px;
     left: 3px;
 }
 
 .capsul-long{
     border-radius: 20px;
     display: flex;
-    width: 35px;
+    width: 165px;
     background: white;
     position: absolute;
     top: 13px;
-    right: 20px;
+    right: -6px;
 }
 
 .capsul-long-line {
-
+    position: relative;
+    width: 140px;
+    left: 3px;
 }
 
 .capsul-arrow {
@@ -68,9 +75,12 @@ export default {
 .small-block {
     width: 40px;
     height: 40px;
-    background: rgba(1, 12, 194, 0.4);
+    background: rgba(1, 12, 194);
     border-radius: 10px;
     margin: 0 13px
 }
 
+.disabled {
+    background: rgba(1, 12, 194, 0.4);
+}
 </style>

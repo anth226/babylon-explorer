@@ -77,4 +77,9 @@ export default {
     scale: 1.03;
     transition-duration: 200ms;
 }
+
+.disabled {
+    opacity: 0.3;
+}
+
 </style>

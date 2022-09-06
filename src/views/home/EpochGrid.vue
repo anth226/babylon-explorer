@@ -10,22 +10,18 @@ export default {
     },
     data: () => ({
         hasArrow: false,
-        hasLongArrow: false
+        hasLongArrow: false,
+        isDisabled: false
     })
 }
 </script>
 
 <template>
     <div class="mt-5 container mx-auto">
-        <div class="flex container mx-auto">
+        <div class="flex">
             <div class="big-block">
                 <img class="item" src="../../assets/bbl-logo.svg" />
             </div>
-
-
-
-
-
             <div class="flex">
                 <div class="main-section s1">
                     <div class="flex items-center">
@@ -38,7 +34,8 @@ export default {
                         <div class="dots">
                             ...
                         </div>
-                        <EpochBlock />
+                        <EpochBlock
+                        />
                         <EpochBlock
                             has-arrow
                         />
@@ -53,23 +50,26 @@ export default {
                         </div>
                     </div>
                 </div>
-
-
                 <div class="main-section s2">
                     <div class="flex items-center">
                         <EpochBlock
                             has-arrow
                             has-long-arrow
+                            is-disabled
                         />
                         <EpochBlock
-
+                            has-arrow
+                            is-disabled
                         />
                         <div class="dots">
                             ...
                         </div>
-                        <EpochBlock />
                         <EpochBlock
-
+                            is-disabled
+                        />
+                        <EpochBlock
+                            has-arrow
+                            is-disabled
                         />
                     </div>
                     <div class="blank w-full bg-red-400"></div>
@@ -82,22 +82,26 @@ export default {
                         </div>
                     </div>
                 </div>
-
-
                 <div class="main-section s3">
                     <div class="flex items-center">
                         <EpochBlock
-
+                            has-arrow
+                            has-long-arrow
+                            is-disabled
                         />
                         <EpochBlock
-
+                            has-arrow
+                            is-disabled
                         />
                         <div class="dots">
                             ...
                         </div>
-                        <EpochBlock />
                         <EpochBlock
-
+                            is-disabled
+                        />
+                        <EpochBlock
+                            has-arrow
+                            is-disabled
                         />
                     </div>
                     <div class="blank w-full bg-red-400"></div>
@@ -111,20 +115,6 @@ export default {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 </template>
@@ -195,13 +185,12 @@ export default {
 
 .s2 {
     position: relative;
-    left: 137px;
+    left: 164px;
 }
 
 .s3 {
     position: relative;
-    left: 297px;
+    left: 307px;
 }
-
 
 </style>
