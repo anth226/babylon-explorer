@@ -101,9 +101,9 @@ export default {
                 />
                 <CurvedArrow
                     curve-coordinates-top=-52
-                    curve-coordinates-left=760
+                    curve-coordinates-left=752
                     arrow-coordinates-top=-132
-                    arrow-coordinates-left=933
+                    arrow-coordinates-left=925
                     longer-arrow
                 />
                 <div class="main-section s3">
@@ -159,13 +159,8 @@ export default {
     height: 91px;
     background: var(--primary-blue);
     border-radius: 20px;
+    margin-left: 3px;
 }
-
-.epoch-wrapper {
-    display: flex;
-    left: 100px;
-}
-
 
 .container {
     margin-top: 62px;
@@ -211,12 +206,12 @@ export default {
 
 .s2 {
     position: relative;
-    left: 164px;
+    left: 151px;
 }
 
 .s3 {
     position: relative;
-    left: 307px;
+    left: 286px;
 }
 
 .circle {
@@ -243,6 +238,5 @@ export default {
     padding: 3px;
     z-index: 2;
 }
-
 
 </style>

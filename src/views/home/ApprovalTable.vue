@@ -45,7 +45,7 @@ export default {
                         Approved
                     </div>
                 </div>
-                <div class="table-content border-bottom flex px-3 items-center">
+                <div class="ml-2 table-content border-bottom flex px-3 items-center">
                     <div class="w-1/4 item">A1B2C3D4</div>
                     <div class="w-1/4 item flex justify-center pr-3">13</div>
                     <div class="w-1/4 item flex justify-center pr-3">—</div>
@@ -54,7 +54,7 @@ export default {
                         <span class="text-notApproved p-0 font-bold">Not approved</span>
                     </div>
                 </div>
-                <div class="table-content border-bottom flex px-3 pt-2 items-center">
+                <div class="ml-2 table-content border-bottom flex px-3 pt-2 items-center">
                     <div class="w-1/4 item">A1B2C3D4</div>
                     <div class="w-1/4 item flex justify-center pr-3">13</div>
                     <div class="w-1/4 item flex justify-center pr-3">1220</div>
@@ -63,7 +63,7 @@ export default {
                         <span class="text-pending p-0 font-bold">Pending</span>
                     </div>
                 </div>
-                <div class="table-content flex px-3 items-center">
+                <div class="ml-2 table-content flex px-3 items-center">
                     <div class="w-1/4 item">A1B2C3D4</div>
                     <div class="w-1/4 item flex justify-center pr-3">13</div>
                     <div class="w-1/4 item flex justify-center pr-3">1220</div>
@@ -125,8 +125,8 @@ export default {
 
 .table-heading {
     background: rgba(1, 12, 194, 0.05);
-    margin: 0 10px;
     padding: 15px;
+    margin-left: 8px;
     font-weight: 900;
     line-height: 16px;
     font-size: 12px;
