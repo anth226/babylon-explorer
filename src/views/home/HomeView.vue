@@ -13,7 +13,36 @@ export default {
         BlockTable,
         BtcBlockGrid,
         EpochGrid
-    }
+    },
+    beforeMount() {
+        this.$store.dispatch("addresses/validatorStats/getNumValidators")
+    },
+    computed: {
+        chainHeight() {
+            return this.$store.getters["common/blocks/getHeight"]
+        },
+        numTotalTxs() {
+            let chainId = this.$store.getters["common/env/chainId"]
+            let parameter =
+                'tendermint_consensus_num_txs{chain_id="' + chainId + '"}'
+            return this.$store.getters["prometheus/metrics"][parameter]
+        },
+        numValidators() {
+            return this.$store.getters[
+                "addresses/validatorStats/numValidators"
+                ]
+        },
+        latestEpoch() {
+            return this.$store.getters["epoching/stats/getCurrentEpoch"]
+        },
+        latestBlocks() {
+            try {
+                return this.$store.getters["common/blocks/getBlocks"](8)
+            } catch {
+                return []
+            }
+        },
+    },
 }
 </script>
 
