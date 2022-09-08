@@ -18,6 +18,18 @@ export default {
             type: Boolean,
             default: false
         }
+    },
+    computed: {
+        latestBlocks() {
+            try {
+                return this.$store.getters["common/blocks/getBlocks"](8)
+            } catch {
+                return []
+            }
+        },
+        convertDate() {
+
+        }
     }
 }
 </script>
@@ -43,15 +55,16 @@ export default {
                 {{ col3 }}
             </div>
         </div>
-        <div v-for="index in 5" :key="index" class="item flex justify-between">
+        <div v-for="block in latestBlocks" class="item flex justify-between">
             <div>
                 1234
             </div>
             <div v-if="hasThreeCols">
-                0x231293810928
+<!--                {{ block.hash }}--> block hash
             </div>
             <div class="font-bold">
-                1231423498
+<!--                {{ block.timestamp }}-->
+                32
             </div>
         </div>
     </div>
