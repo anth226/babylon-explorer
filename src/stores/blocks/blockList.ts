@@ -10,35 +10,35 @@ export default {
             height: 0,
             nextQueryStart: 0,
             hasNext: false,
-        };
+        }
     },
     getters: {
         getHeight: (state) => {
-            return state.height;
+            return state.height
         },
         getBlocks: (state) => {
-            return state.blocks;
+            return state.blocks
         },
         getBlockByHeight: (state) => (height) => {
-            return state.blocks.find((x) => x.height == height) || {};
+            return state.blocks.find((x) => x.height == height) || {}
         },
         getHasNext: (state) => {
-            return state.hasNext;
+            return state.hasNext
         },
     },
     mutations: {
         ADD_BLOCK(state, block) {
-            state.blocks.push(block);
+            state.blocks.push(block)
             // state.blocks.sort((a, b) => {
-            //     b.height - a.height;
-            // }); //TODO: might be unecessary?
+            //     b.height - a.height
+            // }) //TODO: might be unecessary?
         },
         SET_HEIGHT(state, height) {
-            state.height = height;
+            state.height = height
         },
         SET_NEXT_QUERY(state, nextQueryStart) {
-            state.nextQueryStart = nextQueryStart;
-            state.hasNext = nextQueryStart != 0;
+            state.nextQueryStart = nextQueryStart
+            state.hasNext = nextQueryStart != 0
         },
         RESET_STATE(state) {
             state.blocks = [];
