@@ -62,31 +62,31 @@ export default {
             <BlockTable />
         </div>
     </div>
-    <h1 class="font-bold">DATA:</h1>
-    <ul class="mt-3">
-        <li>Chain height - {{ chainHeight }}</li>
-        <li>Num total txs - {{ numTotalTxs }}</li>
-        <li>Latest Epoch - {{ latestEpoch }}</li>
-        <li>Num validators - {{ numValidators }}</li>
-    </ul>
-    <div class="mt-5">
-        <h1 class="font-semibold">Latest blocks: </h1>
-        <ul class="mt-4">
-            <li v-for="block in latestBlocks" :key="block.id">
-                <hr>
-                Height: {{block.height}}
-                <br>
-                Size: {{block.size}}
-                <br>
-                Hash: {{block.hash}}
-                <br>
-                Proposer: {{block.proposer}}
-                <br>
-                Time: {{block.timestamp}}
-                <hr>
-            </li>
-        </ul>
-    </div>
+<!--    <h1 class="font-bold">DATA:</h1>-->
+<!--    <ul class="mt-3">-->
+<!--        <li>Chain height - {{ chainHeight }}</li>-->
+<!--        <li>Num total txs - {{ numTotalTxs }}</li>-->
+<!--        <li>Latest Epoch - {{ latestEpoch }}</li>-->
+<!--        <li>Num validators - {{ numValidators }}</li>-->
+<!--    </ul>-->
+<!--    <div class="mt-5">-->
+<!--        <h1 class="font-semibold">Latest blocks: </h1>-->
+<!--        <ul class="mt-4">-->
+<!--            <li v-for="block in latestBlocks" :key="block.id">-->
+<!--                <hr>-->
+<!--                Height: {{block.height}}-->
+<!--                <br>-->
+<!--                Size: {{block.size}}-->
+<!--                <br>-->
+<!--                Hash: {{block.hash}}-->
+<!--                <br>-->
+<!--                Proposer: {{block.proposer}}-->
+<!--                <br>-->
+<!--                Time: {{block.timestamp}}-->
+<!--                <hr>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
 </template>
 
 <style scoped>

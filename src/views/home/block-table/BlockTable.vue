@@ -69,7 +69,7 @@ export default {
         }
     }
 
-    @media(max-width: 642px) {
+    @media(max-width: 770px) {
         .main-grid {
             display: block;
         }
