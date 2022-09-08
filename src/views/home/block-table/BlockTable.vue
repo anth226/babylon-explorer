@@ -8,7 +8,12 @@ export default {
     },
     data: () => ({
         hasThreeCols: true
-    })
+    }),
+    computed: {
+        chainHeight() {
+            return this.$store.getters["common/blocks/getHeight"];
+        },
+    }
 }
 </script>
 
@@ -18,12 +23,15 @@ export default {
             <div>
                 <BlockTableSection
                     heading="Latest BBN Block"
-                    count="123"
+                    :count="{ chainHeight }"
                     :has-three-cols="true"
                     col1="#"
                     col2="Hash"
                     col3="Timestamp"
-                />
+                >
+                    <template #heading>LATEST BBN BLOCK</template>
+                    <template #count>{{ chainHeight }}</template>
+                </BlockTableSection>
             </div>
             <div>
                 <BlockTableSection
@@ -33,7 +41,10 @@ export default {
                     col1="#"
                     col2="Hash"
                     col3="Has ckpts"
-                />
+                >
+                <template #heading>LATEST BBN BLOCK</template>
+                    <template #count>{{ chainHeight }}</template>
+                </BlockTableSection>
             </div>
             <div>
                 <BlockTableSection
@@ -41,7 +52,10 @@ export default {
                     count="13"
                     col1="Status"
                     col2="Epoch"
-                />
+                >
+                <template #heading>EPOCH NUMBER</template>
+                    <template #count>{{ chainHeight }}</template>
+                </BlockTableSection>
             </div>
             <div>
                 <BlockTableSection
@@ -49,7 +63,9 @@ export default {
                     count="20"
                     col1="Type"
                     col2="Number"
-                />
+                >
+                <template #heading>VALIDATORS</template>
+                </BlockTableSection>
             </div>
         </div>
     </div>
