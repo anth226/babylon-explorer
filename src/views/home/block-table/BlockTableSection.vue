@@ -40,38 +40,80 @@ export default {
 </script>
 
 <template>
-        <div class="section font-semibold">
+<!--    <div class="section font-semibold">-->
+<!--        <div class="heading flex justify-between">-->
+<!--            <div>-->
+<!--                {{ heading }}-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                {{ count }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="subheading flex justify-between">-->
+<!--            <div>-->
+<!--                {{ col1 }}-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                {{ col2 }}-->
+<!--            </div>-->
+<!--            <div v-if="hasThreeCols">-->
+<!--                {{ col3 }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div v-for="(block, index) in latestBlocks" class="item flex justify-between">-->
+<!--            <div>-->
+<!--                <RouterLink :to="{ path: '/block/' + block.height }">{{ block.height }}</RouterLink>-->
+<!--            </div>-->
+<!--            <div class="compress" v-if="hasThreeCols">-->
+<!--                {{ block.hash }}-->
+<!--            </div>-->
+<!--            <div class="font-bold compress">-->
+<!--                {{ convertDate(block.timestamp) }}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+
+    <div class="section font-semibold">
         <div class="heading flex justify-between">
             <div>
-                {{ heading }}
+                <slot name="heading">
+                    heading
+                </slot>
             </div>
             <div>
-                {{ count }}
+                <slot name="count"></slot>
             </div>
         </div>
         <div class="subheading flex justify-between">
             <div>
-                {{ col1 }}
+                <slot name="subheading1"></slot>
             </div>
             <div>
-                {{ col2 }}
+                <slot name="subheading2"></slot>
             </div>
             <div v-if="hasThreeCols">
-                {{ col3 }}
+                <slot name="subheading3"></slot>
             </div>
         </div>
         <div v-for="(block, index) in latestBlocks" class="item flex justify-between">
             <div>
-                {{ index + 1 }}
+                <RouterLink :to="{ path: '/block/' + block.height }">{{ block.height }}</RouterLink>
+
             </div>
             <div class="compress" v-if="hasThreeCols">
-                {{ block.hash }}
+                <slot name="col1"></slot>
             </div>
             <div class="font-bold compress">
                 {{ convertDate(block.timestamp) }}
             </div>
         </div>
     </div>
+
+
+
 </template>
 
 <style scoped>
@@ -79,7 +121,7 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        width: 120px;
+        width: 100px;
     }
     .section {
         padding: 30px;
