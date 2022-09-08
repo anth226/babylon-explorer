@@ -16,7 +16,7 @@ export default {
     },
     beforeMount() {
         this.$store.dispatch("addresses/validatorStats/getNumValidators")
-    }
+    },
 }
 </script>
 

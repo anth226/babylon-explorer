@@ -3,15 +3,6 @@
 export default {
     name: 'BlockTableSection',
     props: {
-        heading: {
-            type: String,
-            default: 'Heading'
-        },
-        count: {
-            // For the design, it will be integer
-            type: String,
-            default: '0'
-        },
         col1: String,
         col2: String,
         col3: String,
@@ -59,7 +50,7 @@ export default {
                 {{ col3 }}
             </div>
         </div>
-        <div v-for="(block, index) in latestBlocks" class="item flex justify-between">
+        <div v-for="block in latestBlocks" :key="block.id" class="item flex justify-between">
             <div>
                 <RouterLink :to="{ path: '/block/' + block.height }">{{ block.height }}</RouterLink>
             </div>
