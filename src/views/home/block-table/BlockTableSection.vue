@@ -21,12 +21,6 @@ export default {
             default: false
         }
     },
-    data: () => ({
-        timestamp: "",
-        date: "",
-        time: "",
-        currentYear: "",
-    }),
     computed: {
         latestBlocks() {
             try {
@@ -38,7 +32,6 @@ export default {
     },
     methods: {
         convertDate(date) {
-            // return moment(date).format('MM/DD/YYYY')
             date = new Date()
             return date.toLocaleString()
         }
