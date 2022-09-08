@@ -17,6 +17,7 @@ export default {
             return state.epochBoundary
         },
         getEpochInterval: (state) => {
+            
             return state.epochInterval
         },
     },
