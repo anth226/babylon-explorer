@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "crypto-js": "^4.1.1",
     "events": "^3.3.0",
+    "moment": "^2.29.4",
     "pinia": "^2.0.16",
     "reconnecting-websocket": "^4.4.0",
     "vue": "^3.2.37",

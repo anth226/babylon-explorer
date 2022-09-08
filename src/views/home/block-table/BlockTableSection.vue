@@ -1,4 +1,6 @@
-<script lang="ts">
+<script>
+import moment from 'moment'
+
 export default {
     name: 'BlockTableSection',
     props: {
@@ -19,6 +21,12 @@ export default {
             default: false
         }
     },
+    data: () => ({
+        timestamp: "",
+        date: "",
+        time: "",
+        currentYear: "",
+    }),
     computed: {
         latestBlocks() {
             try {
@@ -26,9 +34,13 @@ export default {
             } catch {
                 return []
             }
-        },
-        convertDate() {
-
+        }
+    },
+    methods: {
+        convertDate(date) {
+            // return moment(date).format('MM/DD/YYYY')
+            date = new Date()
+            return date.toLocaleString()
         }
     }
 }
@@ -55,22 +67,27 @@ export default {
                 {{ col3 }}
             </div>
         </div>
-        <div v-for="block in latestBlocks" class="item flex justify-between">
+        <div v-for="(block, index) in latestBlocks" class="item flex justify-between">
             <div>
-                1234
+                {{ index + 1 }}
             </div>
-            <div v-if="hasThreeCols">
-<!--                {{ block.hash }}--> block hash
+            <div class="compress" v-if="hasThreeCols">
+                {{ block.hash }}
             </div>
-            <div class="font-bold">
-<!--                {{ block.timestamp }}-->
-                32
+            <div class="font-bold compress">
+                {{ convertDate(block.timestamp) }}
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+    .compress {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 120px;
+    }
     .section {
         padding: 30px;
         border-right: 1px solid rgba(51, 51, 51, 0.05);
@@ -94,7 +111,7 @@ export default {
         border-top: 1px solid rgba(51, 51, 51, 0.05);
         padding: 8px 0;
         font-weight: 400;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 32px;
         color: var(--text-dark);
     }
