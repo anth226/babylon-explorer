@@ -48,6 +48,7 @@ export default {
     top: -10px;
     left: 0;
     z-index: -1;
+    height: 40%;
 }
 
 @media(max-width: 1200px) {
