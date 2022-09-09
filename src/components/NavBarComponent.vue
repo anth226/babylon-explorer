@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-<!--    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />-->
+    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />
     <nav class="navbar-expand-lg px-5">
         <div class="flex justify-around items-center">
             <img src="../assets/nav-logo.svg" alt="logo">
@@ -26,7 +26,6 @@ nav {
     padding: 0;
     margin: 0;
     z-index: 100;
-    background-image: url('../assets/nav-overlay.png');
 }
 
 .overlay {
