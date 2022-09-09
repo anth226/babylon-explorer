@@ -9,29 +9,20 @@ export default {
         NavBarComponent,
     },
     beforeMount() {
-        this.$store.dispatch("common/env/init");
+        this.$store.dispatch("common/env/init")
     },
-};
+}
 </script>
 
 <template>
-    <div>
+    <div id="app">
         <NavBarComponent />
-
-        <div class="router-container">
-            <RouterView class="router-view" />
-        </div>
+        <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+        >
+            <RouterView />
+        </transition>
     </div>
 </template>
-
-<style scoped>
-.router-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.router-view {
-    width: 100%;
-}
-</style>

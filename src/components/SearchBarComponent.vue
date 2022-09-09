@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'SearchBarComponent',
     data() {
         return {
             searchText: "",
