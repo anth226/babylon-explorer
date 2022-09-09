@@ -1,6 +1,6 @@
 <script>
 import { RouterLink, RouterView } from "vue-router";
-import NavBarComponent from "./components/NavBarComponent.vue";
+import NavBarComponent from "./components/NavBarExtendedComponent.vue";
 
 export default {
     components: {
@@ -16,13 +16,13 @@ export default {
 
 <template>
     <div id="app">
-        <NavBarComponent />
+        <NavBarComponent extended />
         <transition
             mode="out-in"
             enter-active-class="animate__animated animate__fadeIn"
             leave-active-class="animate__animated animate__fadeOut"
         >
-            <RouterView />
+            <RouterView extended />
         </transition>
     </div>
 </template>

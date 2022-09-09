@@ -1,6 +1,6 @@
 <script lang="ts">
 import ApprovalTable from './ApprovalTable.vue'
-import NavBarComponent from '../../components/NavBarComponent.vue'
+import NavBarComponent from '../../components/NavBarExtendedComponent.vue'
 import BlockTable from './block-table/BlockTable.vue'
 import BtcBlockGrid from './btc-block/BtcBlockGrid.vue'
 import EpochGrid from './epoch/EpochGrid.vue'
