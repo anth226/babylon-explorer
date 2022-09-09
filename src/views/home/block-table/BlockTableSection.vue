@@ -3,6 +3,7 @@
 export default {
     name: 'BlockTableSection',
     props: {
+        heading: String,
         col1: String,
         col2: String,
         col3: String,
@@ -11,6 +12,9 @@ export default {
             default: false
         }
     },
+    data: () => ({
+        copiedText: 'THIS IS COPIED'
+    }),
     computed: {
         latestBlocks() {
             try {
@@ -28,6 +32,9 @@ export default {
             if (date.toLocaleString() === currentDate.toLocaleString()) {
                 return 'Today ' + date.toLocaleString().substring(10)
             }
+        },
+        copyHash() {
+            document.execCommand('copy')
         }
     }
 }
@@ -36,8 +43,8 @@ export default {
 <template>
         <div class="section font-semibold">
         <div class="heading flex justify-between">
-            <div>
-                <slot name="heading"></slot>
+            <div class="uppercase">
+                {{ heading }}
             </div>
             <div>
                 <slot name="count">123</slot>
@@ -54,28 +61,14 @@ export default {
                 {{ col3 }}
             </div>
         </div>
-        <div v-for="block in latestBlocks" :key="block.id" class="item flex justify-between">
-            <div>
-                <RouterLink :to="{ path: '/block/' + block.height }">{{ block.height }}</RouterLink>
-            </div>
-            <div class="compress" v-if="hasThreeCols">
-                {{ block.hash }}
-            </div>
-            <div class="font-bold compress">
-                {{ convertDate(block.timestamp) }}
-            </div>
-        </div>
+            <slot name="body">
+
+            </slot>
     </div>
 </template>
 
 <style scoped>
-    .compress {
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 105px;
-        font-size: 12px;
-    }
+
     .section {
         padding: 30px;
         border-right: 1px solid rgba(51, 51, 51, 0.05);
@@ -92,14 +85,6 @@ export default {
     .subheading {
         padding: 15px 0 10px 0;
         font-size: 16px;
-        line-height: 32px;
-        color: var(--text-dark);
-    }
-    .item {
-        border-top: 1px solid rgba(51, 51, 51, 0.05);
-        padding: 8px 0;
-        font-weight: 400;
-        font-size: 13px;
         line-height: 32px;
         color: var(--text-dark);
     }
