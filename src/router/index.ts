@@ -3,7 +3,9 @@ import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import BlocksView from "../views/blocks/BlocksView.vue";
 import BlockView from "../views/blocks/BlockView.vue";
-import EpochingView from "../views/EpochingView.vue";
+import EpochingListView from "../views/Epoching/EpochingListView.vue";
+import EpochDetailViewVue from "@/views/Epoching/EpochDetailView.vue";
+import MetricsListViewVue from "@/views/Metrics/MetricsListView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +33,17 @@ const router = createRouter({
         {
             path: "/epochs",
             name: "epochs",
-            component: EpochingView,
+            component: EpochingListView,
+        },
+        {
+            path: "/epochs/:epochNum",
+            name: "specificEpoch",
+            component: EpochDetailViewVue,
+        },
+        {
+            path: "/metrics",
+            name: "metrics",
+            component: MetricsListViewVue,
         },
     ],
 });

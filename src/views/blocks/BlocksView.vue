@@ -58,6 +58,7 @@ export default {
 
 <template>
     <div class="blockList-view-container">
+        <div style="font-size: 3em">Blocks</div>
         <div class="latest-blocks">
             <table class="styled-table">
                 <thead>

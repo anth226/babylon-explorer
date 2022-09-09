@@ -1,7 +1,8 @@
 <script>
 export default {
     beforeMount() {
-        this.$store.dispatch("addresses/validatorStats/getNumValidators");
+        this.$store.dispatch("validators/validatorStats/getValidatorSetStatus");
+        this.$store.dispatch("btclightclient/btcBlockList/getBTCMainChain");
     },
     computed: {
         chainHeight() {
@@ -17,7 +18,7 @@ export default {
 
         numValidators() {
             return this.$store.getters[
-                "addresses/validatorStats/numValidators"
+                "validators/validatorStats/numValidators"
             ];
         },
 

@@ -5,9 +5,11 @@ import {
     wallet as starportWallet,
 } from "./starport";
 import blocks from "./blocks/index";
-import addresses from "./addresses/index";
+import validators from "./validators/index";
 import prometheus from "./prometheus/index";
 import epoching from "./epoching/index";
+import checkpointing from "./checkpointing/index";
+import btclightclient from "./btclightclient/index";
 
 // import generated from "./generated";
 
@@ -19,9 +21,11 @@ function init(store: any) {
     starportEnv(store);
     starportWallet(store);
     blocks(store);
-    addresses(store);
+    validators(store);
     prometheus(store);
     epoching(store);
+    checkpointing(store);
+    btclightclient(store);
 }
 
 const store = createStore({

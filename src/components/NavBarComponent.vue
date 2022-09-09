@@ -15,8 +15,10 @@ export default {
             <SearchBarComponent />
             <div class="navbar-nav" style="margin: 0em 1em">
                 <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
+                <RouterLink to="/blocks">Blocks</RouterLink>
                 <RouterLink to="/epochs">Epoching</RouterLink>
+                <RouterLink to="/metrics">Metrics</RouterLink>
+                <RouterLink to="/about">About</RouterLink>
             </div>
         </div>
     </nav>

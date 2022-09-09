@@ -35,8 +35,8 @@ export default {
             if (typeof searchParam == "undefined") return;
 
             var searchFunction = "blocks/blockList/getBlockByHash";
+            //determins whether the search is by height or by hash
             if (!isNaN(searchParam)) {
-                //determins whether the search is by height or by hash
                 searchFunction = "blocks/blockList/getBlockByHeight";
             }
 
