@@ -123,3 +123,14 @@ export async function getBlockByHash(apiCosmos, apiTendermint, block_hash) {
     )
     return await processBlockData(apiCosmos, apiTendermint, blockData)
 }
+
+export async function getBlockHeaders(apiTendermint, minHeight, maxHeight) {
+    let blockHeaders = await axios.get(
+        apiTendermint +
+            "/blockchain?minHeight=" +
+            minHeight +
+            "&maxHeight=" +
+            maxHeight
+    );
+    return blockHeaders.data;
+}
