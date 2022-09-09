@@ -13,9 +13,6 @@ export default {
         chainHeight() {
             return this.$store.getters['common/blocks/getHeight']
         },
-        getCurrentEpoch() {
-            return this.$store.getters['epoching/stats/getCurrentEpoch']
-        },
         numValidators() {
             return this.$store.getters['addresses/validatorStats/numValidators']
         },
@@ -36,9 +33,6 @@ export default {
                 return 'Today ' + date.toLocaleString().substring(10)
             }
         },
-        copyHash() {
-            document.execCommand('copy')
-        }
     }
 }
 </script>
@@ -84,7 +78,6 @@ export default {
                     col2="Hash"
                     col3="Has ckpts"
                 >
-                    <template #heading>LATEST BBN BLOCK</template>
                     <template #count>{{ chainHeight }}</template>
                     <template #body>
                         <div v-for="block in latestBlocks" class="item flex justify-between">
