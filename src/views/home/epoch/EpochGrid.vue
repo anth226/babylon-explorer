@@ -22,7 +22,7 @@ export default {
     <div class="container mx-auto">
         <div class="flex">
             <div class="big-block">
-                <img class="item" src="../../../assets/bbl-logo.svg" />
+                <img class="item" src="../../../assets/bbl-logo.svg" alt="bbl-logo" />
             </div>
             <div class="flex">
                 <div class="main-section s1">
@@ -43,13 +43,13 @@ export default {
                             has-curved-arrow
                         />
                         <div class="capsul">
-                            <img class="circle" src="../../../assets/ellipse.svg" />
+                            <img class="circle" src="../../../assets/ellipse.svg" alt="circle" />
                         </div>
                     </div>
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
                         <div class="heading">
-                            Epoch
+                            Epoch 1
                         </div>
                         <div class="subheading">
                             (100 blocks)
@@ -78,13 +78,13 @@ export default {
                             is-disabled
                         />
                         <div class="capsul">
-                            <img class="circle" src="../../../assets/ellipse.svg" />
+                            <img class="circle" src="../../../assets/ellipse.svg" alt="ellipse" />
                         </div>
                     </div>
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
                         <div class="heading">
-                            Epoch
+                            Epoch 2
                         </div>
                         <div class="subheading">
                             (100 blocks)
@@ -129,7 +129,7 @@ export default {
                     <div class="blank w-full bg-red-400"></div>
                     <div class="title-section w-full mt-3">
                         <div class="heading">
-                            Epoch
+                            Epoch 3
                         </div>
                         <div class="subheading">
                             (100 blocks)

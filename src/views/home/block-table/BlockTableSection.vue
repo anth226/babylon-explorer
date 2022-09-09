@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 
 export default {
     name: 'BlockTableSection',
@@ -22,8 +22,12 @@ export default {
     },
     methods: {
         convertDate(date) {
+            const currentDate = new Date()
             date = new Date()
-            return date.toLocaleString()
+
+            if (date.toLocaleString() === currentDate.toLocaleString()) {
+                return 'Today ' + date.toLocaleString().substring(10)
+            }
         }
     }
 }
@@ -69,7 +73,8 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        width: 100px;
+        width: 105px;
+        font-size: 12px;
     }
     .section {
         padding: 30px;
