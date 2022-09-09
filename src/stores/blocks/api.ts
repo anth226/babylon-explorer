@@ -134,3 +134,14 @@ export async function getBlockHeaders(apiTendermint, minHeight, maxHeight) {
     );
     return blockHeaders.data;
 }
+
+export async function getBlockHeaders(apiTendermint, minHeight, maxHeight) {
+    let blockHeaders = await axios.get(
+        apiTendermint +
+            "/blockchain?minHeight=" +
+            minHeight +
+            "&maxHeight=" +
+            maxHeight
+    );
+    return blockHeaders.data;
+}

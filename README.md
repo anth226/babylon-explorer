@@ -1,42 +1,78 @@
-# Project Setup
-Please note that this web app does not have a backend. Therefore access to a live node through browser is required.
+This repository contains the front-end for the Babylon explorer.
 
-## Babylon node setup
-1. In your local node's ```babylon/config/config.toml``` file, under the "RPC Server Configuration Options" section, set ```cors_allowed_origins = ["*"]```
-2. In the same file under the "Instrumentation Configuration Options" seciton, set ```prometheus = true``` and ```max_open_connections = 0```
-3. In the ```babylon/config/app.toml``` file, under the ```API Configuration``` section, set ```enabled-unsafe-cors = true```
+## Setup
 
-## Web project setup
-### nginx setup
+### Babylon setup
 
-We need nginx in our project set up in order to address CORS policy issues of the prometheus metrics server. Since we do not have the access to the prometheus server code, and the configuration file does not contain a prometheus node CORS policy setter, we have to work around this issue with a reverse proxy such as nginx.
-
-1. Download nginx with brew or other methods of your choice
-```
-brew install nginx
-``` 
-2. Start the nginx server with the custom config file by running the following. Note that the full path has to be used.
-
-```
-nginx -c {vue_project_full_path}/config/nginx.conf
+Create a Babylon set of files for a single node (or more) and start the Babylon service:
+```bash
+babylond testnet \
+    --v                     1 \
+    --output-dir            ./.testnet \
+    --starting-ip-address   192.168.10.2 \
+    --keyring-backend       test \
+    --chain-id              chain-test
 ```
 
-### Vue app setup
+### Explorer Setup
 
-```
+Install the dependencies
+```bash
 npm install
 ```
 
-Compiles and reloads the app on save for development
+## Running the explorer
 
+### Running Babylon
+Using the above configuration, start an instance of Babylon for a single node.
+```bash
+babylond start --home ./.testnet/node0/babylond
 ```
+
+### Running the explorer
+
+We need nginx in our project set up in order to address CORS policy
+issues of the prometheus metrics server.
+Since we do not have the access to the prometheus server code,
+and the configuration file does not contain a prometheus node CORS
+policy setter, we have to work around this issue with a reverse proxy
+such as nginx. We do that as follows:
+
+1. Download nginx with brew or other methods of your choice
+```bash
+brew install nginx
+``` 
+2. Modify the config file under `config/nginx.conf`. More specifically, add the
+   port in which the Vue service is running. In the case of Docker, add the
+   port which will be mapped from port `8080` inside the container. In the case
+   of a local development environment add the port `5173` or whichever port you
+   use with `npm run dev`.
+3. Start the nginx server with the custom config file:
+```bash
+nginx -c {vue_project_full_path}/config/nginx.conf
+```
+
+#### Running locally
+
+
+To run the node for development purposes
+```bash
 npm run dev
 ```
 
-or Compiles and minifies for production
+After the setup is completed, you'll be able to view the frontend
+in your browser at `localhost:5173`
 
-```
-npm run build
+#### Running using Docker
+
+First, build the Docker image:
+```bash
+docker build --tag babylonchain/babylon-explorer .
 ```
 
- After the setup is completed, you'll be able to view the frontend in your browser at ```localhost:26661```
+Then, run it, forwarding port `8080` of the Docker instance to port `26662` of the local machine.
+```bash
+docker run --rm -p 26662:8080 babylonchain/babylon-explorer
+```
+
+The explorer should be accessible at port `26661` on the host machine.
