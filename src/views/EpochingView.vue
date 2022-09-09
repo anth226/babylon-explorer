@@ -1,20 +1,21 @@
 <script>
 export default {
+    name: 'EpochingView',
     computed: {
         chainHeight() {
-            return this.$store.getters["common/blocks/getHeight"];
+            return this.$store.getters["common/blocks/getHeight"]
         },
 
         latestEpoch() {
-            return this.$store.getters["epoching/stats/getCurrentEpoch"];
+            return this.$store.getters["epoching/stats/getCurrentEpoch"]
         },
 
         epochBoundary() {
-            return this.$store.getters["epoching/stats/getEpochBoundary"];
+            return this.$store.getters["epoching/stats/getEpochBoundary"]
         },
 
         epochInterval() {
-            return this.$store.getters["epoching/stats/getEpochInterval"];
+            return this.$store.getters["epoching/stats/getEpochInterval"]
         },
     },
 };
