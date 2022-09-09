@@ -15,42 +15,35 @@ export default {
             height: 0,
             nextQueryStart: 0,
             hasNext: false,
-        }
+        };
     },
     getters: {
         getHeight: (state) => {
-            return state.height
+            return state.height;
         },
         getBlocks: (state) => {
-            return state.blocks
+            return state.blocks;
         },
         getBlockByHeight: (state) => (height) => {
-            return state.blocks.find((x) => x.height == height) || {}
+            return state.blocks.find((x) => x.height == height) || {};
         },
         getHasNext: (state) => {
-            return state.hasNext
+            return state.hasNext;
         },
     },
     mutations: {
         ADD_BLOCK(state, block) {
-<<<<<<< HEAD
-            state.blocks.push(block)
-            // state.blocks.sort((a, b) => {
-            //     b.height - a.height
-            // }) //TODO: might be unecessary?
-=======
             state.blocks.push(block);
->>>>>>> main
         },
         SET_HEIGHT(state, height) {
-            state.height = height
+            state.height = height;
         },
         SET_NEXT_QUERY(state, nextQueryStart) {
-            state.nextQueryStart = nextQueryStart
-            state.hasNext = nextQueryStart != 0
+            state.nextQueryStart = nextQueryStart;
+            state.hasNext = nextQueryStart != 0;
         },
         RESET_STATE(state) {
-            state.blocks = []
+            state.blocks = [];
         },
     },
     actions: {
@@ -104,17 +97,17 @@ export default {
                         rootGetters["common/env/apiCosmos"],
                         rootGetters["common/env/apiTendermint"],
                         block_height
-                    )
-                    resolve(block)
+                    );
+                    resolve(block);
                 } catch {
                     reject(
                         new Error(
                             "Blocks: Unable to retrieve single block with hash from backend. Height: " +
                                 block_height
                         )
-                    )
+                    );
                 }
-            })
+            });
         },
 
         async getBlockByHash({ rootGetters }, block_hash) {
@@ -124,17 +117,17 @@ export default {
                         rootGetters["common/env/apiCosmos"],
                         rootGetters["common/env/apiTendermint"],
                         block_hash
-                    )
-                    resolve(block)
+                    );
+                    resolve(block);
                 } catch {
                     reject(
                         new Error(
                             "Blocks: Unable to retrieve single block with hash from backend. Height: " +
                                 block_hash
                         )
-                    )
+                    );
                 }
-            })
+            });
         },
 
         async getBlockHeadersByHeightRange(
@@ -153,7 +146,7 @@ export default {
         },
 
         resetState({ commit }) {
-            commit("RESET_STATE")
+            commit("RESET_STATE");
         },
     },
-}
+};

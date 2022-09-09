@@ -1,44 +1,28 @@
-<<<<<<< HEAD
-import axios from "axios"
-=======
 import axios from "axios";
 
 let epochingQueryPrefix = "/babylon/epoching/v1/";
->>>>>>> main
 
 export async function getCurrentEpoch(apiCosmos) {
     try {
         let currentEpoch = await axios.get(
-<<<<<<< HEAD
-            apiCosmos + "/babylon/epoching/v1/current_epoch"
-        )
-        return currentEpoch.data
-=======
             apiCosmos + epochingQueryPrefix + "current_epoch"
         );
         return currentEpoch.data;
->>>>>>> main
     } catch {
         throw new Error(
             "Epoching: Unable to retrieve the latest epoch information"
-        )
+        );
     }
 }
 
 export async function getParams(apiCosmos) {
     try {
-<<<<<<< HEAD
-        let params = await axios.get(apiCosmos + "/babylon/epoching/v1/params")
-        console.log(params.data)
-        return params.data
-=======
         let params = await axios.get(
             apiCosmos + epochingQueryPrefix + "params"
         );
         return params.data;
->>>>>>> main
     } catch {
-        throw new Error("Epoching: Unable to retrieve the latest epoch params")
+        throw new Error("Epoching: Unable to retrieve the latest epoch params");
     }
 }
 

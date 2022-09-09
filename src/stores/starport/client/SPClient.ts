@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import type {OfflineDirectSigner, Registry} from '@cosmjs/proto-signing'
-import {SigningStargateClient} from '@cosmjs/stargate'
-import type {AxiosPromise, AxiosResponse} from 'axios'
-import axios from 'axios'
-import {EventEmitter} from 'events'
-import ReconnectingWebSocket from 'reconnecting-websocket'
-=======
 import type { OfflineDirectSigner, Registry } from "@cosmjs/proto-signing";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import axios from "axios";
 import type { AxiosPromise, AxiosResponse } from "axios";
 import { EventEmitter } from "events";
 import ReconnectingWebSocket from "reconnecting-websocket";
->>>>>>> main
 
 export interface IClientConfig {
     apiAddr: string;
@@ -41,21 +32,12 @@ export interface IParsedResponse {
     data: ITypedResponse;
 }
 export default class SPClient extends EventEmitter {
-<<<<<<< HEAD
-  private apiAddr: string
-  private rpcAddr: string
-  private wsAddr: string
-  private readonly offline: boolean
-  private readonly refresh: number
-  private socket: ReconnectingWebSocket
-=======
     private apiAddr: string;
     private rpcAddr: string;
     private wsAddr: string;
     private offline: boolean;
     private refresh: number;
     private socket: ReconnectingWebSocket;
->>>>>>> main
 
     public signingClient: any;
     private signer: OfflineDirectSigner;
@@ -260,12 +242,5 @@ export default class SPClient extends EventEmitter {
                 new Error("Client-js:API Could not access API: " + url)
             );
         }
-<<<<<<< HEAD
-      })
-      return await response
-    } catch (e) {
-      console.error(new Error('Client-js:API Could not access API: ' + url))
-=======
->>>>>>> main
     }
 }
