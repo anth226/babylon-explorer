@@ -6,15 +6,16 @@ export default {
 </script>
 
 <template>
-    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />
-    <nav class="navbar-expand-lg px-5">
-        <div class="flex justify-around items-center">
-            <img src="../assets/nav-logo.svg" alt="logo">
-            <div class="navbar-nav" style="margin: 0 1em">
-                <RouterLink to="/">HOME</RouterLink>
-                <RouterLink to="/some-page">BLOCKS & TXS</RouterLink>
-                <RouterLink to="/some-page">CHECKPOINTS</RouterLink>
-                <RouterLink to="/some-page">VALIDATORS</RouterLink>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="navbar-content">
+            <RouterLink class="navbar-brand" to="/">Babylon</RouterLink>
+            <SearchBarComponent />
+            <div class="navbar-nav" style="margin: 0em 1em">
+                <RouterLink to="/">Home</RouterLink>
+                <RouterLink to="/blocks">Blocks</RouterLink>
+                <RouterLink to="/epochs">Epoching</RouterLink>
+                <RouterLink to="/metrics">Metrics</RouterLink>
+                <RouterLink to="/about">About</RouterLink>
             </div>
         </div>
     </nav>
