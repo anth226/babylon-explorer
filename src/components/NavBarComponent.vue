@@ -1,73 +1,70 @@
-<script>
-import SearchBarComponent from "./SearchBarComponent.vue";
+<script lang="ts">
 
 export default {
-    components: {
-        SearchBarComponent,
-    },
-};
+    name: 'NavbarComponent'
+}
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="navbar-content">
-            <RouterLink class="navbar-brand" to="/">Babylon</RouterLink>
-            <SearchBarComponent />
-            <div class="navbar-nav" style="margin: 0em 1em">
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/blocks">Blocks</RouterLink>
-                <RouterLink to="/epochs">Epoching</RouterLink>
-                <RouterLink to="/metrics">Metrics</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
+    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />
+    <nav class="navbar-expand-lg px-5">
+        <div class="flex justify-around items-center">
+            <img src="../assets/nav-logo.svg" alt="logo">
+            <div class="navbar-nav" style="margin: 0 1em">
+                <RouterLink to="/">HOME</RouterLink>
+                <RouterLink to="/some-page">BLOCKS & TXS</RouterLink>
+                <RouterLink to="/some-page">CHECKPOINTS</RouterLink>
+                <RouterLink to="/some-page">VALIDATORS</RouterLink>
             </div>
         </div>
     </nav>
 </template>
 
 <style scoped>
+
 nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-    padding: 1rem 0;
-    background-color: black !important;
-    margin-bottom: 3rem;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
 }
 
-.navbar-brand {
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.active-link {
+    border-bottom: 3px solid #23A5DC;
+}
+
+a {
+    padding: 40px 0;
+    margin: 0 17px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 3px;
+    text-align: right;
     color: white;
-    font-size: 2rem;
-    font-weight: 900;
 }
 
-.navbar-content {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 1280px;
-    background-color: black;
-}
-
-.navbar-nav a {
-    display: inline-block;
-    padding: 0.4em 1rem;
+a:hover {
+    transition: ease-in-out;
+    transition-duration: 200ms;
     color: white;
-    text-decoration: none;
-    width: 100px;
-    border-radius: 5px;
-    text-align: center;
+    opacity: 0.7;
 }
 
-.navbar-nav a.router-link-exact-active {
-    font-weight: 600;
+@media only screen and (max-width: 1034px) {
+    a {
+        display: none;
+    }
+    nav {
+        padding: 30px 0;
+    }
 }
 
-.navbar-nav a:hover {
-    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-}
-
-.navbar-nav a:first-of-type {
-    border: 0;
-}
 </style>
+
+

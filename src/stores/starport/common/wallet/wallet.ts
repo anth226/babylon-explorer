@@ -5,8 +5,8 @@ export default {
   state() {
     return {
       wallets: () => {
-        let response = window.localStorage.getItem('wallets');
-        return response == null? [] : JSON.parse(response);
+        let response = window.localStorage.getItem('wallets')
+        return response == null? [] : JSON.parse(response)
       },
       activeWallet: null,
       activeClient: null,
@@ -114,7 +114,7 @@ export default {
         root: true
       })
 
-      var accountsArr : any[] = []
+      let accountsArr: any[] = [];
 
       const wallet = {
         name: 'Keplr Integration',

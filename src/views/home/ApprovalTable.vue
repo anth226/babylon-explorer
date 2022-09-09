@@ -1,0 +1,198 @@
+<script lang="ts">
+export default {
+    name: 'ApprovalTable',
+}
+</script>
+
+<template>
+    <div>
+        <div class="card p-2 mx-auto">
+            <div class="left-badge">
+                <img src="../../assets/approval-badge-left.svg" alt="approval-badge-left" />
+            </div>
+            <div class="right-badge">
+                <img src="../../assets/approval-badge-right.svg" alt="approval-badge-right" />
+            </div>
+            <div>
+                <div>
+                    <div class="imgcont">
+                        <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
+                        <div class="centered">
+                            <img class="ring" src="../../assets/clock-ring.svg" alt="ring">
+                            <img class="clock" src="../../assets/clock.svg" alt="clock">
+                            <div class="subheading">Average Unbonding Time</div>
+                            <div class="heading mt-2">5 mins ± 30s</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="table-heading flex items-center">
+                    <div class="w-1/4 table-item">
+                        Unbonding
+                        validators
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Equested @
+                        <br>
+                        <span class="ml-2">epoch #</span>
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Checkpointed
+                        <span class="ml-1">@BTC block</span>
+                    </div>
+                    <div class="w-1/4 table-item">
+                        Approved
+                    </div>
+                </div>
+                <div class="ml-2 table-content border-bottom flex px-3 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">—</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/not-approved.svg" alt="x">
+                        <span class="text-notApproved p-0 font-bold">Not approved</span>
+                    </div>
+                </div>
+                <div class="ml-2 table-content border-bottom flex px-3 pt-2 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">1220</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/pending.svg" alt="x">
+                        <span class="text-pending p-0 font-bold">Pending</span>
+                    </div>
+                </div>
+                <div class="ml-2 table-content flex px-3 items-center">
+                    <div class="w-1/4 item">A1B2C3D4</div>
+                    <div class="w-1/4 item flex justify-center pr-3">13</div>
+                    <div class="w-1/4 item flex justify-center pr-3">1220</div>
+                    <div class="w-1/4 item ml-3">
+                        <img class="p-0 mr-2" src="../../assets/approved.svg" alt="x">
+                        <span class="text-approved p-0 font-bold">Approved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+
+.home-img {
+    border-radius: 9px;
+    z-index: 1000;
+}
+
+.left-badge {
+    position: absolute;
+    width: 146px;
+    height: 163px;
+    left: -116px;
+    top: 90px;
+    z-index: 1;
+}
+
+.right-badge {
+    position: absolute;
+    width: 117px;
+    height: 130px;
+    left: 784px;
+    top: -26px;
+    z-index: -1;
+}
+
+.imgcont {
+    position: relative;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 67%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: 800px;
+    background: #FFFFFF;
+    box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
+    border-radius: 9px;
+}
+
+.table-heading {
+    background: rgba(1, 12, 194, 0.05);
+    padding: 15px;
+    margin-left: 8px;
+    font-weight: 900;
+    line-height: 16px;
+    font-size: 12px;
+    color: var(--text-dark);
+    border-radius: 5px;
+}
+
+.table-content {
+    padding: 5px;
+    height: 23%;
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.item {
+    display: flex;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-dark);
+}
+
+.subheading {
+    font-weight: 300;
+    width: 200px;
+    font-size: 14px;
+    color: #f3f3f3;
+    line-height: 20px;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 29px;
+    color: #23A5DC;
+}
+
+.ring {
+    position: absolute;
+    top: -73.4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+}
+
+.clock {
+    position: absolute;
+    top: -71.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+}
+
+.ring {
+    --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);
+}
+
+@media(max-width: 1040px) {
+    .card {
+        display: none;
+    }
+}
+
+
+</style>
