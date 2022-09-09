@@ -9,7 +9,7 @@ import './styles/globals.css'
 import 'animate.css'
 import VueLazyLoad from 'vue-lazyload'
 
-const app = createApp(App)/
+const app = createApp(App)
 // app.use(createPinia())
 
 app.provide("$store", store)
