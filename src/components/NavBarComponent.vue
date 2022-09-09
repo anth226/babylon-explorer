@@ -6,6 +6,7 @@ export default {
 </script>
 
 <template>
+    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />
     <nav class="navbar-expand-lg px-5">
         <div class="flex justify-around items-center">
             <img src="../assets/nav-logo.svg" alt="logo">
@@ -25,6 +26,13 @@ nav {
     padding: 0;
     margin: 0;
     z-index: 100;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .active-link {

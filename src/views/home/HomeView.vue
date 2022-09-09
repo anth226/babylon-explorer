@@ -29,7 +29,7 @@ export default {
     </div>
     <div class="container mx-auto">
         <div class="content">
-            <div class="wrapper">
+            <div class="blocks-container">
                 <BtcBlockGrid />
                 <EpochGrid />
             </div>
@@ -51,15 +51,25 @@ export default {
     height: 40%;
 }
 
-@media(max-width: 1200px) {
-    .content {
-        margin: 0;
+@media (max-width: 1600px) {
+    .overlay {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        z-index: -1;
+        height: 44%;
     }
 }
 
 @media (max-width: 1538px) {
-    .wrapper {
+    .blocks-container {
         display: none;
+    }
+}
+
+@media(max-width: 1200px) {
+    .content {
+        margin: 0;
     }
 }
 </style>
