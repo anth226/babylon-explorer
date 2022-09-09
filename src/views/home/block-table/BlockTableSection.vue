@@ -34,7 +34,7 @@ export default {
             }
         },
         copyHash() {
-            document.execCommand('copy')
+            document.execCommand('copy') // TODO:This will be continued
         }
     }
 }
