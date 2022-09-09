@@ -1,4 +1,5 @@
 # Project Setup
+Please note that this web app does not have a backend. Therefore access to a live node through browser is required.
 
 ## Babylon node setup
 1. In your local node's ```babylon/config/config.toml``` file, under the "RPC Server Configuration Options" section, set ```cors_allowed_origins = ["*"]```

@@ -1,4 +1,9 @@
-import { getHeight, getBlockByHeight, getBlockByHash } from "./api";
+import {
+    getHeight,
+    getBlockByHeight,
+    getBlockByHash,
+    getBlockHeaders,
+} from "./api";
 
 const pageSize = 10;
 
@@ -28,10 +33,14 @@ export default {
     },
     mutations: {
         ADD_BLOCK(state, block) {
+<<<<<<< HEAD
             state.blocks.push(block)
             // state.blocks.sort((a, b) => {
             //     b.height - a.height
             // }) //TODO: might be unecessary?
+=======
+            state.blocks.push(block);
+>>>>>>> main
         },
         SET_HEIGHT(state, height) {
             state.height = height
@@ -126,6 +135,21 @@ export default {
                     )
                 }
             })
+        },
+
+        async getBlockHeadersByHeightRange(
+            { rootGetters },
+            range: {
+                begin: number;
+                end: number;
+            }
+        ) {
+            let blockHeaders = await getBlockHeaders(
+                rootGetters["common/env/apiTendermint"],
+                range.begin,
+                range.end
+            );
+            return blockHeaders.result.block_metas;
         },
 
         resetState({ commit }) {
