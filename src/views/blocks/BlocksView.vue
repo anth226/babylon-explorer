@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
+
 export default {
+    name: 'BlocksView',
     data: function () {
         return {
             pageSize: 10,
@@ -57,11 +59,11 @@ export default {
 </script>
 
 <template>
-    <div class="blockList-view-container">
-        <div style="font-size: 3em">Blocks</div>
-        <div class="latest-blocks">
-            <table class="styled-table">
-                <thead>
+    <div class="container mx-auto mt-5">
+        <div class="wrapper">
+            <div class="latest-blocks">
+                <table class="styled-table">
+                    <thead>
                     <tr>
                         <th>Height</th>
                         <th>Hash</th>
@@ -69,8 +71,8 @@ export default {
                         <th>Num Txs</th>
                         <th>Proposer Address</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr v-for="block in currentPage" :key="block.height">
                         <td>
                             <RouterLink
@@ -84,35 +86,32 @@ export default {
                         <td>{{ block.txDecoded.length }}</td>
                         <td>{{ block.proposer }}</td>
                     </tr>
-                </tbody>
-            </table>
-            <div style="display: flex; justify-content: center">
-                <button
-                    @click="getPreviousPage()"
-                    :disabled="!hasPreviousPage"
-                    class="button-27"
-                    role="button"
-                >
-                    Previous
-                </button>
-                <button
-                    @click="getNextPage()"
-                    :disabled="!hasNextPage"
-                    class="button-27"
-                    role="button"
-                >
-                    Next
-                </button>
+                    </tbody>
+                </table>
+                <div style="display: flex; justify-content: center">
+                    <button
+                        @click="getPreviousPage()"
+                        :disabled="!hasPreviousPage"
+                        class="button-27"
+                        role="button"
+                    >
+                        Previous
+                    </button>
+                    <button
+                        @click="getNextPage()"
+                        :disabled="!hasNextPage"
+                        class="button-27"
+                        role="button"
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.blockList-view-container {
-    max-width: 1280px;
-    margin-bottom: 30px;
-}
 
 .styled-table {
     border-collapse: collapse;
@@ -122,6 +121,13 @@ export default {
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
+}
+
+.wrapper {
+    background: white;
+    box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
+    border-radius: 9px;
+    padding: 12px;
 }
 
 .styled-table thead tr {
