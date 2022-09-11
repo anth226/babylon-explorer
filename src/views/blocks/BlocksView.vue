@@ -65,52 +65,51 @@ export default {
 <template>
     <NavBarComponent />
     <div class="container mx-auto mt-5">
-        <div class="wrapper">
-            <div class="latest-blocks">
-                <table class="styled-table">
-                    <thead>
-                    <tr>
-                        <th>Height</th>
-                        <th>Hash</th>
-                        <th>Time</th>
-                        <th>Num Txs</th>
-                        <th>Proposer Address</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="block in currentPage" :key="block.height">
-                        <td>
-                            <RouterLink
-                                :to="{ path: '/blocks/' + block.height }"
-                            >
-                                {{ block.height }}
-                            </RouterLink>
-                        </td>
-                        <td>{{ block.hash }}</td>
-                        <td>{{ block.timestamp }}</td>
-                        <td>{{ block.txDecoded.length }}</td>
-                        <td>{{ block.proposer }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div style="display: flex; justify-content: center">
-                    <button
-                        @click="getPreviousPage()"
-                        :disabled="!hasPreviousPage"
-                        class="button-27"
-                        role="button"
-                    >
-                        Previous
-                    </button>
-                    <button
-                        @click="getNextPage()"
-                        :disabled="!hasNextPage"
-                        class="button-27"
-                        role="button"
-                    >
-                        Next
-                    </button>
-                </div>
+        <div>
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>Height</th>
+                    <th>Hash</th>
+                    <th>Time</th>
+                    <th>Num Txs</th>
+                    <th>Proposer Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="block in currentPage" :key="block.height">
+                    <td>
+                        <RouterLink
+                            :to="{ path: '/blocks/' + block.height }"
+                            class="font-bold"
+                        >
+                            {{ block.height }}
+                        </RouterLink>
+                    </td>
+                    <td>{{ block.hash }}</td>
+                    <td>{{ block.timestamp }}</td>
+                    <td>{{ block.txDecoded.length }}</td>
+                    <td>{{ block.proposer }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="display: flex; justify-content: center">
+                <button
+                    @click="getPreviousPage()"
+                    :disabled="!hasPreviousPage"
+                    class="button-27"
+                    role="button"
+                >
+                    Previous
+                </button>
+                <button
+                    @click="getNextPage()"
+                    :disabled="!hasNextPage"
+                    class="button-27"
+                    role="button"
+                >
+                    Next
+                </button>
             </div>
         </div>
     </div>
@@ -124,8 +123,10 @@ export default {
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
+    box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
+    border-radius: 9px;
+    padding: 12px;
 }
 
 .wrapper {
@@ -136,7 +137,7 @@ export default {
 }
 
 .styled-table thead tr {
-    background-color: black;
+    background-color: var(--primary-blue);
     color: #ffffff;
     text-align: left;
 }
@@ -153,14 +154,10 @@ export default {
     background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid black;
-}
 
 .button-27 {
     appearance: none;
-    background-color: #000000;
-    border: 2px solid #1a1a1a;
+    background-color: var(--primary-blue);
     border-radius: 15px;
     box-sizing: border-box;
     color: #ffffff;
