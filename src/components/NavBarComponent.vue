@@ -31,6 +31,7 @@ nav {
     margin: 0;
     z-index: 100;
     background-image: url("../assets/nav-overlay.png");
+    height: 117px;
 }
 
 .active-link {
