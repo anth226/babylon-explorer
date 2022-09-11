@@ -12,8 +12,8 @@ export default {
             <div  class="navbar-nav" style="margin: 0 1em">
                 <RouterLink to="/">HOME</RouterLink>
                 <RouterLink to="/blocks">BLOCKS & TXS</RouterLink>
-                <RouterLink to="/some-page">CHECKPOINTS</RouterLink>
-                <RouterLink to="/some-page">VALIDATORS</RouterLink>
+                <RouterLink to="/checkpoints">CHECKPOINTS</RouterLink>
+                <RouterLink to="/validators">VALIDATORS</RouterLink>
             </div>
         </div>
     </nav>

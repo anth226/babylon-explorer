@@ -29,6 +29,16 @@ const routes = [
         name: 'metrics',
         component: () => import(/* webpackChunkName: "MetricsListView" */ '../views/Metrics/MetricsListView.vue')
     },
+    {
+        path: '/checkpoints',
+        name: 'checkpoints',
+        component: () => import(/* webpackChunkName: "CheckpointsView" */ '../views/checkpoints/CheckpointsView.vue')
+    },
+    {
+        path: '/validators',
+        name: 'validators',
+        component: () => import(/* webpackChunkName: "ValidatorsView" */ '../views/validators/ValidatorsView.vue')
+    }
     // {
     //     path: "/about",
     //     name: "about",
