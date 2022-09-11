@@ -1,14 +1,20 @@
 <script lang="ts">
 
 export default {
-    name: 'NavbarComponent',
+    name: 'NavbarExtendedComponent',
+    data: () => ({
+        noActiveLink: true
+    })
 }
 </script>
 
 <template>
+    <img class="overlay" src="../assets/nav-overlay.png" alt="nav-overlay" />
     <nav class="navbar-expand-lg px-5">
         <div class="flex justify-around items-center">
-            <img src="../assets/nav-logo.svg" alt="logo">
+            <RouterLink to="/" :class="noActiveLink ? 'no-active-link' : ''">
+                <img src="../assets/nav-logo.svg" alt="logo">
+            </RouterLink>
             <div  class="navbar-nav" style="margin: 0 1em">
                 <RouterLink to="/">HOME</RouterLink>
                 <RouterLink to="/blocks">BLOCKS & TXS</RouterLink>
@@ -27,8 +33,20 @@ nav {
     z-index: 100;
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 41%;
+}
+
 .active-link {
     border-bottom: 3px solid #23A5DC;
+}
+
+.no-active-link {
+    border: none;
 }
 
 a {

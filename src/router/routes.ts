@@ -15,20 +15,30 @@ const routes = [
         component: () => import(/* webpackChunkName: "SingleBlockView" */ '../views/blocks/BlockView.vue')
     },
     {
-        path: "/epochs",
-        name: "epochs",
+        path: '/epochs',
+        name: 'epochs',
         component: () => import(/* webpackChunkName: "EpochingListView" */ '../views/Epoching/EpochingListView.vue')
     },
     {
-        path: "/epochs/:epochNum",
-        name: "specificEpoch",
+        path: '/epochs/:epochNum',
+        name: 'specificEpoch',
         component: () => import(/* webpackChunkName: "SingleEpochDetailView" */ '../views/Epoching/EpochDetailView.vue')
     },
     {
-        path: "/metrics",
-        name: "metrics",
+        path: '/metrics',
+        name: 'metrics',
         component: () => import(/* webpackChunkName: "MetricsListView" */ '../views/Metrics/MetricsListView.vue')
     },
+    {
+        path: '/checkpoints',
+        name: 'checkpoints',
+        component: () => import(/* webpackChunkName: "CheckpointsView" */ '../views/checkpoints/CheckpointsView.vue')
+    },
+    {
+        path: '/validators',
+        name: 'validators',
+        component: () => import(/* webpackChunkName: "ValidatorsView" */ '../views/validators/ValidatorsView.vue')
+    }
     // {
     //     path: "/about",
     //     name: "about",
