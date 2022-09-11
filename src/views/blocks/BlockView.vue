@@ -1,5 +1,9 @@
 <script>
+import NavBarComponent from '../../components/NavBarComponent.vue'
 export default {
+    components: {
+        NavBarComponent
+    },
     data() {
         return {
             loading: false,
@@ -66,75 +70,77 @@ export default {
 </script>
 
 <template>
-    <div class="blockview-container">
+    <NavBarComponent />
+    <div class="container mx-auto">
         <div v-if="loading" class="loading">Loading...</div>
 
         <div v-if="error" class="error">{{ error }}</div>
 
-        <div v-if="block" class="block-content">
-            <div>
-                <div class="block-title">
-                    <img src="../../assets/block.png" />
-                    <div style="font-size: 3em; margin-left: 0.2em">
-                        Block {{ block.height }}
+        <div class="shadow-2xl px-4 py-2 rounded-2xl mt-5">
+            <div v-if="block" class="block-content">
+                <div>
+                    <div class="block-title">
+                        <img src="../../assets/block.png" />
+                        <div style="font-size: 3em; margin-left: 0.2em">
+                            Block {{ block.height }}
+                        </div>
+                    </div>
+                    <div>{{ block.hash }}</div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between">
+                    <div v-if="block.height > 1">
+                        <button
+                            @click="directToPrevious()"
+                            class="button-64"
+                            role="button"
+                        >
+                            <span class="text">Previous</span>
+                        </button>
+                    </div>
+                    <div v-if="block.height < this.chainHeight">
+                        <button
+                            @click="directToNext()"
+                            class="button-64"
+                            role="button"
+                        >
+                            <span class="text">Next</span>
+                        </button>
                     </div>
                 </div>
-                <div>{{ block.hash }}</div>
-            </div>
 
-            <div style="display: flex; justify-content: space-between">
-                <div v-if="block.height > 1">
-                    <button
-                        @click="directToPrevious()"
-                        class="button-64"
-                        role="button"
-                    >
-                        <span class="text">Previous</span>
-                    </button>
+                <div class="stats-box">
+                    <hr />
+                    <div class="stats-box-row">
+                        <div>HEIGHT</div>
+                        <div>{{ block.height }}</div>
+                    </div>
+                    <hr />
+                    <div class="stats-box-row">
+                        <div>TIME</div>
+                        <div>{{ blockDate }}</div>
+                    </div>
+                    <hr />
+                    <div class="stats-box-row">
+                        <div>TRANSACTIONS</div>
+                        <div>{{ block.txDecoded.length }}</div>
+                    </div>
+                    <hr />
                 </div>
-                <div v-if="block.height < this.chainHeight">
-                    <button
-                        @click="directToNext()"
-                        class="button-64"
-                        role="button"
-                    >
-                        <span class="text">Next</span>
-                    </button>
-                </div>
-            </div>
 
-            <div class="stats-box">
-                <hr />
-                <div class="stats-box-row">
-                    <div>HEIGHT</div>
-                    <div>{{ block.height }}</div>
-                </div>
-                <hr />
-                <div class="stats-box-row">
-                    <div>TIME</div>
-                    <div>{{ blockDate }}</div>
-                </div>
-                <hr />
-                <div class="stats-box-row">
-                    <div>TRANSACTIONS</div>
-                    <div>{{ block.txDecoded.length }}</div>
-                </div>
-                <hr />
-            </div>
-
-            <div class="transaction-list">
-                <div style="font-weight: 700; font-size: 1.5em">
-                    Transactions
-                </div>
-                <table class="styled-table">
-                    <thead>
+                <div class="transaction-list">
+                    <div style="font-weight: 700; font-size: 1.5em">
+                        Transactions
+                    </div>
+                    <table class="styled-table">
+                        <thead>
                         <tr>
                             <th>Hash</th>
                             <th>Transaction Fee</th>
                             <th>Size</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         <tr v-for="tx in block.txDecoded" :key="tx.txHash">
                             <td>{{ tx.txHash }}</td>
                             <td>
@@ -144,8 +150,8 @@ export default {
                                 {{
                                     (
                                         (encodeURI(JSON.stringify(tx)).split(
-                                            /%..|./
-                                        ).length -
+                                                /%..|./
+                                            ).length -
                                             1) /
                                         1024
                                     ).toFixed(2)
@@ -153,8 +159,9 @@ export default {
                                 kB
                             </td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -187,46 +194,31 @@ export default {
 }
 
 .button-64 {
-    align-items: center;
-    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-    border: 0;
-    border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    appearance: none;
+    background-color: var(--primary-blue);
+    border-radius: 15px;
     box-sizing: border-box;
     color: #ffffff;
-    display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 14px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 100px;
-    padding: 3px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+    font-size: 13px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 60px;
+    text-align: center;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
+    will-change: transform;
 }
 
-.button-64:active,
-.button-64:hover {
-    outline: 0;
-}
-
-.button-64 span {
-    background-color: rgb(5, 6, 45);
-    padding: 10px 24px;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    transition: 300ms;
-}
 
 .button-64:hover span {
-    background: none;
-}
+    transform: translateY(-2px);}
 
 @media (min-width: 768px) {
     .button-64 {
@@ -246,7 +238,7 @@ export default {
 }
 
 .styled-table thead tr {
-    background-color: black;
+    background-color: var(--primary-blue);
     color: #ffffff;
     text-align: left;
 }
@@ -263,7 +255,4 @@ export default {
     background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid black;
-}
 </style>
