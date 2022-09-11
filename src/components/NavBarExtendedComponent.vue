@@ -31,6 +31,7 @@ nav {
     padding: 0;
     margin: 0;
     z-index: 100;
+    height: 117px;
 }
 
 .overlay {
