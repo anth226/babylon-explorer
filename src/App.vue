@@ -16,7 +16,6 @@ export default {
 
 <template>
     <div id="app">
-        <NavBarComponent />
         <transition
             mode="out-in"
             enter-active-class="animate__animated animate__fadeIn"

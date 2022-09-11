@@ -1,7 +1,11 @@
 <script lang="ts">
 
+import NavBarComponent from '../../components/NavBarComponent.vue'
 export default {
     name: 'BlocksView',
+    components: {
+        NavBarComponent
+    },
     data: function () {
         return {
             pageSize: 10,
@@ -59,6 +63,7 @@ export default {
 </script>
 
 <template>
+    <NavBarComponent />
     <div class="container mx-auto mt-5">
         <div class="wrapper">
             <div class="latest-blocks">
