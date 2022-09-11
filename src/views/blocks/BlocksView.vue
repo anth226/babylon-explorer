@@ -80,7 +80,7 @@ export default {
                 <tr v-for="block in currentPage" :key="block.height">
                     <td>
                         <RouterLink
-                            :to="{ path: '/blocks/' + block.height }"
+                            :to="{ path: '/block/' + block.height }"
                             class="font-bold"
                         >
                             {{ block.height }}
