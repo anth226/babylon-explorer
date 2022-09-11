@@ -69,9 +69,9 @@ export default {
                 commit("SET_NUM_VALIDATORS", total);
                 commit("SET_VALIDATOR_SET", validatorSet.validators);
 
-                var penalized = 0;
-                var unbonding = 0;
-                var bonded = 0;
+                let penalized = 0;
+                let unbonding = 0;
+                let bonded = 0;
                 for (let validator of validatorSet.validators) {
                     if (validator.jailed) {
                         penalized += 1;

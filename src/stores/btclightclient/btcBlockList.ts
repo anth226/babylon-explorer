@@ -1,5 +1,5 @@
 import { getMainChain } from "./api";
-import type { V1Beta1PageRequest } from "../types/pagination";
+// import type { V1Beta1PageRequest } from "../types/pagination";
 
 let limit = "10";
 

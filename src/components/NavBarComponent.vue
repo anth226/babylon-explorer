@@ -2,13 +2,18 @@
 
 export default {
     name: 'NavbarComponent',
+    data: () => ({
+        noActiveLink: true
+    })
 }
 </script>
 
 <template>
     <nav class="navbar-expand-lg px-5">
         <div class="flex justify-around items-center">
-            <img src="../assets/nav-logo.svg" alt="logo">
+            <RouterLink to="/" :class="noActiveLink ? 'no-active-link' : ''">
+                <img src="../assets/nav-logo.svg" alt="logo">
+            </RouterLink>
             <div  class="navbar-nav" style="margin: 0 1em">
                 <RouterLink to="/">HOME</RouterLink>
                 <RouterLink to="/blocks">BLOCKS & TXS</RouterLink>
@@ -25,10 +30,15 @@ nav {
     padding: 0;
     margin: 0;
     z-index: 100;
+    background-image: url("../assets/nav-overlay.png");
 }
 
 .active-link {
     border-bottom: 3px solid #23A5DC;
+}
+
+.no-active-link {
+    border: none;
 }
 
 a {

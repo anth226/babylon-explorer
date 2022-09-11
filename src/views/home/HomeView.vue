@@ -21,6 +21,7 @@ export default {
 </script>
 
 <template>
+    <NavBarComponent />
     <div class="wrapper pb-4">
         <img class="overlay" src="../../assets/nav-overlay.png" alt="nav-overlay" />
         <div class="container mx-auto pt-5">
@@ -45,10 +46,10 @@ export default {
 
 .overlay {
     position: absolute;
-    top: -10px;
+    top: -20px;
     left: 0;
     z-index: -1;
-    height: 40%;
+    height: 42%;
 }
 
 @media (max-width: 1600px) {
