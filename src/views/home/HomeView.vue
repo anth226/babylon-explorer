@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import ApprovalTable from './ApprovalTable.vue'
 import NavBarComponent from '../../components/NavBarExtendedComponent.vue'
 import BlockTable from './block-table/BlockTable.vue'
