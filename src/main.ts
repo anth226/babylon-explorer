@@ -19,4 +19,4 @@ app
     .use(store)
     .use(router)
     .use(VueLazyLoad)
-        .mount('#app')
+    .mount('#app')
