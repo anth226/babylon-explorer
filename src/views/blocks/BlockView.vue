@@ -57,12 +57,12 @@ export default {
         },
         directToPrevious() {
             this.$router.push({
-                path: "/blocks/" + (parseInt(this.block.height) - 1),
+                path: "/block/" + (parseInt(this.block.height) - 1),
             });
         },
         directToNext() {
             this.$router.push({
-                path: "/blocks/" + (parseInt(this.block.height) + 1),
+                path: "/block/" + (parseInt(this.block.height) + 1),
             });
         },
     },
