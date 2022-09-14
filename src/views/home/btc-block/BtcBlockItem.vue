@@ -18,13 +18,31 @@ export default {
             default: false
         }
     },
+    data: () => ({
+        hovered: false
+    }),
+    methods: {
+        hoverEnterBlock() {
+            if (!this.hasLogo) {
+                this.hovered = true
+            }
+        }
+    }
 }
 </script>
 
 <template>
-    <div :class="isDisabled ? 'disabled' : ''" class="block-item">
-            <div v-if="hasLogo" class="block-content items-center absolute">
-            <img class="item" src="../../../assets/btc-logo.svg" alt="item" />
+    <div
+        @mouseenter="hoverEnterBlock"
+        @mouseleave="hovered = false"
+        :class="isDisabled ? 'disabled' : ''"
+        class="block-item"
+    >
+        <div class="block-content items-center absolute">
+            <img v-if="hasLogo" class="item" src="../../../assets/btc-logo.svg" alt="item" />
+            <div v-if="hovered" class="block-height-inner-text">
+                Block <br> Height
+            </div>
         </div>
 
         <div v-if="!disableArrow" class="absolute">
@@ -88,6 +106,15 @@ export default {
     background: #F7931A;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.block-height-inner-text {
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    color: white;
+    font-weight: 600;
 }
 
 .disabled {

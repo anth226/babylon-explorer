@@ -72,7 +72,7 @@ export default {
 
             <div>
                 <BlockTableSection
-                    heading="LATEST BBN BLOCK"
+                    heading="latest btc block"
                     has-three-cols
                     col1="#"
                     col2="Hash"
@@ -139,6 +139,8 @@ export default {
                 </BlockTableSection>
             </div>
         </div>
+        TEST:
+
     </div>
 </template>
 
