@@ -29,7 +29,7 @@ Using the above configuration, start an instance of Babylon for a single node.
 babylond start --home ./.testnet/node0/babylond
 ```
 
-### Running the explorer
+### Running the explorer locally
 
 We need nginx in our project set up in order to address CORS policy
 issues of the prometheus metrics server.
@@ -52,9 +52,6 @@ brew install nginx
 nginx -c {vue_project_full_path}/config/nginx.conf
 ```
 
-#### Running locally
-
-
 To run the node for development purposes
 ```bash
 npm run dev
@@ -65,14 +62,9 @@ in your browser at `localhost:5173`
 
 #### Running using Docker
 
-First, build the Docker image:
-```bash
-docker build --tag babylonchain/babylon-explorer .
+Using docker-compose:
 ```
-
-Then, run it, forwarding port `8080` of the Docker instance to port `26662` of the local machine.
-```bash
-docker run --rm -p 26662:8080 babylonchain/babylon-explorer
+make localnet-start
 ```
 
 The explorer should be accessible at port `26661` on the host machine.

@@ -10,6 +10,7 @@ import prometheus from "./prometheus/index";
 import epoching from "./epoching/index";
 import checkpointing from "./checkpointing/index";
 import btclightclient from "./btclightclient/index";
+import btccheckpoint from "./btccheckpoint/index";
 
 // import generated from "./generated";
 
@@ -26,6 +27,7 @@ function init(store: any) {
     epoching(store);
     checkpointing(store);
     btclightclient(store);
+    btccheckpoint(store);
 }
 
 const store = createStore({

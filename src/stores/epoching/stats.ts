@@ -39,15 +39,15 @@ export default {
     },
     actions: {
         async init({ dispatch, rootGetters }) {
-            dispatch("getData")
+            dispatch("getCurrentEpochInformation");
             if (rootGetters["common/env/client"]) {
-                rootGetters["common/env/client"].on("newblock", () => {
-                    dispatch("getData")
-                })
+                rootGetters["common/env/client"].on("newEpoch", () => {
+                    dispatch("getCurrentEpochInformation");
+                });
             }
         },
 
-        async getData({ commit, rootGetters }) {
+        async getCurrentEpochInformation({ commit, rootGetters }) {
             try {
                 let currentEpochData = await getCurrentEpoch(
                     rootGetters["common/env/apiCosmos"]

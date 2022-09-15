@@ -1,11 +1,13 @@
-import Client from "../../client/SPClient"
+import Client from "../../client/SPClient";
+import networkConfig from "../../../../../config/networkconfig.json";
 
-const apiNode = "http://localhost:1317"
-const rpcNode = "http://localhost:26657"
-const wsNode = "ws://localhost:26657/websocket"
-const prometheusNode = "http://localhost:26661/prometheus"
-const addrPrefix = "cosmos"
-const chainId = "chain-test"
+const host = networkConfig.host;
+const apiNode = `http://${host}:${networkConfig.api.port}/${networkConfig.api.endpoint}`;
+const rpcNode = `http://${host}:${networkConfig.rpc.port}/${networkConfig.rpc.endpoint}`;
+const wsNode = `ws://${host}:${networkConfig.ws.port}/${networkConfig.ws.endpoint}`;
+const prometheusNode = `http://${host}:${networkConfig.prometheus.port}/${networkConfig.prometheus.endpoint}`;
+const addrPrefix = networkConfig.addrPrefix;
+const chainId = networkConfig.chainId;
 
 export default {
     namespaced: true,

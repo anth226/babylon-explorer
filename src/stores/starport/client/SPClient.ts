@@ -5,6 +5,36 @@ import type { AxiosPromise, AxiosResponse } from "axios";
 import { EventEmitter } from "events";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
+const customEvents = {
+    "babylon.epoching.v1.EventBeginEpoch.epoch_number": ["newEpoch"],
+    "babylon.epoching.v1.EventWrappedUndelegate": ["newWrappedUndelegate"],
+
+    "babylon.btclightclient.v1.EventBTCHeaderInserted.header": [
+        "newBTCHeaderInserted",
+    ],
+
+    "babylon.checkpointing.v1.EventCheckpointAccumulating.checkpoint": [
+        "newCheckpointStatusChange",
+        "newCheckpointAccumulating",
+    ],
+    "babylon.checkpointing.v1.EventCheckpointSealed.checkpoint": [
+        "newCheckpointStatusChange",
+        "newCheckpointSealed",
+    ],
+    "babylon.checkpointing.v1.EventCheckpointSubmitted.checkpoint": [
+        "newCheckpointStatusChange",
+        "newCheckpointSubmitted",
+    ],
+    "babylon.checkpointing.v1.EventCheckpointConfirmed.checkpoint": [
+        "newCheckpointStatusChange",
+        "newCheckpointConfirmed",
+    ],
+    "babylon.checkpointing.v1.EventCheckpointFinalized.checkpoint": [
+        "newCheckpointStatusChange",
+        "newCheckpointFinalized",
+    ],
+};
+
 export interface IClientConfig {
     apiAddr: string;
     rpcAddr: string;
@@ -19,17 +49,8 @@ export interface IFullRequestParams {
     query?: QueryParamsType;
     method: "GET" | "POST" | "PUT";
 }
-export interface IResponse {
-    data: string;
-}
-export interface ITypedResponse {
-    type: string;
-}
 export interface IAPIResponse {
     data: unknown;
-}
-export interface IParsedResponse {
-    data: ITypedResponse;
 }
 export default class SPClient extends EventEmitter {
     private apiAddr: string;
@@ -97,7 +118,7 @@ export default class SPClient extends EventEmitter {
     }
     private async connectivityTest(): Promise<void> {
         if (this.offline) {
-            this.emit("newblock", { dummy: true });
+            this.emit("newBlock", { dummy: true });
         }
         if (this.apiAddr) {
             try {
@@ -165,12 +186,44 @@ export default class SPClient extends EventEmitter {
                 params: ["tm.event = 'Tx'"],
             })
         );
+
+        // TODO: Need testing on ValidatorSetUpdates event
+        this.socket.send(
+            JSON.stringify({
+                jsonrpc: "2.0",
+                method: "subscribe",
+                id: "1",
+                params: ["tm.event = 'ValidatorSetUpdates'"],
+            })
+        );
     }
-    private onMessageWS(msg: IResponse): void {
-        const result: IParsedResponse = JSON.parse(msg.data).result;
-        // console.log(JSON.parse(msg.data));
-        if (result.data && result.data.type === "tendermint/event/NewBlock") {
-            this.emit("newblock", result);
+    private onMessageWS(msg): void {
+        const result = JSON.parse(msg.data).result;
+        // console.log(result);
+
+        // Tendermint generated events. No events will be emitted if non of these conditions are met.
+        if (result.data) {
+            if (result.data.type === "tendermint/event/NewBlock") {
+                this.emit("newBlock", result.data.value);
+            } else if (result.data.type === "tendermint/event/Tx") {
+                this.emit("newTx", result.data.value);
+            } else if (
+                result.data.type === "tendermint/event/ValidatorSetUpdates"
+            ) {
+                this.emit("newValidatorSetUpdates", result.data.value);
+            }
+        }
+
+        // Custom (Babylon) Events
+        if (result.events) {
+            for (let key in customEvents) {
+                let value = customEvents[key];
+                if (result.events.hasOwnProperty(key)) {
+                    for (let customEvent of value) {
+                        this.emit(customEvent, result.events[key]);
+                    }
+                }
+            }
         }
     }
     public async query(url: string, params = ""): Promise<unknown> {
