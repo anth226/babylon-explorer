@@ -3,7 +3,7 @@ import EpochBlock from './EpochBlock.vue'
 import CurvedArrow from './CurvedArrow.vue'
 
 export default {
-    name: 'Epochgrid',
+    name: 'EpochGrid',
     components: {
         EpochBlock,
         CurvedArrow
@@ -14,7 +14,7 @@ export default {
         hasCurvedArrow: false,
         isDisabled: false,
         longerArrow: false,
-        epochs: []
+        epochs: [],
     }),
     computed: {
         getCurrentEpoch() {
@@ -26,7 +26,18 @@ export default {
         }
     },
     watch: {
-        getCurrentEpoch(newValue, oldValue) {
+        epochs: {
+            deep: true,
+            handler() {
+                alert('slide next epoch from right')
+            }
+        }
+    },
+    methods: {
+        goRight() {
+
+        },
+        goLeft() {
 
         }
     }
@@ -45,7 +56,7 @@ export default {
         </div>
     </div>
     <div class="mt-5 pt-3 flex">
-        <div class="absolute">
+        <div @click="goLeft" class="absolute">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-square-fill arrow-left" viewBox="0 0 16 16">
                 <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
             </svg>
@@ -65,7 +76,7 @@ export default {
 
 
                     <!-- Epoch 1 -->
-                    <div class="animate__animated animate__backInRight main-section s1">
+                    <div class="main-section s1 animate__animated animate__backInRight">
                         <div class="flex items-center">
                             <EpochBlock
                                 has-arrow
@@ -184,18 +195,14 @@ export default {
 <!--                            </div>-->
 <!--                        </div>-->
 <!--                    </div>-->
-
-
                 </div>
             </div>
         </div>
-        <div class="absolute">
+        <div @click="goRight" class="absolute">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill arrow-right" viewBox="0 0 16 16">
                 <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
             </svg>
         </div>
-
-
     </div>
 </template>
 
