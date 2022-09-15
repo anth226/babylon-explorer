@@ -7,7 +7,7 @@ export default {
             currentEpoch: 0,
             epochBoundary: 0,
             epochInterval: 0,
-            epochs: ['epoch1', 'epoch2', 'epoch3']
+            epochs: []
         }
     },
     getters: {
@@ -70,5 +70,11 @@ export default {
                 throw new Error("Epoching: Can not get epoching data")
             }
         },
+
+        // async getEpochs({ commit, rootGetters }) {
+        //     try {
+        //         let epochData = await
+        //     }
+        // }
     },
 }
