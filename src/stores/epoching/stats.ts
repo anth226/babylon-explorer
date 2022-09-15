@@ -7,6 +7,7 @@ export default {
             currentEpoch: 0,
             epochBoundary: 0,
             epochInterval: 0,
+            epochs: ['epoch1', 'epoch2', 'epoch3']
         }
     },
     getters: {
@@ -17,9 +18,11 @@ export default {
             return state.epochBoundary
         },
         getEpochInterval: (state) => {
-            
             return state.epochInterval
         },
+        getLatestEpochs: (state) => {
+            return state.epochs
+        }
     },
     mutations: {
         SET_CURRENT_EPOCH(state, currentEpoch) {
@@ -31,10 +34,14 @@ export default {
         SET_EPOCH_INTERVAL(state, epochInterval) {
             state.epochInterval = epochInterval
         },
+        ADD_EPOCH(state, epoch) {
+            state.epochs.push(epoch)
+        },
         RESET_STATE(state) {
             state.currentEpoch = 0
             state.epochBoundary = 0
             state.epochInterval = 0
+            state.epochs = []
         },
     },
     actions: {

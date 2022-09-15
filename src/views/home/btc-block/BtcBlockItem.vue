@@ -16,7 +16,8 @@ export default {
         disableArrow: {
             type: Boolean,
             default: false
-        }
+        },
+        height: String
     },
     data: () => ({
         hovered: false
@@ -41,7 +42,7 @@ export default {
         <div class="block-content items-center absolute">
             <img v-if="hasLogo" class="item" src="../../../assets/btc-logo.svg" alt="item" />
             <div v-if="hovered" class="block-height-inner-text">
-                Block <br> Height
+                {{ height }}
             </div>
         </div>
 
@@ -111,8 +112,8 @@ export default {
 .block-height-inner-text {
     text-align: center;
     position: absolute;
-    top: 20px;
-    left: 18px;
+    top: 33px;
+    left: 22px;
     color: white;
     font-weight: 600;
 }
