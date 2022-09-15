@@ -11,6 +11,16 @@ export default {
         hasLogo: true,
         disableArrow: true
     }),
+    computed: {
+        getLatestBlocks() {
+            try {
+                return this.$store.getters['common/blocks/getBlocks'](10)
+            }
+            catch {
+                return {}
+            }
+        }
+    }
 }
 </script>
 
@@ -21,22 +31,9 @@ export default {
                 has-logo
                 disable-arrow
             />
-            <BtcBlockItem v-for="index in 5" :key="index" />
-            <BtcBlockItem
-                is-disabled
-            />
-            <BtcBlockItem
-                is-disabled
-            />
-            <BtcBlockItem
-                is-disabled
-            />
-            <BtcBlockItem
-                is-disabled
-            />
-            <BtcBlockItem
-                is-disabled
-            />
+            <div v-for="block in getLatestBlocks" :key="block.id">
+                <BtcBlockItem :height="block.height" />
+            </div>
         </div>
     </div>
 </template>

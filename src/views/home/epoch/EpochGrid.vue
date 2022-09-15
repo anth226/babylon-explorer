@@ -14,23 +14,34 @@ export default {
         hasCurvedArrow: false,
         isDisabled: false,
         longerArrow: false
-    })
+    }),
+    computed: {
+        getCurrentEpoch() {
+            try {
+                return this.$store.getters['epoching/stats/getCurrentEpoch']
+            } catch {
+                return 0
+            }
+        },
+        getLatestEpochs() {
+            try {
+                return this.$store.getters['epoching/stats/getLatestEpochs']
+            } catch {
+                return 0
+            }
+        }
+    }
 }
 </script>
 
 <template>
+    {{ getLatestEpochs }}
     <div class="mt-5 pt-3 flex">
-
-
-
         <div class="absolute">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-square-fill arrow-left" viewBox="0 0 16 16">
                 <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
             </svg>
         </div>
-
-
-
         <div class="flex">
             <!-- left part -->
             <div class="w-1/12 flex justify-end ml-5">
@@ -65,7 +76,7 @@ export default {
                         <div class="blank w-full bg-red-400"></div>
                         <div class="title-section w-full mt-3">
                             <div class="heading">
-                                Epoch 1
+                                Epoch {{ getCurrentEpoch  }}
                             </div>
                             <div class="subheading">
                                 (100 blocks)
