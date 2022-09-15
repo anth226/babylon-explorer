@@ -24,6 +24,11 @@ export default {
                 return 0
             }
         }
+    },
+    watch: {
+        getCurrentEpoch(newValue, oldValue) {
+
+        }
     }
 }
 </script>
@@ -60,7 +65,7 @@ export default {
 
 
                     <!-- Epoch 1 -->
-                    <div class="main-section s1">
+                    <div class="animate__animated animate__backInRight main-section s1">
                         <div class="flex items-center">
                             <EpochBlock
                                 has-arrow
@@ -84,7 +89,7 @@ export default {
                         <div class="blank w-full bg-red-400"></div>
                         <div class="title-section w-full mt-3">
                             <div class="heading">
-                                Epoch {{ getCurrentEpoch  }}
+                                Epoch {{ getCurrentEpoch }}
                             </div>
                             <div class="subheading">
                                 (100 blocks) : data
@@ -210,10 +215,6 @@ export default {
     height: 91px;
     background: var(--primary-blue);
     border-radius: 20px;
-}
-
-.container {
-    margin-top: 62px;
 }
 
 .title-section {
