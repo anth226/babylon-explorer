@@ -139,8 +139,6 @@ export default {
                 </BlockTableSection>
             </div>
         </div>
-        TEST:
-
     </div>
 </template>
 

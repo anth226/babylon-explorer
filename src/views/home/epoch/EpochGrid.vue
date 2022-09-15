@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import EpochBlock from './EpochBlock.vue'
 import CurvedArrow from './CurvedArrow.vue'
 
@@ -13,19 +13,13 @@ export default {
         hasLongArrow: false,
         hasCurvedArrow: false,
         isDisabled: false,
-        longerArrow: false
+        longerArrow: false,
+        epochs: []
     }),
     computed: {
         getCurrentEpoch() {
             try {
-                return this.$store.getters['epoching/stats/getCurrentEpoch']
-            } catch {
-                return 0
-            }
-        },
-        getLatestEpochs() {
-            try {
-                return this.$store.getters['epoching/stats/getLatestEpochs']
+                return this.epochs.push(this.$store.getters['epoching/stats/getCurrentEpoch'])
             } catch {
                 return 0
             }
@@ -35,7 +29,16 @@ export default {
 </script>
 
 <template>
-    {{ getLatestEpochs }}
+    <!-- TEST PART -->
+    <div class="mt-4">
+        Test:
+        <div class="mt-2">
+            No of epochs: {{ epochs.length }}
+        </div>
+        <div class="mt-2">
+            {{ epochs }}
+        </div>
+    </div>
     <div class="mt-5 pt-3 flex">
         <div class="absolute">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-square-fill arrow-left" viewBox="0 0 16 16">
@@ -49,9 +52,14 @@ export default {
                     <img class="item" src="../../../assets/bbl-logo.svg" alt="bbl-logo" />
                 </div>
             </div>
+
+
             <!-- right main part -->
             <div class=" w-11/12">
                 <div class="flex epoch-section">
+
+
+                    <!-- Epoch 1 -->
                     <div class="main-section s1">
                         <div class="flex items-center">
                             <EpochBlock
@@ -79,96 +87,103 @@ export default {
                                 Epoch {{ getCurrentEpoch  }}
                             </div>
                             <div class="subheading">
-                                (100 blocks)
+                                (100 blocks) : data
                             </div>
                         </div>
                     </div>
-                    <div class="main-section s2">
-                        <div class="flex items-center">
-                            <EpochBlock
-                                has-arrow
-                                has-long-arrow
-                                is-disabled
-                            />
-                            <EpochBlock
-                                has-arrow
-                                is-disabled
-                            />
-                            <div class="dots">
-                                ...
-                            </div>
-                            <EpochBlock
-                                is-disabled
-                            />
-                            <EpochBlock
-                                has-arrow
-                                is-disabled
-                            />
-                            <div class="capsul">
-                                <img class="circle" src="../../../assets/ellipse.svg" alt="ellipse" />
-                            </div>
-                        </div>
-                        <div class="blank w-full bg-red-400"></div>
-                        <div class="title-section w-full mt-3">
-                            <div class="heading">
-                                Epoch 2
-                            </div>
-                            <div class="subheading">
-                                (100 blocks)
-                            </div>
-                        </div>
-                    </div>
-                    <CurvedArrow
-                        curve-coordinates-top=-52
-                        curve-coordinates-left=300
-                        arrow-coordinates-top=-132
-                        arrow-coordinates-left=431
-                    />
-                    <CurvedArrow
-                        curve-coordinates-top=-52
-                        curve-coordinates-left=748
-                        arrow-coordinates-top=-132
-                        arrow-coordinates-left=921
-                        longer-arrow
-                    />
-                    <div class="main-section s3">
-                        <div class="flex items-center">
-                            <EpochBlock
-                                has-arrow
-                                has-long-arrow
-                                is-disabled
-                            />
-                            <EpochBlock
-                                has-arrow
-                                is-disabled
-                            />
-                            <div class="dots">
-                                ...
-                            </div>
-                            <EpochBlock
-                                is-disabled
-                            />
-                            <EpochBlock
-                                has-arrow
-                                is-disabled
-                            />
-                        </div>
-                        <div class="blank w-full bg-red-400"></div>
-                        <div class="title-section w-full mt-3">
-                            <div class="heading">
-                                Epoch 3
-                            </div>
-                            <div class="subheading">
-                                (100 blocks)
-                            </div>
-                        </div>
-                    </div>
+
+                    <!-- Epoch 2 -->
+<!--                    <div class="main-section s2">-->
+<!--                        <div class="flex items-center">-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                has-long-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <div class="dots">-->
+<!--                                ...-->
+<!--                            </div>-->
+<!--                            <EpochBlock-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <div class="capsul">-->
+<!--                                <img class="circle" src="../../../assets/ellipse.svg" alt="ellipse" />-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="blank w-full bg-red-400"></div>-->
+<!--                        <div class="title-section w-full mt-3">-->
+<!--                            <div class="heading">-->
+<!--                                Epoch 2-->
+<!--                            </div>-->
+<!--                            <div class="subheading">-->
+<!--                                (100 blocks)-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                    <CurvedArrow-->
+<!--                        curve-coordinates-top=-52-->
+<!--                        curve-coordinates-left=300-->
+<!--                        arrow-coordinates-top=-132-->
+<!--                        arrow-coordinates-left=431-->
+<!--                    />-->
+
+
+<!--                    <CurvedArrow-->
+<!--                        curve-coordinates-top=-52-->
+<!--                        curve-coordinates-left=748-->
+<!--                        arrow-coordinates-top=-132-->
+<!--                        arrow-coordinates-left=921-->
+<!--                        longer-arrow-->
+<!--                    />-->
+
+                    <!-- Epoch 3 -->
+<!--                    <div class="main-section s3">-->
+<!--                        <div class="flex items-center">-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                has-long-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <div class="dots">-->
+<!--                                ...-->
+<!--                            </div>-->
+<!--                            <EpochBlock-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                            <EpochBlock-->
+<!--                                has-arrow-->
+<!--                                is-disabled-->
+<!--                            />-->
+<!--                        </div>-->
+<!--                        <div class="blank w-full bg-red-400"></div>-->
+<!--                        <div class="title-section w-full mt-3">-->
+<!--                            <div class="heading">-->
+<!--                                Epoch 3-->
+<!--                            </div>-->
+<!--                            <div class="subheading">-->
+<!--                                (100 blocks)-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
                 </div>
             </div>
         </div>
-
-
-
         <div class="absolute">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill arrow-right" viewBox="0 0 16 16">
                 <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
@@ -191,7 +206,7 @@ export default {
 }
 
 .big-block  {
-    width: 91px;
+    width: 746px;
     height: 91px;
     background: var(--primary-blue);
     border-radius: 20px;

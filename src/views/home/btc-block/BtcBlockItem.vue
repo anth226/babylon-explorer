@@ -20,7 +20,7 @@ export default {
         height: String
     },
     data: () => ({
-        hovered: false
+        hovered: false,
     }),
     methods: {
         hoverEnterBlock() {
@@ -42,7 +42,12 @@ export default {
         <div class="block-content items-center absolute">
             <img v-if="hasLogo" class="item" src="../../../assets/btc-logo.svg" alt="item" />
             <div v-if="hovered" class="block-height-inner-text">
-                {{ height }}
+                <div class="block-height-inner-subtext">
+                    Height:
+                </div>
+                <div>
+                    {{ height }}
+                </div>
             </div>
         </div>
 
@@ -112,10 +117,17 @@ export default {
 .block-height-inner-text {
     text-align: center;
     position: absolute;
-    top: 33px;
-    left: 22px;
+    top: 20px;
+    left: 20px;
     color: white;
+    font-size: 18px;
     font-weight: 600;
+}
+
+.block-height-inner-subtext {
+    font-weight: 100;
+    font-size: 12px;
+    margin-bottom: 2px;
 }
 
 .disabled {
