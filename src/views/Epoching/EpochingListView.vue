@@ -97,10 +97,10 @@ export default {
         // It is calculated by finding how many epochs away it is from the current epoch,
         // and multiply that by the epoch interval. Subtract this number by the current epoch boundary we can get our desired result
         endBlock(epochNum) {
-            return (
+            var output =
                 this.staticEpochBoundary -
-                (this.staticLatestEpoch - epochNum) * this.staticEpochInterval
-            );
+                (this.staticLatestEpoch - epochNum) * this.staticEpochInterval;
+            return output;
         },
     },
 
