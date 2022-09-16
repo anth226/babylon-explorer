@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-// import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
@@ -10,10 +9,8 @@ import 'animate.css'
 import VueLazyLoad from 'vue-lazyload'
 
 const app = createApp(App)
-// app.use(createPinia())
 
 app.provide("$store", store)
-
 
 app
     .use(store)

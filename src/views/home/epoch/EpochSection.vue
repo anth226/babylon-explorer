@@ -4,7 +4,7 @@ import EpochBlock from './EpochBlock.vue'
 export default {
     name: 'EpochSection',
     components: {
-        // EpochBlock
+        EpochBlock
     }
 }
 </script>
@@ -21,8 +21,7 @@ export default {
             <div class="dots">
                 ...
             </div>
-            <EpochBlock
-            />
+            <EpochBlock />
             <EpochBlock
                 has-arrow
                 has-curved-arrow
