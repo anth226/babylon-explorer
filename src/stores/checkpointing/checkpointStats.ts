@@ -1,20 +1,77 @@
-import { getRawCheckpoint } from "./api";
+import { getRawCheckpoint, getRecentEpochStatusCount } from "./api";
+import { getCurrentEpoch } from "../epoching/api";
 export default {
     namespaced: true,
+    state() {
+        return {
+            CKPT_STATUS_ACCUMULATING: 0,
+            CKPT_STATUS_SEALED: 0,
+            CKPT_STATUS_SUBMITTED: 0,
+            CKPT_STATUS_CONFIRMED: 0,
+            CKPT_STATUS_FINALIZED: 0,
+        };
+    },
+    getters: {
+        getEpochStatusCount: (state) => {
+            return state;
+        },
+    },
+    mutations: {
+        SET_EPOCH_STATUS_COUNT(state, counts) {
+            // resetting
+            for (let key in state) {
+                state[key] = 0;
+            }
+
+            for (let key in counts) {
+                let value = counts[key];
+                state[key] = value;
+            }
+        },
+    },
     actions: {
-        async getRawCheckpoint({ rootGetters }, epoch_num) {
+        async init({ dispatch, rootGetters }) {
+            dispatch("getCheckpointStatus");
+            if (rootGetters["common/env/client"]) {
+                rootGetters["common/env/client"].on(
+                    "newCheckpointStatusChange",
+                    () => {
+                        dispatch("getCheckpointStatus");
+                    }
+                );
+            }
+        },
+
+        async getCheckpointStatus({ commit, rootGetters }) {
+            try {
+                let currentEpochData = await getCurrentEpoch(
+                    rootGetters["common/env/apiCosmos"]
+                );
+                let info = await getRecentEpochStatusCount(
+                    rootGetters["common/env/apiCosmos"],
+                    currentEpochData.current_epoch - 1
+                );
+                commit("SET_EPOCH_STATUS_COUNT", info.status_count);
+            } catch {
+                new Error(
+                    "CheckpointStats: Unable to retrieve accumulated checkpoint status information"
+                );
+            }
+        },
+
+        async getRawCheckpoint({ rootGetters }, epochNum) {
             return new Promise(async (resolve, reject) => {
                 try {
                     let rawCheckpoint = await getRawCheckpoint(
                         rootGetters["common/env/apiCosmos"],
-                        epoch_num
+                        epochNum
                     );
                     resolve(rawCheckpoint);
                 } catch {
                     reject(
                         new Error(
                             "CheckpointStats: Unable to retrieve checkpoint information. epoch_num: " +
-                                epoch_num
+                                epochNum
                         )
                     );
                 }

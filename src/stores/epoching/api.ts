@@ -67,7 +67,7 @@ export async function getEpochMsgs(
         return epochMsgs.data;
     } catch {
         throw new Error(
-            "Checkpointing: Unable to retrieve the checkpointing list information"
+            "Checkpointing: Unable to retrieve the epoch message information"
         );
     }
 }

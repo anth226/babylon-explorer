@@ -1,4 +1,7 @@
 import { getValidatorSet } from "./api";
+import paramConfig from "../../../config/paramconfig.json";
+
+let validatorSetLimit = paramConfig.validatorSetLimit;
 
 export default {
     namespaced: true,
@@ -14,26 +17,29 @@ export default {
         };
     },
     getters: {
-        numValidators: (state) => {
+        getNumValidators: (state) => {
             return state.num_validators;
         },
-        numActive: (state) => {
+        getNumActive: (state) => {
             return state.num_active;
         },
-        numStandby: (state) => {
+        getNumStandby: (state) => {
             return state.num_standby;
         },
-        numUnbonding: (state) => {
+        getNumUnbonding: (state) => {
             return state.num_unbonding;
         },
-        numUnbonded: (state) => {
+        getNumUnbonded: (state) => {
             return state.num_unbonded_24h;
         },
-        numPenalized: (state) => {
+        getNumPenalized: (state) => {
             return state.num_penalized;
         },
-        validatorSet: (state) => {
+        getValidatorSet: (state) => {
             return state.validator_set;
+        },
+        getAllValidatorStatistic: (state) => {
+            return state;
         },
     },
     mutations: {
@@ -60,12 +66,24 @@ export default {
         },
     },
     actions: {
+        async init({ dispatch, rootGetters }) {
+            dispatch("getValidatorSetStatus");
+            if (rootGetters["common/env/client"]) {
+                rootGetters["common/env/client"].on(
+                    "newValidatorSetUpdates",
+                    () => {
+                        dispatch("getValidatorSetStatus");
+                    }
+                );
+            }
+        },
         async getValidatorSetStatus({ commit, rootGetters }) {
             try {
                 const validatorSet = await getValidatorSet(
                     rootGetters["common/env/apiCosmos"]
                 );
-                let total = validatorSet.validators.length;
+                // TODO: add pagination
+                let total = validatorSet.validators.length; //change to the pagination total
                 commit("SET_NUM_VALIDATORS", total);
                 commit("SET_VALIDATOR_SET", validatorSet.validators);
 
@@ -85,7 +103,11 @@ export default {
                 }
                 commit("SET_NUM_PENALIZED", penalized);
                 commit("SET_NUM_UNBONDING", unbonding);
-                commit("SET_NUM_ACTIVE", bonded);
+                commit("SET_NUM_ACTIVE", Math.min(validatorSetLimit, bonded));
+                commit(
+                    "SET_NUM_STANDBY",
+                    bonded - Math.min(validatorSetLimit, bonded)
+                );
             } catch {
                 throw new Error(
                     "Validators: Can not get the latest set of validators"

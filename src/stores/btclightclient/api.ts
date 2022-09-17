@@ -24,3 +24,14 @@ export async function getMainChain(
         throw new Error("BtcLightClient: Unable to retrieve mainChain");
     }
 }
+
+export async function getChainTip(apiCosmos) {
+    try {
+        let chainTip = await axios.get(
+            apiCosmos + btclightclientQueryPrefix + "tip"
+        );
+        return chainTip.data;
+    } catch {
+        throw new Error("BtcLightClient: Unable to retrieve the tip");
+    }
+}

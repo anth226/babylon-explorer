@@ -1,0 +1,22 @@
+{
+	"host": "localhost",
+
+	"api": {
+		"port": "1317",
+		"endpoint": ""
+	},
+	"rpc": {
+		"port": "26657",
+		"endpoint": ""
+	},
+	"ws": {
+		"port": "26657",
+		"endpoint": "websocket"
+	},
+	"prometheus": {
+		"port": "26661",
+		"endpoint": "prometheus"
+	},
+	"addrPrefix": "cosmos",
+	"chainId": "chain-test"
+}

@@ -1,9 +1,5 @@
 <script>
 export default {
-    beforeMount() {
-        this.$store.dispatch("validators/validatorStats/getValidatorSetStatus");
-        this.$store.dispatch("btclightclient/btcBlockList/getBTCMainChain");
-    },
     computed: {
         chainHeight() {
             return this.$store.getters["common/blocks/getHeight"];
@@ -12,7 +8,7 @@ export default {
         numTotalTxs() {
             let chainId = this.$store.getters["common/env/chainId"];
             let parameter =
-                'tendermint_consensus_num_txs{chain_id="' + chainId + '"}';
+                'tendermint_consensus_total_txs{chain_id="' + chainId + '"}';
             return this.$store.getters["prometheus/metrics"][parameter];
         },
 

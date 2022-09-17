@@ -1,12 +1,12 @@
-<script>
-import EpochBlock from './EpochBlock.vue'
-import CurvedArrow from './CurvedArrow.vue'
+<script lang="ts">
+import EpochBlock from "./EpochBlock.vue";
+import CurvedArrow from "./CurvedArrow.vue";
 
 export default {
-    name: 'EpochGrid',
+    name: "Epochgrid",
     components: {
         EpochBlock,
-        CurvedArrow
+        CurvedArrow,
     },
     data: () => ({
         hasArrow: false,
@@ -206,9 +206,7 @@ export default {
     </div>
 </template>
 
-
 <style scoped>
-
 .item {
     position: relative;
     top: 17px;
