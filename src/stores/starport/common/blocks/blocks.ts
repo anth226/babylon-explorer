@@ -1,215 +1,219 @@
-import {sha256} from '@cosmjs/crypto'
-import {fromBase64, toHex} from '@cosmjs/encoding'
-import axios from 'axios'
+import { sha256 } from "@cosmjs/crypto";
+import { fromBase64, toHex } from "@cosmjs/encoding";
+import axios from "axios";
 
 function formatTx({
-  txHash = '',
-  messages = [],
-  memo = '',
-  signer_infos = [],
-  fee = {},
-  gas_used = null,
-  gas_wanted = null,
-  height = null,
-  code = 0,
-  log = null
+    txHash = "",
+    messages = [],
+    memo = "",
+    signer_infos = [],
+    fee = {},
+    gas_used = null,
+    gas_wanted = null,
+    height = null,
+    code = 0,
+    log = null,
 }) {
-  return {
-    txHash,
-    body: {
-      messages,
-      memo
-    },
-    auth_info: {
-      signer_infos,
-      fee
-    },
-    meta: {
-      gas_used,
-      gas_wanted,
-      height,
-      code,
-      log
-    }
-  }
+    return {
+        txHash,
+        body: {
+            messages,
+            memo,
+        },
+        auth_info: {
+            signer_infos,
+            fee,
+        },
+        meta: {
+            gas_used,
+            gas_wanted,
+            height,
+            code,
+            log,
+        },
+    };
 }
 
 async function getTx(apiCosmos, apiTendermint, encodedTx) {
-  const txHash = sha256(fromBase64(encodedTx))
-  try {
-    const rpcRes = await axios.get(
-      apiTendermint + '/tx?hash=0x' + toHex(txHash)
-    )
-    const apiRes = await axios.get(
-      apiCosmos + '/cosmos/tx/v1beta1/txs/' + toHex(txHash)
-    )
-    return { rpcRes, apiRes, txHash: toHex(txHash).toUpperCase() }
-  } catch (e) {
-    throw 'Error fetching TX data'
-  }
+    const txHash = sha256(fromBase64(encodedTx));
+    try {
+        const rpcRes = await axios.get(
+            apiTendermint + "/tx?hash=0x" + toHex(txHash)
+        );
+        const apiRes = await axios.get(
+            apiCosmos + "/cosmos/tx/v1beta1/txs/" + toHex(txHash)
+        );
+        return { rpcRes, apiRes, txHash: toHex(txHash).toUpperCase() };
+    } catch (e) {
+        throw "Error fetching TX data";
+    }
 }
 async function decodeTx(apiCosmos, apiTendermint, encodedTx) {
-  let fullTx
-  let retries = 0
-  while (!fullTx && retries < 5) {
-    try {
-      fullTx = await getTx(apiCosmos, apiTendermint, encodedTx)
-    } catch (e) {
-      retries++
-      await new Promise((resolve) => {
-        setTimeout(resolve, 2000)
-      })
+    let fullTx;
+    let retries = 0;
+    while (!fullTx && retries < 5) {
+        try {
+            fullTx = await getTx(apiCosmos, apiTendermint, encodedTx);
+        } catch (e) {
+            retries++;
+            await new Promise((resolve) => {
+                setTimeout(resolve, 2000);
+            });
+        }
     }
-  }
-  const { data } = fullTx.rpcRes
-  const { height, tx_result } = data.result
-  const { code, log, gas_used, gas_wanted } = tx_result
-  const { body, auth_info } = fullTx.apiRes.data.tx
-  const { messages, memo } = body
+    const { data } = fullTx.rpcRes;
+    const { height, tx_result } = data.result;
+    const { code, log, gas_used, gas_wanted } = tx_result;
+    const { body, auth_info } = fullTx.apiRes.data.tx;
+    const { messages, memo } = body;
 
-  return formatTx({
-    txHash: fullTx.txHash,
-    messages,
-    memo,
-    signer_infos: auth_info.signer_infos,
-    fee: auth_info.fee,
-    gas_used,
-    gas_wanted,
-    height,
-    code,
-    log
-  })
+    return formatTx({
+        txHash: fullTx.txHash,
+        messages,
+        memo,
+        signer_infos: auth_info.signer_infos,
+        fee: auth_info.fee,
+        gas_used,
+        gas_wanted,
+        height,
+        code,
+        log,
+    });
 }
 
 export default {
-  namespaced: true,
-  state() {
-    return {
-      blocks: [],
-      height: 0,
-      size: 20
-    }
-  },
-  getters: {
-    getHeight: (state) => {
-      return state.height
+    namespaced: true,
+    state() {
+        return {
+            blocks: [],
+            height: 0,
+            size: 20,
+        };
     },
+    getters: {
+        getHeight: (state) => {
+            return state.height;
+        },
 
-    getBlocks: (state) => (howmany) => {
-      return [...state.blocks]
-        .sort((a, b) => b.height - a.height)
-        .slice(0, howmany)
+        getBlocks: (state) => (howmany) => {
+            return [...state.blocks]
+                .sort((a, b) => b.height - a.height)
+                .slice(0, howmany);
+        },
+        getBlockByHeight: (state) => (height) => {
+            return state.blocks.find((x) => x.height == height) || {};
+        },
     },
-    getBlockByHeight: (state) => (height) => {
-      return state.blocks.find((x) => x.height == height) || {}
-    }
-  },
-  mutations: {
-    ADD_BLOCK(state, block) {
-      state.height = Math.max(state.height, block.height)
-      state.blocks.push(block)
-      if (state.blocks.length > state.size) {
-        state.blocks.shift()
-      }
+    mutations: {
+        ADD_BLOCK(state, block) {
+            state.height = Math.max(state.height, block.height);
+            state.blocks.splice(0, 0, block);
+            if (state.blocks.length > state.size) {
+                state.blocks.pop();
+            }
+        },
+        RESET_STATE(state) {
+            state.blocks = [];
+        },
+        SET_SIZE(state, size) {
+            state.size = size;
+        },
     },
-    RESET_STATE(state) {
-      state.blocks = []
+    actions: {
+        async init({ dispatch, rootGetters }) {
+            try {
+                const status = await axios.get(
+                    rootGetters["common/env/apiTendermint"] + "/status"
+                );
+                const height = status.data.result.sync_info.latest_block_height;
+                for (let i = Math.max(height - 20, 0) + 1; i <= height; i++) {
+                    let blockData = await axios.get(
+                        rootGetters["common/env/apiTendermint"] +
+                            "/block?height=" +
+                            i
+                    );
+                    dispatch("addBlock", blockData);
+                }
+            } catch (e) {
+                throw new Error(
+                    "Blocks: Can not fetch the latest block during init"
+                );
+            }
+
+            if (rootGetters["common/env/client"]) {
+                rootGetters["common/env/client"].on("newBlock", (data) => {
+                    dispatch("addBlockFromSocket", data);
+                });
+            }
+        },
+
+        async addBlock({ commit, rootGetters }, blockData) {
+            try {
+                const txDecoded = blockData.data.result.block.data.txs.map(
+                    async (tx) => {
+                        const dec = await decodeTx(
+                            rootGetters["common/env/apiCosmos"],
+                            rootGetters["common/env/apiTendermint"],
+                            tx
+                        );
+                        return dec;
+                    }
+                );
+                const txs = await Promise.all(txDecoded);
+
+                const block = {
+                    height: blockData.data.result.block.header.height,
+                    timestamp: blockData.data.result.block.header.time,
+                    hash: blockData.data.result.block_id.hash,
+                    details: blockData.data.result.block,
+                    proposer:
+                        blockData.data.result.block.header.proposer_address,
+                    txDecoded: txs,
+                };
+
+                commit("ADD_BLOCK", block);
+            } catch (e) {
+                throw new Error(
+                    "Blocks:AddBlock Could not add block. RPC node unavailable"
+                );
+            }
+        },
+
+        async addBlockFromSocket({ commit, rootGetters }, blockData) {
+            try {
+                const blockDetails = await axios.get(
+                    rootGetters["common/env/apiTendermint"] +
+                        "/block?height=" +
+                        blockData.block.header.height
+                );
+                const txDecoded = blockData.block.data.txs.map(async (tx) => {
+                    const dec = await decodeTx(
+                        rootGetters["common/env/apiCosmos"],
+                        rootGetters["common/env/apiTendermint"],
+                        tx
+                    );
+                    return dec;
+                });
+                const txs = await Promise.all(txDecoded);
+                const block = {
+                    height: blockData.block.header.height,
+                    timestamp: blockData.block.header.time,
+                    hash: blockDetails.data.result.block_id.hash,
+                    details: blockData.block,
+                    proposer: blockData.block.header.proposer_address,
+                    txDecoded: txs,
+                };
+
+                commit("ADD_BLOCK", block);
+            } catch (e) {
+                throw new Error(
+                    "Blocks:AddBlock Could not add block. RPC node unavailable"
+                );
+            }
+        },
+
+        resetState({ commit }) {
+            commit("RESET_STATE");
+        },
     },
-    SET_SIZE(state, size) {
-      state.size = size
-    }
-  },
-  actions: {
-    async init({ dispatch, rootGetters }) {
-      try{
-        const status = await axios.get(rootGetters['common/env/apiTendermint'] +'/status')
-        const height = status.data.result.sync_info.latest_block_height
-        for(let i = height; i>Math.max(height-20, 0); i--){
-          let blockData = await axios.get(rootGetters['common/env/apiTendermint'] +'/block?height=' + i)
-          dispatch('addBlock', blockData)
-        }
-      } catch (e) {
-        throw new Error(
-          'Blocks: Can not fetch the latest block during init'
-        )
-      }
-
-      if (rootGetters['common/env/client']) {
-        rootGetters['common/env/client'].on('newblock', (data) => {
-          dispatch('addBlockFromSocket', data)
-        })
-      }
-    },
-
-    async addBlock({ commit, rootGetters }, blockData){
-      try {
-        const txDecoded = blockData.data.result.block.data.txs.map(
-          async (tx) => {
-            return await decodeTx(
-                rootGetters['common/env/apiCosmos'],
-                rootGetters['common/env/apiTendermint'],
-                tx
-            )
-          }
-        )
-        const txs = await Promise.all(txDecoded)
-
-        const block = {
-          height: blockData.data.result.block.header.height,
-          timestamp: blockData.data.result.block.header.time,
-          hash: blockData.data.result.block_id.hash,
-          details: blockData.data.result.block,
-          proposer: blockData.data.result.block.header.proposer_address,
-          txDecoded: txs
-        }
-
-        commit('ADD_BLOCK', block)
-      } catch (e) {
-        throw new Error(
-          'Blocks:AddBlock Could not add block. RPC node unavailable'
-        )
-      }
-    },
-
-
-    async addBlockFromSocket({ commit, rootGetters }, blockData) {
-      try {
-        const blockDetails = await axios.get(
-          rootGetters['common/env/apiTendermint'] +
-            '/block?height=' +
-            blockData.data.value.block.header.height
-        )
-        const txDecoded = blockData.data.value.block.data.txs.map(
-          async (tx) => {
-            return await decodeTx(
-                rootGetters['common/env/apiCosmos'],
-                rootGetters['common/env/apiTendermint'],
-                tx
-            )
-          }
-        )
-        const txs = await Promise.all(txDecoded)
-
-        const block = {
-          height: blockData.data.value.block.header.height,
-          timestamp: blockData.data.value.block.header.time,
-          hash: blockDetails.data.result.block_id.hash,
-          details: blockData.data.value.block,
-          proposer: blockData.data.value.block.header.proposer_address,
-          txDecoded: txs
-        }
-
-        commit('ADD_BLOCK', block)
-      } catch (e) {
-        throw new Error(
-          'Blocks:AddBlock Could not add block. RPC node unavailable'
-        )
-      }
-    },
-
-
-    resetState({ commit }) {
-      commit('RESET_STATE')
-    }
-  }
-}
+};

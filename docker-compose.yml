@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  explorer:
+    container_name: explorer
+    image: "babylonchain/explorer"
+    networks:
+      localnet:
+        ipv4_address: "192.168.10.2"
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: "babylonchain/nginx-proxy"
+    ports:
+      - "26661:26661"
+    volumes:
+      - ./config/nginx-proxy/sample-nginx.conf:/etc/nginx/templates/explorer.conf.template
+    environment:
+      - LISTEN_PORT=26661
+      - BBN_NODE=host.docker.internal
+      - METRICS_PORT=26660
+      - EXPLORER_NODE=explorer
+      - EXPLORER_PORT=8080
+    networks:
+      localnet:
+        ipv4_address: "192.168.10.3"
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/25

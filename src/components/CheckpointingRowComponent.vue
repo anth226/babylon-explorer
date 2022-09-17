@@ -17,6 +17,10 @@ export default {
         chainHeight() {
             return parseInt(this.$store.getters["common/blocks/getHeight"]);
         },
+
+        showLink() {
+            return this.chainHeight > this.staticEndBlock;
+        },
     },
 
     methods: {
@@ -61,17 +65,36 @@ export default {
     },
 
     mounted: function () {
-        this.getStatus();
+        if (this.chainHeight == 0) {
+            this.unwatchchainHeight = this.$watch("chainHeight", (newVal) => {
+                if (newVal) {
+                    this.getStatus();
+                    this.unwatchchainHeight();
+                }
+            });
+        } else {
+            this.getStatus();
+        }
+
+        this.$watch("staticEndBlock", (newVal) => {
+            if (newVal) {
+                this.getStatus();
+                this.unwatchchainHeight();
+            }
+        });
     },
 };
 </script>
 
 <template>
     <tr>
-        <td>
+        <td v-if="showLink">
             <RouterLink :to="{ path: '/epochs/' + epochNum }">
                 {{ epochNum }}
             </RouterLink>
+        </td>
+        <td v-else>
+            {{ epochNum }}
         </td>
         <td>block {{ staticBeginBlock }} - block {{ staticEndBlock }}</td>
         <td>{{ checkpointStatus }}</td>

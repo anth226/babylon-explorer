@@ -3,34 +3,6 @@ import axios from "axios";
 
 let checkpointingQueryPrefix = "/babylon/checkpointing/v1/";
 
-/*
-Status:
-
-  // ACCUMULATING defines a checkpoint that is awaiting for BLS signatures.
-  CKPT_STATUS_ACCUMULATING = 0 [(gogoproto.enumvalue_customname) = "Accumulating"];
-  // SEALED defines a checkpoint that has accumulated sufficient BLS signatures.
-  CKPT_STATUS_SEALED = 1 [(gogoproto.enumvalue_customname) = "Sealed"];
-  // SUBMITTED defines a checkpoint that is included on BTC.
-  CKPT_STATUS_SUBMITTED = 2 [(gogoproto.enumvalue_customname) = "Submitted"];
-  // CONFIRMED defines a checkpoint that is k-deep on BTC.
-  CKPT_STATUS_CONFIRMED = 3 [(gogoproto.enumvalue_customname) = "Confirmed"];
-  // FINALIZED defines a checkpoint that is w-deep on BTC.
-  CKPT_STATUS_FINALIZED = 4 [(gogoproto.enumvalue_customname) = "Finalized"];
-
-/*
-
-/*
-Sample response:
-{
-  "rawCheckpoint": {
-    "ckpt": {
-      "epochNum": "1",
-      "lastCommitHash": "yfuNfUstx/fuoiXoJreHS7CglfqFYJt+K3Jss8Ozags="
-    }
-  }
-}
-*/
-
 export async function getRawCheckpoint(apiCosmos, epochNum) {
     try {
         let rawCheckpoint = await axios.get(
@@ -65,6 +37,24 @@ export async function getRawCheckpointList(
     } catch {
         throw new Error(
             "Checkpointing: Unable to retrieve the checkpointing list information"
+        );
+    }
+}
+
+// RecentEpochStatusCount queries the number of epochs with each status in recent epochs
+// epoch_count is the number of the most recent epochs to include in the aggregation
+export async function getRecentEpochStatusCount(apiCosmos, epochCount) {
+    try {
+        let recentEopchStatusCount = await axios.get(
+            apiCosmos + checkpointingQueryPrefix + "epochs:status_count",
+            { params: { epoch_count: epochCount } }
+        );
+        return recentEopchStatusCount.data;
+    } catch {
+        throw new Error(
+            "Checkpointing: Unable to retrieve the epoch status count for the most recent " +
+                epochCount +
+                " epochs"
         );
     }
 }

@@ -1,8 +1,8 @@
 <script>
-import NavBarComponent from '../../components/NavBarComponent.vue'
+import NavBarComponent from "../../components/NavBarComponent.vue";
 export default {
     components: {
-        NavBarComponent
+        NavBarComponent,
     },
     data() {
         return {
@@ -134,31 +134,34 @@ export default {
                     </div>
                     <table class="styled-table">
                         <thead>
-                        <tr>
-                            <th>Hash</th>
-                            <th>Transaction Fee</th>
-                            <th>Size</th>
-                        </tr>
+                            <tr>
+                                <th>Hash</th>
+                                <th>Transaction Fee</th>
+                                <th>Size</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="tx in block.txDecoded" :key="tx.txHash">
-                            <td>{{ tx.txHash }}</td>
-                            <td>
-                                {{ tx.auth_info.fee.amount[0].amount }} stakes
-                            </td>
-                            <td>
-                                {{
-                                    (
-                                        (encodeURI(JSON.stringify(tx)).split(
-                                                /%..|./
-                                            ).length -
-                                            1) /
-                                        1024
-                                    ).toFixed(2)
-                                }}
-                                kB
-                            </td>
-                        </tr>
+                            <tr v-for="tx in block.txDecoded" :key="tx.txHash">
+                                <td>{{ tx.txHash }}</td>
+                                <td>
+                                    {{
+                                        tx.auth_info.fee.amount[0].amount
+                                    }}
+                                    stakes
+                                </td>
+                                <td>
+                                    {{
+                                        (
+                                            (encodeURI(
+                                                JSON.stringify(tx)
+                                            ).split(/%..|./).length -
+                                                1) /
+                                            1024
+                                        ).toFixed(2)
+                                    }}
+                                    kB
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -202,8 +205,8 @@ export default {
     cursor: pointer;
     display: inline-block;
     font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-size: 13px;
     font-weight: 600;
     line-height: normal;
@@ -216,9 +219,9 @@ export default {
     will-change: transform;
 }
 
-
 .button-64:hover span {
-    transform: translateY(-2px);}
+    transform: translateY(-2px);
+}
 
 @media (min-width: 768px) {
     .button-64 {
@@ -254,5 +257,4 @@ export default {
 .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
-
 </style>
