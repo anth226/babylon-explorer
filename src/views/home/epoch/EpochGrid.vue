@@ -18,7 +18,7 @@ export default defineComponent({
         hasLongArrow: false,
         isDisabled: false,
         longerArrow: false,
-        epochs: [],
+        epochs: [] as Array<number>,
     }),
     computed: {
         getCurrentEpoch() {
@@ -30,7 +30,7 @@ export default defineComponent({
         }
     },
     watch: {
-        epochs: {
+        getCurrentEpoch: {
             deep: true,
             handler() {
                 // alert('slide next epoch from right')

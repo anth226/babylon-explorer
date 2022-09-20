@@ -1,11 +1,6 @@
 import { getCurrentEpoch, getParams } from "./api"
+import type { StatsModuleState } from '@/stores/epoching/types'
 
-export interface StatsModuleState {
-    currentEpoch: number,
-    epochBoundary: number,
-    epochInterval: number,
-    epochs: number[]
-}
 
 export default {
     namespaced: true,
@@ -18,16 +13,16 @@ export default {
     } as StatsModuleState,
 
     getters: {
-        getCurrentEpoch:(state): number => {
+        getCurrentEpoch:(state: StatsModuleState): number => {
             return state.currentEpoch
         },
-        getEpochBoundary: (state) => {
+        getEpochBoundary: (state: StatsModuleState): number => {
             return state.epochBoundary
         },
-        getEpochInterval: (state) => {
+        getEpochInterval: (state: StatsModuleState): number => {
             return state.epochInterval
         },
-        getLatestEpochs: (state) => {
+        getLatestEpochs: (state: StatsModuleState): number[] => {
             return state.epochs
         }
     },

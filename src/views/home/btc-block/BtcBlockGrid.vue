@@ -54,7 +54,7 @@ export default defineComponent({
 <style scoped>
 .scrollable-container {
     display: flex;
-    padding: 4px;
+    padding: 4px 10px;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
