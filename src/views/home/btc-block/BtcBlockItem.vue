@@ -58,13 +58,13 @@ export default defineComponent({
     position: relative;
     width: 8px;
     left: 7px;
-    bottom: 5px;
+    bottom: 6px;
 }
 
 .capsul-arrow {
     position: relative;
     width: 8px;
-    top: 2px;
+    top: 1px;
     left: 1px;
 }
 

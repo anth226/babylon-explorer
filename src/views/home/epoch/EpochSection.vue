@@ -34,10 +34,10 @@ export default defineComponent({
         <div class="blank w-full bg-red-400"></div>
         <div class="title-section w-full mt-3">
             <div class="heading">
-                Epoch {{ getCurrentEpoch }}
+                Epoch [TODO:epochNum]
             </div>
             <div class="subheading">
-                (100 blocks) : data
+                (100 blocks)
             </div>
         </div>
     </div>
@@ -68,9 +68,9 @@ export default defineComponent({
     top: 9px;
 }
 
-/*.dots {*/
-/*    margin: 0 10px;*/
-/*}*/
+.dots {
+    margin: 0 10px;
+}
 
 .main-section {
     align-items: center;

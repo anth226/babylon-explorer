@@ -13,7 +13,7 @@ export default defineComponent({
         isDisabled: true,
         hasLogo: true,
         disableArrow: true,
-        blocks: []
+        blocks: [] as Array<number>
     }),
     computed: {
         getLatestBlocks() {
