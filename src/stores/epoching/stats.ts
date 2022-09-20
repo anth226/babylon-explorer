@@ -1,17 +1,24 @@
 import { getCurrentEpoch, getParams } from "./api"
 
+export interface StatsModuleState {
+    currentEpoch: number,
+    epochBoundary: number,
+    epochInterval: number,
+    epochs: number[]
+}
+
 export default {
     namespaced: true,
-    state() {
-        return {
-            currentEpoch: 0,
-            epochBoundary: 0,
-            epochInterval: 0,
-            epochs: []
-        }
-    },
+
+    state: {
+        currentEpoch: 0,
+        epochBoundary: 0,
+        epochInterval: 0,
+        epochs: []
+    } as StatsModuleState,
+
     getters: {
-        getCurrentEpoch:(state: number): number => {
+        getCurrentEpoch:(state): number => {
             return state.currentEpoch
         },
         getEpochBoundary: (state) => {
@@ -24,6 +31,7 @@ export default {
             return state.epochs
         }
     },
+
     mutations: {
         SET_CURRENT_EPOCH(state, currentEpoch) {
             state.currentEpoch = currentEpoch
@@ -44,6 +52,7 @@ export default {
             state.epochs = []
         },
     },
+
     actions: {
         async init({ dispatch, rootGetters }) {
             dispatch("getCurrentEpochInformation");
@@ -69,12 +78,6 @@ export default {
             } catch (e) {
                 throw new Error("Epoching: Can not get epoching data")
             }
-        },
-
-        // async getEpochs({ commit, rootGetters }) {
-        //     try {
-        //         let epochData = await
-        //     }
-        // }
-    },
+        }
+    }
 }
