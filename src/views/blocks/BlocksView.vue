@@ -53,7 +53,7 @@ export default {
             }
         },
         hasPreviousPage() {
-            return this.page != 0;
+            return this.page !== 0;
         },
         hasNextPage() {
             return this.$store.getters["blocks/blockList/getHasNext"];
@@ -129,13 +129,6 @@ export default {
     padding: 12px;
 }
 
-.wrapper {
-    background: white;
-    box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
-    border-radius: 9px;
-    padding: 12px;
-}
-
 .styled-table thead tr {
     background-color: var(--primary-blue);
     color: #ffffff;
@@ -153,7 +146,6 @@ export default {
 .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
-
 
 .button-27 {
     appearance: none;

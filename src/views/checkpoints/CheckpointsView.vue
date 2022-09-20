@@ -10,6 +10,6 @@ export default {
 </script>
 
 <template>
-    <NavBarComponent />
+    <NavBarComponent />       
     <h1>CheckpointsView</h1>
 </template>
