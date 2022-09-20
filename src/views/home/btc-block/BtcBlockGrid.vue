@@ -1,11 +1,13 @@
 <script lang="ts">
 import BtcBlockItem from './BtcBlockItem.vue'
+import SideArrowsComponent from '@/components/SideArrowsComponent.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
     name: 'BtcBlockGrid',
     components: {
-        BtcBlockItem
+        BtcBlockItem,
+        SideArrowsComponent
     },
     data: () => ({
         isDisabled: true,
@@ -34,6 +36,7 @@ export default defineComponent({
 
 <template>
     <div class="flex mt-5">
+        <SideArrowsComponent />
         <div class="mt-1 mr-1">
             <BtcBlockItem
                 has-logo

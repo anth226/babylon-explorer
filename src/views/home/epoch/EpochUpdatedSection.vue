@@ -10,12 +10,6 @@ export default defineComponent({
     data: () => ({
         epochs: []
     }),
-    props: {
-        distance: {
-            type: String,
-            required: true
-        }
-    },
     computed: {
         getCurrentEpoch() {
             try {
