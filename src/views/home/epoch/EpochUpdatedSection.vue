@@ -8,7 +8,7 @@ export default defineComponent({
         EpochBlock
     },
     data: () => ({
-        epochs: []
+        epochs: [] as Array<number>
     }),
     computed: {
         getCurrentEpoch() {
@@ -79,39 +79,14 @@ export default defineComponent({
     top: 9px;
 }
 
-/*.dots {*/
-/*    margin: 0 10px;*/
-/*}*/
+.dots {
+    margin: 0 10px;
+}
 
 .main-section {
     align-items: center;
     position: relative;
     top: 27px;
-}
-
-.circle {
-    border: 2px solid black;
-    position: relative;
-    top: 0;
-    right: 0;
-    height: 10px;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    width: 10px;
-}
-
-.capsul {
-    display: flex;
-    position: absolute;
-    left: 274px;
-    top: -12px;
-    justify-content: center;
-    border-radius: 50px;
-    background: white;
-    width: fit-content;
-    padding: 3px;
-    z-index: 2;
 }
 
 </style>
