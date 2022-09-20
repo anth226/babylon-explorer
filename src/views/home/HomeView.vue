@@ -1,19 +1,22 @@
 <script lang="ts">
-import ApprovalTable from "./ApprovalTable.vue";
-import NavBarComponent from "../../components/NavBarExtendedComponent.vue";
-import BlockTable from "./block-table/BlockTable.vue";
-import BtcBlockGrid from "./btc-block/BtcBlockGrid.vue";
-import EpochGrid from "./epoch/EpochGrid.vue";
+import ApprovalTable from './ApprovalTable.vue'
+import NavBarComponent from '../../components/NavBarExtendedComponent.vue'
+import BlockTable from './block-table/BlockTable.vue'
+import BtcBlockGrid from './btc-block/BtcBlockGrid.vue'
+import EpochGrid from './epoch/EpochGrid.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: "HomeView",
+    name: 'HomeView',
     components: {
         ApprovalTable,
         NavBarComponent,
         BlockTable,
         BtcBlockGrid,
-        EpochGrid,
+        EpochGrid
+    },
+    beforeMount() {
+        this.$store.dispatch("addresses/validatorStats/getNumValidators")
     },
 })
 </script>
@@ -21,16 +24,12 @@ export default defineComponent({
 <template>
     <NavBarComponent />
     <div class="wrapper pb-4">
-        <img
-            class="overlay"
-            src="../../assets/nav-overlay.png"
-            alt="nav-overlay"
-        />
+        <img class="overlay" src="../../assets/nav-overlay.png" alt="nav-overlay" />
         <div class="container mx-auto pt-5">
             <ApprovalTable />
         </div>
     </div>
-    <div class="container mx-auto">
+    <div>
         <div class="content">
             <div class="blocks-container">
                 <BtcBlockGrid />
@@ -70,7 +69,7 @@ export default defineComponent({
     }
 }
 
-@media (max-width: 1200px) {
+@media(max-width: 1200px) {
     .content {
         margin: 0;
     }
