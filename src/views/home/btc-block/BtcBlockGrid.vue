@@ -42,14 +42,13 @@ export default defineComponent({
                         : new Date().getTime()
 
                 function scroll(timestamp) {
-                    const timeElapsed = timestamp - startTime;
-                    const progress = Math.min(timeElapsed / duration, 1);
-                    element.scrollLeft = scrollPos + scrollPixels * progress;
+                    const timeElapsed = timestamp - startTime
+                    const progress = Math.min(timeElapsed / duration, 1)
+                    element.scrollLeft = scrollPos + scrollPixels * progress
                     if (timeElapsed < duration) {
-                        //Request for animation
-                        window.requestAnimationFrame(scroll);
+                        window.requestAnimationFrame(scroll)
                     } else {
-                        return;
+                        return
                     }
                 }
                 window.requestAnimationFrame(scroll)
