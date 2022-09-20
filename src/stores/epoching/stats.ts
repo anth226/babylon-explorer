@@ -11,7 +11,7 @@ export default {
         }
     },
     getters: {
-        getCurrentEpoch: (state) => {
+        getCurrentEpoch:(state: number): number => {
             return state.currentEpoch
         },
         getEpochBoundary: (state) => {

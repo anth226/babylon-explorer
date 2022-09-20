@@ -6,17 +6,33 @@ export default defineComponent({
     name: 'EpochSection',
     components: {
         EpochBlock
+    },
+    data: () => ({
+        epochs: []
+    }),
+    props: {
+        distance: {
+            type: String,
+            required: true
+        }
+    },
+    computed: {
+        getCurrentEpoch() {
+            try {
+                return this.epochs.push(this.$store.getters['epoching/stats/getCurrentEpoch'])
+            } catch {
+                return 0
+            }
+        }
     }
 })
 </script>
 
 <template>
-    <!--    <CurvedArrow />-->
-    <div class="main-section animate__animated animate__backInRight mx-4">
+    <div :style="{ left: distance + 'px' }" class="main-section animate__animated animate__backInRight mx-4">
         <div class="flex items-center">
             <EpochBlock
                 has-arrow
-                has-long-arrow
             />
             <EpochBlock
                 has-arrow
@@ -29,6 +45,7 @@ export default defineComponent({
                 has-arrow
                 has-curved-arrow
             />
+
 
         </div>
         <div class="blank w-full bg-red-400"></div>

@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 import CheckPointingRowComponent from "../../components/CheckpointingRowComponent.vue";
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     components: {
         CheckPointingRowComponent,
     },
@@ -139,7 +140,7 @@ export default {
             );
         }
     },
-};
+})
 </script>
 
 <template>

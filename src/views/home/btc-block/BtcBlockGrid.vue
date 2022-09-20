@@ -1,7 +1,8 @@
 <script lang="ts">
 import BtcBlockItem from './BtcBlockItem.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: 'BtcBlockGrid',
     components: {
         BtcBlockItem
@@ -9,38 +10,55 @@ export default {
     data: () => ({
         isDisabled: true,
         hasLogo: true,
-        disableArrow: true
+        disableArrow: true,
+        blocks: []
     }),
     computed: {
         getLatestBlocks() {
             try {
-                return this.$store.getters['common/blocks/getBlocks'](10)
+                return this.$store.getters['common/blocks/getBlocks'](12)
             }
             catch {
                 return {}
             }
+        },
+        getLatestBlock() {
+            return this.blocks.push(this.$store.getters['common/blocks/getBlocks'](1))
+        },
+        getLatestBlocksTest() {
+            return this.$store.getters['common/blocks/getBlocks'](20)
         }
     }
-}
+})
 </script>
 
 <template>
-    <div class="mt-5 wrapper">
-        <div class="blocks justify-items-center">
+    <div class="flex mt-5">
+        <div class="mt-1 mr-1">
             <BtcBlockItem
                 has-logo
                 disable-arrow
             />
-            <div v-for="block in getLatestBlocks" :key="block.id">
-                <BtcBlockItem :height="block.height" />
+        </div>
+        <div class="scrollable-container">
+            <div>
+                <span v-for="block in getLatestBlocksTest" :key="block.height" class="scrollable-container-item"><BtcBlockItem :height="block.height" /></span>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .blocks {
-        display: grid;
-        grid-template-columns: repeat(11, 1fr);
-    }
+.scrollable-container {
+    display: flex;
+    padding: 4px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.scrollable-container-item {
+    margin: 0 12px;;
+}
 </style>
