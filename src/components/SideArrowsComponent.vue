@@ -18,7 +18,6 @@ export default defineComponent({
                     const progress = Math.min(timeElapsed / duration, 1)
                     element.scrollLeft = scrollPos + scrollPixels * progress
                     if (timeElapsed < duration) {
-                        //Request for animation
                         window.requestAnimationFrame(scroll)
                     } else {
                         return
