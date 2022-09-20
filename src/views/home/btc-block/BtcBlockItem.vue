@@ -33,48 +33,65 @@ export default defineComponent({
         <div v-else class="block-height-inner-text">
             <div>
                 {{ height }}
+                <div class="test">
+                    <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />
+                    <img class="capsul-line" src="../../../assets/capsul-line.svg" alt="capsul-line" />
+                    <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />
+                </div>
             </div>
         </div>
-        <!-- <div v-if="!disableArrow" class="absolute">
-            <div class="capsul">
-                <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />
-                <img class="capsul-line" src="../../../assets/capsul-line.svg" alt="capsul-line" />
-                <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />
-            </div>
-        </div> -->
+<!--        <div v-if="!disableArrow" class="absolute">-->
+<!--            <div class="capsul">-->
+<!--                <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />-->
+<!--                <img class="capsul-line" src="../../../assets/capsul-line.svg" alt="capsul-line" />-->
+<!--                <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </template>
 
 <style scoped>
 
 
+.test {
+    width: 28px;
+    height: 16px;
+    background: white;
+    position: relative;
+    right: 20px;
+    bottom: 8px;
+    border-radius: 50px;
+}
 .capsul {
     border-radius: 50px;
     display: flex;
     width: 28px;
     background: white;
-    position: relative;
-    top: -20px;
-    right: -10px;
+    position: absolute;
+    top: -18px;
+    right: -9px;
     height: 18px;
 }
 
 .capsul-line {
     position: relative;
     width: 8px;
-    left: -2px;
+    left: 7px;
+    bottom: 4px;
 }
 
 .capsul-arrow {
     position: relative;
     width: 8px;
+    top: 2.9px;
+    left: 1px;
 }
 
 .capsul-circle {
     border: 2px solid black;
     position: relative;
-    top: 4px;
-    right: 2px;
+    top: -10px;
+    right: -15px;
     height: 10px;
     border-radius: 50%;
     -moz-border-radius: 50%;

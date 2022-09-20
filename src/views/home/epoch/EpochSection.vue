@@ -78,29 +78,4 @@ export default defineComponent({
     top: 27px;
 }
 
-.circle {
-    border: 2px solid black;
-    position: relative;
-    top: 0;
-    right: 0;
-    height: 10px;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    width: 10px;
-}
-
-.capsul {
-    display: flex;
-    position: absolute;
-    left: 274px;
-    top: -12px;
-    justify-content: center;
-    border-radius: 50px;
-    background: white;
-    width: fit-content;
-    padding: 3px;
-    z-index: 2;
-}
-
 </style>
