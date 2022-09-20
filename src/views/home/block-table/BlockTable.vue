@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 import BlockTableSection from "./BlockTableSection.vue";
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: "BlockTable",
     components: {
         BlockTableSection,
@@ -60,7 +61,7 @@ export default {
             return date.toLocaleString().substring(10);
         },
     },
-};
+})
 </script>
 
 <template>

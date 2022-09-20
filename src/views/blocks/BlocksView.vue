@@ -1,7 +1,8 @@
-<script>
-
+<script lang="ts">
 import NavBarComponent from '../../components/NavBarComponent.vue'
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     name: 'BlocksView',
     components: {
         NavBarComponent
@@ -59,7 +60,7 @@ export default {
             return this.$store.getters["blocks/blockList/getHasNext"];
         },
     },
-};
+})
 </script>
 
 <template>

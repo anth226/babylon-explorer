@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     data() {
         return {
             loading: false,
@@ -110,7 +112,7 @@ export default {
             return content == null ? "null" : content;
         },
     },
-};
+})
 </script>
 
 <template>

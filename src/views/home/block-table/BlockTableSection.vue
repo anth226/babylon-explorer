@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: 'BlockTableSection',
     props: {
         heading: String,
@@ -37,7 +38,7 @@ export default {
             document.execCommand('copy') // TODO:This will be continued
         }
     }
-}
+})
 </script>
 
 <template>

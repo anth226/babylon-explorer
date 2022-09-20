@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 import ApprovalTable from "./ApprovalTable.vue";
 import NavBarComponent from "../../components/NavBarExtendedComponent.vue";
 import BlockTable from "./block-table/BlockTable.vue";
 import BtcBlockGrid from "./btc-block/BtcBlockGrid.vue";
 import EpochGrid from "./epoch/EpochGrid.vue";
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: "HomeView",
     components: {
         ApprovalTable,
@@ -14,7 +15,7 @@ export default {
         BtcBlockGrid,
         EpochGrid,
     },
-};
+})
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     name: 'BtcBlockItem',
     props: {
         hasLogo: {
@@ -18,46 +20,28 @@ export default {
             default: false
         },
         height: String
-    },
-    data: () => ({
-        hovered: false,
-    }),
-    methods: {
-        hoverEnterBlock() {
-            if (!this.hasLogo) {
-                this.hovered = true
-            }
-        }
     }
-}
+})
 </script>
 
 <template>
     <div
-        @mouseenter="hoverEnterBlock"
-        @mouseleave="hovered = false"
         :class="isDisabled ? 'disabled' : ''"
         class="block-item"
     >
-        <div class="block-content items-center absolute">
-            <img v-if="hasLogo" class="item" src="../../../assets/btc-logo.svg" alt="item" />
-            <div v-if="hovered" class="block-height-inner-text">
-                <div class="block-height-inner-subtext">
-                    Height:
-                </div>
-                <div>
-                    {{ height }}
-                </div>
+        <img v-if="hasLogo" class="item" src="../../../assets/btc-logo.svg" alt="item" />
+        <div v-else class="block-height-inner-text">
+            <div>
+                {{ height }}
             </div>
         </div>
-
-        <div v-if="!disableArrow" class="absolute">
+        <!-- <div v-if="!disableArrow" class="absolute">
             <div class="capsul">
                 <img class="capsul-arrow" src="../../../assets/capsul-arrow.svg" alt="capsul-arrow" />
                 <img class="capsul-line" src="../../../assets/capsul-line.svg" alt="capsul-line" />
                 <img class="capsul-circle" src="../../../assets/ellipse.svg" alt="capsul-circle" />
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -67,71 +51,84 @@ export default {
 .capsul {
     border-radius: 50px;
     display: flex;
-    width: 43px;
+    width: 28px;
     background: white;
-    position: absolute;
-    top: 36px;
-    right: -11px;
+    position: relative;
+    top: -20px;
+    right: -10px;
     height: 18px;
 }
 
 .capsul-line {
     position: relative;
-    width: 12px;
-    left: 3px;
+    width: 8px;
+    left: -2px;
 }
 
 .capsul-arrow {
     position: relative;
-    left: 5px;
+    width: 8px;
 }
 
 .capsul-circle {
     border: 2px solid black;
     position: relative;
-    top: 2.9px;
-    right: -3px;
-    height: 12px;
+    top: 4px;
+    right: 2px;
+    height: 10px;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    width: 12px;
+    width: 10px;
 }
 
 .item {
     position: relative;
-    top: 20px;
-    left: 22px;
-    width: 39px;
+    left: 12px;
+    width: 32px;
     height: 51px;
 }
 
 .block-item  {
-    width: 90px;
-    height: 91px;
+    width: 65px;
+    height: 65px;
     background: #F7931A;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
+    word-wrap: break-word;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .block-height-inner-text {
     text-align: center;
-    position: absolute;
-    top: 20px;
-    left: 20px;
     color: white;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.block-height-inner-subtext {
-    font-weight: 100;
     font-size: 12px;
-    margin-bottom: 2px;
+    font-weight: 600;
 }
 
 .disabled {
     opacity: 0.3;
+}
+
+@media (max-width: 1700px) {
+    .block-item  {
+        width: 50px;
+        height: 50px;
+        background: #F7931A;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .capsul {
+        top: 17px;
+        scale: 0.9;
+    }
+    .block-height-inner-text {
+        top: 17px;
+        left: 11px;
+        font-size: 11px;
+        font-weight: 500;
+    }
 }
 
 </style>

@@ -1,17 +1,19 @@
 <script lang="ts">
-import EpochBlock from "./EpochBlock.vue";
-import CurvedArrow from "./CurvedArrow.vue";
+import EpochBlock from './EpochBlock.vue'
+import EpochSection from './EpochSection.vue'
+import EpochUpdatedSection from './EpochUpdatedSection.vue'
+import { defineComponent } from 'vue'
 
-export default {
-    name: "Epochgrid",
+export default defineComponent({
+    name: 'EpochGrid',
     components: {
         EpochBlock,
-        CurvedArrow,
+        EpochSection,
+        EpochUpdatedSection
     },
     data: () => ({
         hasArrow: false,
         hasLongArrow: false,
-        hasCurvedArrow: false,
         isDisabled: false,
         longerArrow: false,
         epochs: [],
@@ -29,7 +31,7 @@ export default {
         epochs: {
             deep: true,
             handler() {
-                alert('slide next epoch from right')
+                // alert('slide next epoch from right')
             }
         }
     },
@@ -41,172 +43,50 @@ export default {
 
         }
     }
-}
+})
 </script>
 
 <template>
-    <!-- TEST PART -->
-    <div class="mt-4">
-        Test:
-        <div class="mt-2">
-            No of epochs: {{ epochs.length }}
-        </div>
-        <div class="mt-2">
-            {{ epochs }}
-        </div>
-    </div>
-    <div class="mt-5 pt-3 flex">
-        <div @click="goLeft" class="absolute">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-square-fill arrow-left" viewBox="0 0 16 16">
-                <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-            </svg>
-        </div>
+    <div class="mt-5">
+        <!--        Test:-->
+        <!--        <div class="mt-2">-->
+        <!--            No of epochs: {{ epochs.length }}-->
+        <!--        </div>-->
+        <!--        <div class="mt-2">-->
+        <!--            {{ epochs }}-->
+        <!--        </div>-->
         <div class="flex">
-            <!-- left part -->
-            <div class="w-1/12 flex justify-end ml-5">
-                <div class="big-block">
-                    <img class="item" src="../../../assets/bbl-logo.svg" alt="bbl-logo" />
-                </div>
+            <div @click="goLeft" class="absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-square-fill arrow-left" viewBox="0 0 16 16">
+                    <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+                </svg>
             </div>
-
-
-            <!-- right main part -->
-            <div class=" w-11/12">
-                <div class="flex epoch-section">
-
-
-                    <!-- Epoch 1 -->
-                    <div class="main-section s1 animate__animated animate__backInRight">
-                        <div class="flex items-center">
-                            <EpochBlock
-                                has-arrow
-                            />
-                            <EpochBlock
-                                has-arrow
-                            />
-                            <div class="dots">
-                                ...
-                            </div>
-                            <EpochBlock
-                            />
-                            <EpochBlock
-                                has-arrow
-                                has-curved-arrow
-                            />
-                            <div class="capsul">
-                                <img class="circle" src="../../../assets/ellipse.svg" alt="circle" />
-                            </div>
-                        </div>
-                        <div class="blank w-full bg-red-400"></div>
-                        <div class="title-section w-full mt-3">
-                            <div class="heading">
-                                Epoch {{ getCurrentEpoch }}
-                            </div>
-                            <div class="subheading">
-                                (100 blocks) : data
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Epoch 2 -->
-<!--                    <div class="main-section s2">-->
-<!--                        <div class="flex items-center">-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                has-long-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <div class="dots">-->
-<!--                                ...-->
-<!--                            </div>-->
-<!--                            <EpochBlock-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <div class="capsul">-->
-<!--                                <img class="circle" src="../../../assets/ellipse.svg" alt="ellipse" />-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="blank w-full bg-red-400"></div>-->
-<!--                        <div class="title-section w-full mt-3">-->
-<!--                            <div class="heading">-->
-<!--                                Epoch 2-->
-<!--                            </div>-->
-<!--                            <div class="subheading">-->
-<!--                                (100 blocks)-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-
-<!--                    <CurvedArrow-->
-<!--                        curve-coordinates-top=-52-->
-<!--                        curve-coordinates-left=300-->
-<!--                        arrow-coordinates-top=-132-->
-<!--                        arrow-coordinates-left=431-->
-<!--                    />-->
-
-
-<!--                    <CurvedArrow-->
-<!--                        curve-coordinates-top=-52-->
-<!--                        curve-coordinates-left=748-->
-<!--                        arrow-coordinates-top=-132-->
-<!--                        arrow-coordinates-left=921-->
-<!--                        longer-arrow-->
-<!--                    />-->
-
-                    <!-- Epoch 3 -->
-<!--                    <div class="main-section s3">-->
-<!--                        <div class="flex items-center">-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                has-long-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <div class="dots">-->
-<!--                                ...-->
-<!--                            </div>-->
-<!--                            <EpochBlock-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                            <EpochBlock-->
-<!--                                has-arrow-->
-<!--                                is-disabled-->
-<!--                            />-->
-<!--                        </div>-->
-<!--                        <div class="blank w-full bg-red-400"></div>-->
-<!--                        <div class="title-section w-full mt-3">-->
-<!--                            <div class="heading">-->
-<!--                                Epoch 3-->
-<!--                            </div>-->
-<!--                            <div class="subheading">-->
-<!--                                (100 blocks)-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                </div>
+            <div class="big-block">
+                <img class="item" src="../../../assets/bbl-logo.svg" alt="bbl-logo" />
             </div>
-        </div>
-        <div @click="goRight" class="absolute">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill arrow-right" viewBox="0 0 16 16">
-                <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
-            </svg>
+            <div class="scrollable-container">
+                <EpochUpdatedSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+                <EpochSection />
+            </div>
+            <div @click="goRight" class="absolute">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-square-fill arrow-right" viewBox="0 0 16 16">
+                    <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+                </svg>
+            </div>
         </div>
     </div>
 </template>
 
+
 <style scoped>
+
 .item {
     position: relative;
     top: 17px;
@@ -216,7 +96,7 @@ export default {
 }
 
 .big-block  {
-    width: 746px;
+    width: 97px;
     height: 91px;
     background: var(--primary-blue);
     border-radius: 20px;
@@ -246,7 +126,7 @@ export default {
 }
 
 .dots {
-    margin: 0 17px;
+    margin: 0 20px;
 }
 
 .main-section {
@@ -317,7 +197,7 @@ export default {
     display: flex;
     position: relative;
     top: 30px;
-    left: 1364px;
+    left: 1750px;
     color: #b2b2b2;
     border-radius: 15px;
     width: 30px;
@@ -336,6 +216,16 @@ export default {
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     overflow: hidden;
+}
+
+.scrollable-container {
+    display: flex;
+    margin: 4px;
+    padding: 4px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 </style>
