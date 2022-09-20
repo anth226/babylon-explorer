@@ -36,6 +36,39 @@ export default defineComponent({
                 // alert('slide next epoch from right')
             }
         }
+    },
+    methods: {
+        scrollTo(element, scrollPixels, duration) {
+            const scrollPos = element.scrollLeft
+            if ( !( (scrollPos === 0 || scrollPixels > 0) && (element.clientWidth + scrollPos === element.scrollWidth || scrollPixels < 0)))
+            {
+                const startTime =
+                    "now" in window.performance
+                        ? performance.now()
+                        : new Date().getTime()
+
+                function scroll(timestamp) {
+                    const timeElapsed = timestamp - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    element.scrollLeft = scrollPos + scrollPixels * progress;
+                    if (timeElapsed < duration) {
+                        //Request for animation
+                        window.requestAnimationFrame(scroll);
+                    } else {
+                        return;
+                    }
+                }
+                window.requestAnimationFrame(scroll)
+            }
+        },
+        swipeLeft() {
+            const content = this.$refs.content
+            this.scrollTo(content, -300, 800)
+        },
+        swipeRight() {
+            const content = this.$refs.content
+            this.scrollTo(content, 300, 800)
+        }
     }
 })
 </script>
@@ -43,11 +76,14 @@ export default defineComponent({
 <template>
     <div class="mt-5">
         <div class="flex">
-            <SideArrowsComponent />
+            <SideArrowsComponent
+                @clickedLeft="swipeLeft"
+                @clickedRight="swipeRight"
+            />
             <div class="big-block">
                 <img class="item" src="../../../assets/bbl-logo.svg" alt="bbl-logo" />
             </div>
-            <div class="scrollable-container">
+            <div class="scrollable-container" id="content" ref="content">
                 <EpochUpdatedSection />
                 <EpochSection v-for="index in 10" :key="Math.random() * 100" />
             </div>
