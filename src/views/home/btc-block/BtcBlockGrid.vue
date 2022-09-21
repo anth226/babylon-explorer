@@ -16,20 +16,15 @@ export default defineComponent({
         blocks: [] as Array<number>
     }),
     computed: {
-        getLatestBlocks() {
-            try {
-                return this.$store.getters['common/blocks/getBlocks'](12)
-            }
-            catch {
-                return {}
-            }
-        },
         getLatestBlock() {
-            return this.blocks.push(this.$store.getters['common/blocks/getBlocks'](1))
+            return this.$store.getters['common/blocks/getBlocks'](1)
         },
         getLatestBlocksTest() {
             return this.$store.getters['common/blocks/getBlocks'](20)
-        }
+        },
+        pushBlock() {
+            return this.blocks.push(this.getLatestBlock)
+        },
     },
     methods: {
         scrollTo(element, scrollPixels, duration) {
@@ -67,6 +62,11 @@ export default defineComponent({
 </script>
 
 <template>
+    <div v-for="block in blocks">
+        {{ block[0].height }}
+    </div>
+    
+
     <div class="flex mt-5">
         <SideArrowsComponent
             @clickedLeft="swipeLeft"

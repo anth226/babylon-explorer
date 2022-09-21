@@ -29,15 +29,13 @@ interface FullEventDisplay {
 
 export default {
     namespaced: true,
-    state() {
-        return {
-            unbondingDelegatorSet: [],
-            ongoingUndelegatingRequests: 0,
-            completedUndelegatingRequests: 0,
-            averageUndelegatingTime: 0,
-            topThreeRequests: [],
-            epochHasNewRequest: false,
-        };
+    state: {
+        unbondingDelegatorSet: [],
+        ongoingUndelegatingRequests: 0,
+        completedUndelegatingRequests: 0,
+        averageUndelegatingTime: 0,
+        topThreeRequests: [],
+        epochHasNewRequest: false,
     },
     getters: {
         getUnbondingValidatorSet: (state) => {
@@ -46,6 +44,9 @@ export default {
         getAllUnbondingStats: (state) => {
             return state;
         },
+        getTopThreeRequests: (state) => {
+            return state.topThreeRequests
+        }
     },
     mutations: {
         SET_UNBONDING_DELEGATOR_SET(state, set) {

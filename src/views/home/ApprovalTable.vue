@@ -7,6 +7,9 @@ export default {
                 "unbonding/unbondingStats/getAllUnbondingStats"
             ];
         },
+        getTopThreeRequests() {
+            return this.$store.getters['unbonding/unbondingStats/getTopThreeRequests']
+        }
     },
 };
 </script>
@@ -69,6 +72,7 @@ export default {
                     </div>
                     <div class="w-1/4 table-item">Approved</div>
                 </div>
+                {{ this.$store.state.topThreeRequests }}
                 <div
                     v-for="request in allUnbondingStats.topThreeRequests"
                     class="ml-2 table-content border-bottom flex px-3 items-center"
