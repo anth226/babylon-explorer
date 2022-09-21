@@ -12,12 +12,14 @@ export default defineComponent({
         staticEpochInterval: 0,
         pageSize: 10,
         page: 0, // the current page user is on
-
         searchText: "",
+        unwatchEpochBoundary: null,
+        unwatchLatestEpoch: null,
+        unwatchEpochInterval: null
     }),
 
     computed: {
-        chainHeight() {
+        chainHeight(): number {
             return parseInt(this.$store.getters["common/blocks/getHeight"]);
         },
 
@@ -27,13 +29,13 @@ export default defineComponent({
             );
         },
 
-        epochBoundary() {
+        epochBoundary(): number {
             return parseInt(
                 this.$store.getters["epoching/stats/getEpochBoundary"]
             );
         },
 
-        epochInterval() {
+        epochInterval(): number {
             return parseInt(
                 this.$store.getters["epoching/stats/getEpochInterval"]
             );
@@ -57,7 +59,7 @@ export default defineComponent({
         hasPreviousPage(): boolean {
             return this.page != 0;
         },
-        hasNextPage(): any {
+        hasNextPage(): boolean {
             return this.pageEnd > 1;
         },
     },
@@ -101,12 +103,12 @@ export default defineComponent({
         },
     },
 
-    mounted() {
+    mounted(): void {
         this.staticLatestEpoch = this.latestEpoch;
         this.staticEpochBoundary = this.epochBoundary;
         this.staticEpochInterval = this.epochInterval;
         if (this.staticLatestEpoch == 0) {
-            this.unwatchLatestEpoch = this.$watch("latestEpoch", (newVal) => {
+            this.unwatchLatestEpoch = this.$watch("latestEpoch", (newVal: number) => {
                 if (newVal) {
                     this.staticLatestEpoch = this.latestEpoch;
                     this.unwatchLatestEpoch();
@@ -188,7 +190,7 @@ export default defineComponent({
                 </thead>
                 <tbody>
                     <CheckPointingRowComponent
-                        v-for="(epochNum, index) in range(pageStart, pageEnd)"
+                        v-for="epochNum in range(pageStart, pageEnd)"
                         :epochNum="epochNum"
                         :staticBeginBlock="beginBlock(epochNum)"
                         :staticEndBlock="endBlock(epochNum)"
