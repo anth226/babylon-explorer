@@ -1,19 +1,16 @@
-<script lang="ts">
+<script>
 import NavBarComponent from '../../components/NavBarComponent.vue'
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
     name: 'BlocksView',
     components: {
         NavBarComponent
     },
-    data: function () {
-        return {
-            pageSize: 10,
-            page: 0, // the current page user is on
-            gotPage: 0, // the furthest page user has been to
-        };
-    },
+    data: () => ({
+        pageSize: 10,
+        page: 0, // the current page user is on
+        gotPage: 0, // the furthest page user has been to
+    }),
 
     beforeMount() {
         this.$store.dispatch("blocks/blockList/init");
@@ -60,7 +57,7 @@ export default defineComponent({
             return this.$store.getters["blocks/blockList/getHasNext"];
         },
     },
-})
+}
 </script>
 
 <template>

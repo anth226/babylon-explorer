@@ -1,18 +1,15 @@
-<script lang="ts">
+<script>
 import NavBarComponent from "../../components/NavBarComponent.vue";
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
     components: {
         NavBarComponent,
     },
-    data() {
-        return {
-            loading: false,
-            block: null,
-            error: null,
-        };
-    },
+    data: () => ({
+        loading: false,
+        block: null,
+        error: null,
+    }),
     computed: {
         blockDate() {
             let date = new Date(this.block.timestamp);
@@ -37,10 +34,7 @@ export default defineComponent({
             this.loading = true;
             let searchParam = this.$route.params.blockID;
 
-            // prevent undesirable behavior when router link completely changes
-            if (typeof searchParam == "undefined") return;
-
-            var searchFunction = "blocks/blockList/getBlockByHash";
+            let  searchFunction = "blocks/blockList/getBlockByHash";
             //determins whether the search is by height or by hash
             if (!isNaN(searchParam)) {
                 searchFunction = "blocks/blockList/getBlockByHeight";
@@ -50,10 +44,6 @@ export default defineComponent({
                 (response) => {
                     this.loading = false;
                     this.block = response;
-                },
-                (error) => {
-                    this.loading = false;
-                    this.error = "Block not found";
                 }
             );
         },
@@ -68,7 +58,7 @@ export default defineComponent({
             });
         },
     },
-})
+}
 </script>
 
 <template>
@@ -82,7 +72,7 @@ export default defineComponent({
             <div v-if="block" class="block-content">
                 <div>
                     <div class="block-title">
-                        <img src="../../assets/block.png" />
+                        <img src="../../assets/block.png" alt="block"/>
                         <div style="font-size: 3em; margin-left: 0.2em">
                             Block {{ block.height }}
                         </div>
@@ -173,9 +163,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.blockview-container {
-    max-width: 1280px;
-}
+
 .block-title {
     display: flex;
     align-items: center;
@@ -187,7 +175,7 @@ export default defineComponent({
 
 .stats-box {
     background: none;
-    box-shadow: 1px 0px 5px 1px lightgray;
+    box-shadow: 1px 0 5px 1px lightgray;
     padding: 30px;
     border-radius: 8px;
 }
