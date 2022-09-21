@@ -6,24 +6,22 @@ export default defineComponent({
     components: {
         CheckPointingRowComponent,
     },
-    data: function () {
-        return {
-            staticLatestEpoch: 0,
-            staticEpochBoundary: 0,
-            staticEpochInterval: 0,
-            pageSize: 10,
-            page: 0, // the current page user is on
+    data: () => ({
+        staticLatestEpoch: 0,
+        staticEpochBoundary: 0,
+        staticEpochInterval: 0,
+        pageSize: 10,
+        page: 0, // the current page user is on
 
-            searchText: "",
-        };
-    },
+        searchText: "",
+    }),
 
     computed: {
         chainHeight() {
             return parseInt(this.$store.getters["common/blocks/getHeight"]);
         },
 
-        latestEpoch() {
+        latestEpoch(): number {
             return parseInt(
                 this.$store.getters["epoching/stats/getCurrentEpoch"]
             );
@@ -41,7 +39,7 @@ export default defineComponent({
             );
         },
 
-        pageStart() {
+        pageStart(): number {
             return this.staticLatestEpoch - this.page * this.pageSize;
         },
 
@@ -49,17 +47,17 @@ export default defineComponent({
         // by subtracting pageNumber times pageSize from the latest epoch. However, there's a
         // possibility that we get 0 or a negative number (the last page's pageSize is too big),
         // so we have to check for that condition
-        pageEnd() {
+        pageEnd(): number {
             return Math.max(
                 1,
                 this.staticLatestEpoch - (this.page + 1) * this.pageSize + 1
             );
         },
 
-        hasPreviousPage() {
+        hasPreviousPage(): boolean {
             return this.page != 0;
         },
-        hasNextPage() {
+        hasNextPage(): any {
             return this.pageEnd > 1;
         },
     },
@@ -98,10 +96,8 @@ export default defineComponent({
         // It is calculated by finding how many epochs away it is from the current epoch,
         // and multiply that by the epoch interval. Subtract this number by the current epoch boundary we can get our desired result
         endBlock(epochNum) {
-            var output =
-                this.staticEpochBoundary -
+            return this.staticEpochBoundary -
                 (this.staticLatestEpoch - epochNum) * this.staticEpochInterval;
-            return output;
         },
     },
 

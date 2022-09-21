@@ -6,13 +6,11 @@ export default defineComponent({
     components: {
         NavBarComponent,
     },
-    data() {
-        return {
-            loading: false,
-            block: null,
-            error: null,
-        };
-    },
+    data: () => ({
+        loading: false,
+        block: null,
+        error: null,
+    }),
     computed: {
         blockDate() {
             let date = new Date(this.block.timestamp);
@@ -35,10 +33,7 @@ export default defineComponent({
         fetchData() {
             this.error = this.block = null;
             this.loading = true;
-            let searchParam = this.$route.params.blockID;
-
-            // prevent undesirable behavior when router link completely changes
-            if (typeof searchParam == "undefined") return;
+            let searchParam: any = this.$route.params.blockID;
 
             var searchFunction = "blocks/blockList/getBlockByHash";
             //determins whether the search is by height or by hash
@@ -82,7 +77,7 @@ export default defineComponent({
             <div v-if="block" class="block-content">
                 <div>
                     <div class="block-title">
-                        <img src="../../assets/block.png" />
+                        <img src="../../assets/block.png" alt="block"/>
                         <div style="font-size: 3em; margin-left: 0.2em">
                             Block {{ block.height }}
                         </div>

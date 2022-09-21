@@ -7,13 +7,11 @@ export default defineComponent({
     components: {
         NavBarComponent
     },
-    data: function () {
-        return {
-            pageSize: 10,
-            page: 0, // the current page user is on
-            gotPage: 0, // the furthest page user has been to
-        };
-    },
+    data: () => ({
+        pageSize: 10,
+        page: 0, // the current page user is on
+        gotPage: 0, // the furthest page user has been to
+    }),
 
     beforeMount() {
         this.$store.dispatch("blocks/blockList/init");
@@ -38,13 +36,13 @@ export default defineComponent({
     },
 
     computed: {
-        chainHeight() {
+        chainHeight(): number {
             return this.$store.getters["blocks/blockList/getHeight"];
         },
-        blockList() {
+        blockList(): any {
             return this.$store.getters["blocks/blockList/getBlocks"];
         },
-        currentPage() {
+        currentPage(): number[] {
             try {
                 let pageStart = this.page * this.pageSize;
                 let pageEnd = pageStart + this.pageSize;
