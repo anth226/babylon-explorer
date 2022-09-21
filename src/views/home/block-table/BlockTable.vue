@@ -1,8 +1,8 @@
-<script lang="ts">
+<script>
 import BlockTableSection from "./BlockTableSection.vue";
-import { defineComponent } from 'vue'
+// import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
     name: "BlockTable",
     components: {
         BlockTableSection,
@@ -54,11 +54,12 @@ export default defineComponent({
                 "checkpointing/checkpointStats/getEpochStatusCount"
             ];
         },
+
         allUnbondingStats() {
             return this.$store.getters[
                 "unbonding/unbondingStats/getAllUnbondingStats"
             ];
-        },
+        }
     },
     methods: {
         convertDate(date) {
@@ -66,15 +67,12 @@ export default defineComponent({
             return date.toLocaleString().substring(10);
         },
         btcBlockHasCheckpoint(epochNum) {
-            return this.$store.getters[
-                ("btccheckpoint/btcCheckpointStats/blockHasCheckpoint",
-                epochNum)
-            ]
+            return this.$store.getters[("btccheckpoint/btcCheckpointStats/blockHasCheckpoint", epochNum)]
                 ? "yes"
                 : "no";
-        },
+        }
     },
-})
+}
 </script>
 
 <template>
