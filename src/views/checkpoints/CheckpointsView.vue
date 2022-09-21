@@ -1,12 +1,13 @@
 <script lang="ts">
-
 import NavBarComponent from '../../components/NavBarComponent.vue'
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     name: 'CheckpointsView',
     components: {
         NavBarComponent
     }
-}
+})
 </script>
 
 <template>

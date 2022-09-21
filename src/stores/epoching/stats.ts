@@ -1,26 +1,32 @@
 import { getCurrentEpoch, getParams } from "./api"
+import type { StatsModuleState } from '@/stores/epoching/types'
+
 
 export default {
     namespaced: true,
-    state() {
-        return {
-            currentEpoch: 0,
-            epochBoundary: 0,
-            epochInterval: 0,
-        }
-    },
+
+    state: {
+        currentEpoch: 0,
+        epochBoundary: 0,
+        epochInterval: 0,
+        epochs: []
+    } as StatsModuleState,
+
     getters: {
-        getCurrentEpoch: (state) => {
+        getCurrentEpoch:(state: StatsModuleState): number => {
             return state.currentEpoch
         },
-        getEpochBoundary: (state) => {
+        getEpochBoundary: (state: StatsModuleState): number => {
             return state.epochBoundary
         },
-        getEpochInterval: (state) => {
-            
+        getEpochInterval: (state: StatsModuleState): number => {
             return state.epochInterval
         },
+        getLatestEpochs: (state: StatsModuleState): number[] => {
+            return state.epochs
+        }
     },
+
     mutations: {
         SET_CURRENT_EPOCH(state, currentEpoch) {
             state.currentEpoch = currentEpoch
@@ -31,12 +37,17 @@ export default {
         SET_EPOCH_INTERVAL(state, epochInterval) {
             state.epochInterval = epochInterval
         },
+        ADD_EPOCH(state, epoch) {
+            state.epochs.push(epoch)
+        },
         RESET_STATE(state) {
             state.currentEpoch = 0
             state.epochBoundary = 0
             state.epochInterval = 0
+            state.epochs = []
         },
     },
+
     actions: {
         async init({ dispatch, rootGetters }) {
             dispatch("getCurrentEpochInformation");
@@ -62,6 +73,6 @@ export default {
             } catch (e) {
                 throw new Error("Epoching: Can not get epoching data")
             }
-        },
-    },
+        }
+    }
 }
