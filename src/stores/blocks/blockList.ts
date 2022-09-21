@@ -4,19 +4,18 @@ import {
     getBlockByHash,
     getBlockHeaders,
 } from "./api";
+import type { BlocksModuleState } from './types'
 
 const pageSize = 10;
 
 export default {
     namespaced: true,
-    state() {
-        return {
-            blocks: [],
-            height: 0,
-            nextQueryStart: 0,
-            hasNext: false,
-        };
-    },
+    state: {
+        blocks: [],
+        height: 0,
+        nextQueryStart: 0,
+        hasNext: false,
+    } as BlocksModuleState,
     getters: {
         getHeight: (state) => {
             return state.height;

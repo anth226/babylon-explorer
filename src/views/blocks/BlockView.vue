@@ -1,8 +1,7 @@
-<script lang="ts">
+<script>
 import NavBarComponent from "../../components/NavBarComponent.vue";
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
     components: {
         NavBarComponent,
     },
@@ -33,9 +32,9 @@ export default defineComponent({
         fetchData() {
             this.error = this.block = null;
             this.loading = true;
-            let searchParam: any = this.$route.params.blockID;
+            let searchParam = this.$route.params.blockID;
 
-            var searchFunction = "blocks/blockList/getBlockByHash";
+            let  searchFunction = "blocks/blockList/getBlockByHash";
             //determins whether the search is by height or by hash
             if (!isNaN(searchParam)) {
                 searchFunction = "blocks/blockList/getBlockByHeight";
@@ -45,10 +44,6 @@ export default defineComponent({
                 (response) => {
                     this.loading = false;
                     this.block = response;
-                },
-                (error) => {
-                    this.loading = false;
-                    this.error = "Block not found";
                 }
             );
         },
@@ -63,7 +58,7 @@ export default defineComponent({
             });
         },
     },
-})
+}
 </script>
 
 <template>
@@ -168,9 +163,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.blockview-container {
-    max-width: 1280px;
-}
+
 .block-title {
     display: flex;
     align-items: center;
@@ -182,7 +175,7 @@ export default defineComponent({
 
 .stats-box {
     background: none;
-    box-shadow: 1px 0px 5px 1px lightgray;
+    box-shadow: 1px 0 5px 1px lightgray;
     padding: 30px;
     border-radius: 8px;
 }

@@ -1,8 +1,7 @@
-<script lang="ts">
+<script>
 import NavBarComponent from '../../components/NavBarComponent.vue'
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default {
     name: 'BlocksView',
     components: {
         NavBarComponent
@@ -36,13 +35,13 @@ export default defineComponent({
     },
 
     computed: {
-        chainHeight(): number {
+        chainHeight() {
             return this.$store.getters["blocks/blockList/getHeight"];
         },
-        blockList(): any {
+        blockList() {
             return this.$store.getters["blocks/blockList/getBlocks"];
         },
-        currentPage(): number[] {
+        currentPage() {
             try {
                 let pageStart = this.page * this.pageSize;
                 let pageEnd = pageStart + this.pageSize;
@@ -58,7 +57,7 @@ export default defineComponent({
             return this.$store.getters["blocks/blockList/getHasNext"];
         },
     },
-})
+}
 </script>
 
 <template>

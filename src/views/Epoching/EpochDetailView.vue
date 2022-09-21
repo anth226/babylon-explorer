@@ -1,15 +1,13 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
-export default defineComponent({
-    data() {
-        return {
-            loading: false,
-            rawCheckpoint: null,
-            blocks: [],
-            error: null,
-        };
-    },
+export default {
+    data: () => ({
+        loading: false,
+        rawCheckpoint: null,
+        blocks: [],
+        error: null,
+        unwatchEpochInterval: null
+    }),
 
     created() {
         this.$watch(
@@ -24,7 +22,7 @@ export default defineComponent({
     computed: {
         status() {
             let status = this.rawCheckpoint.raw_checkpoint.status;
-            if (status == "CKPT_STATUS_ACCUMULATING") {
+            if (status === "CKPT_STATUS_ACCUMULATING") {
                 return "Accumulating";
             } else if ((status = "CKPT_STATUS_SEALED")) {
                 return "Sealed";
@@ -76,7 +74,7 @@ export default defineComponent({
             // During initialization of vuex store, epochInterval ( from this.$store.getters["epoching/stats/getEpochInterval"] )
             // is set to 0. So if the epochInterval is 0 (means that the vuex is not fully initialized yet), we create a watcher and wait until
             // this value has changed, then we perform the getBlocks function. And this watcher should only watch once (even though it shouldn't update anyway).
-            if (staticEpochInterval == 0) {
+            if (staticEpochInterval === 0) {
                 this.unwatchEpochInterval = this.$watch(
                     "epochInterval",
                     (newVal) => {
@@ -112,7 +110,7 @@ export default defineComponent({
             return content == null ? "null" : content;
         },
     },
-})
+}
 </script>
 
 <template>
@@ -124,7 +122,7 @@ export default defineComponent({
         <div v-if="rawCheckpoint" class="epoch-content">
             <div>
                 <div class="epoch-title">
-                    <img style="width: 2em" src="../../assets/epoch.png" />
+                    <img style="width: 2em" src="../../assets/epoch.png" alt="epoch" />
                     <div style="font-size: 3em; margin-left: 0.2em">
                         Epoch {{ this.$route.params.epochNum }}
                     </div>
