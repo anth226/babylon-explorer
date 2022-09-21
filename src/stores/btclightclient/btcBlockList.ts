@@ -39,7 +39,6 @@ export default {
                 );
             }
         },
-        // TODO: Implement general purpose BTCMainChain Query
         async getLatestBTCMainChain({ commit, rootGetters }, limit) {
             try {
                 const mainChain = await getMainChain(

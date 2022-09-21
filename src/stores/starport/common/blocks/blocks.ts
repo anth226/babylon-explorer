@@ -149,18 +149,6 @@ export default {
 
         async addBlock({ commit, rootGetters }, blockData) {
             try {
-                const txDecoded = blockData.data.result.block.data.txs.map(
-                    async (tx) => {
-                        const dec = await decodeTx(
-                            rootGetters["common/env/apiCosmos"],
-                            rootGetters["common/env/apiTendermint"],
-                            tx
-                        );
-                        return dec;
-                    }
-                );
-                const txs = await Promise.all(txDecoded);
-
                 const block = {
                     height: blockData.data.result.block.header.height,
                     timestamp: blockData.data.result.block.header.time,
@@ -168,9 +156,7 @@ export default {
                     details: blockData.data.result.block,
                     proposer:
                         blockData.data.result.block.header.proposer_address,
-                    txDecoded: txs,
                 };
-
                 commit("ADD_BLOCK", block);
             } catch (e) {
                 throw new Error(
@@ -186,22 +172,12 @@ export default {
                         "/block?height=" +
                         blockData.block.header.height
                 );
-                const txDecoded = blockData.block.data.txs.map(async (tx) => {
-                    const dec = await decodeTx(
-                        rootGetters["common/env/apiCosmos"],
-                        rootGetters["common/env/apiTendermint"],
-                        tx
-                    );
-                    return dec;
-                });
-                const txs = await Promise.all(txDecoded);
                 const block = {
                     height: blockData.block.header.height,
                     timestamp: blockData.block.header.time,
                     hash: blockDetails.data.result.block_id.hash,
                     details: blockData.block,
                     proposer: blockData.block.header.proposer_address,
-                    txDecoded: txs,
                 };
 
                 commit("ADD_BLOCK", block);

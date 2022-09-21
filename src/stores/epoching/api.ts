@@ -31,6 +31,7 @@ export async function getParams(apiCosmos) {
     }
 }
 
+// ValidatorLifecycle queries the lifecycle of a given validator
 export async function getValidatorLifeCycle(apiCosmos, validatorAddr) {
     try {
         let lifecycle = await axios.get(
@@ -48,6 +49,25 @@ export async function getValidatorLifeCycle(apiCosmos, validatorAddr) {
     }
 }
 
+// Delegator Lifecycle queries the lifecycle of a given delegator
+export async function getDelegatorLifecycle(apiCosmos, delegatorAddr) {
+    try {
+        let lifecycle = await axios.get(
+            apiCosmos +
+                epochingQueryPrefix +
+                "delegation_lifecycle/" +
+                delegatorAddr
+        );
+        return lifecycle.data;
+    } catch {
+        throw new Error(
+            "Epoching: Unable to retrieve delegator lifecycle for " +
+                delegatorAddr
+        );
+    }
+}
+
+// EpochMsgs queries the messages of a given epoch
 export async function getEpochMsgs(
     apiCosmos,
     epochNum,
@@ -61,7 +81,37 @@ export async function getEpochMsgs(
 ) {
     try {
         let epochMsgs = await axios.get(
-            apiCosmos + epochingQueryPrefix + "epoch_msgs/" + epochNum,
+            apiCosmos +
+                epochingQueryPrefix +
+                "epochs/" +
+                epochNum +
+                "/messages",
+            { params: query }
+        );
+        return epochMsgs.data;
+    } catch {
+        throw new Error(
+            "Checkpointing: Unable to retrieve the epoch message information"
+        );
+    }
+}
+
+// LatestEpochMsgs queries the messages within a given number of most recent epochs
+export async function getLatestEpochMsgs(
+    apiCosmos,
+    query?: {
+        endEpoch: number;
+        epochCount: number;
+        "pagination.key"?: string;
+        "pagination.offset"?: string;
+        "pagination.limit"?: string;
+        "pagination.count_total"?: boolean;
+        "pagination.reverse"?: boolean;
+    }
+) {
+    try {
+        let epochMsgs = await axios.get(
+            apiCosmos + epochingQueryPrefix + "epochs:latest/messages",
             { params: query }
         );
         return epochMsgs.data;

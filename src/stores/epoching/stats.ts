@@ -29,13 +29,13 @@ export default {
 
     mutations: {
         SET_CURRENT_EPOCH(state, currentEpoch) {
-            state.currentEpoch = currentEpoch
+            state.currentEpoch = currentEpoch;
         },
         SET_EPOCH_BOUNDARY(state, epochBoundary) {
-            state.epochBoundary = epochBoundary
+            state.epochBoundary = epochBoundary;
         },
         SET_EPOCH_INTERVAL(state, epochInterval) {
-            state.epochInterval = epochInterval
+            state.epochInterval = epochInterval;
         },
         ADD_EPOCH(state, epoch) {
             state.epochs.push(epoch)
@@ -62,16 +62,16 @@ export default {
             try {
                 let currentEpochData = await getCurrentEpoch(
                     rootGetters["common/env/apiCosmos"]
-                )
-                commit("SET_CURRENT_EPOCH", currentEpochData.current_epoch)
-                commit("SET_EPOCH_BOUNDARY", currentEpochData.epoch_boundary)
+                );
+                commit("SET_CURRENT_EPOCH", currentEpochData.current_epoch);
+                commit("SET_EPOCH_BOUNDARY", currentEpochData.epoch_boundary);
 
                 let paramsData = await getParams(
                     rootGetters["common/env/apiCosmos"]
-                )
-                commit("SET_EPOCH_INTERVAL", paramsData.params.epoch_interval)
+                );
+                commit("SET_EPOCH_INTERVAL", paramsData.params.epoch_interval);
             } catch (e) {
-                throw new Error("Epoching: Can not get epoching data")
+                throw new Error("Epoching: Can not get epoching data");
             }
         }
     }
