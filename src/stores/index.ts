@@ -11,6 +11,7 @@ import epoching from "./epoching/index";
 import checkpointing from "./checkpointing/index";
 import btclightclient from "./btclightclient/index";
 import btccheckpoint from "./btccheckpoint/index";
+import unbonding from "./unbonding/index";
 
 // import generated from "./generated";
 
@@ -22,12 +23,13 @@ function init(store: any) {
     starportEnv(store);
     starportWallet(store);
     blocks(store);
+    epoching(store);
     validators(store);
     prometheus(store);
-    epoching(store);
     checkpointing(store);
     btclightclient(store);
     btccheckpoint(store);
+    unbonding(store);
 }
 
 const store = createStore({

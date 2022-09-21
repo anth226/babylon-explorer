@@ -6,13 +6,16 @@ import { EventEmitter } from "events";
 import ReconnectingWebSocket from "reconnecting-websocket";
 
 const customEvents = {
+    // Epoching Module
     "babylon.epoching.v1.EventBeginEpoch.epoch_number": ["newEpoch"],
-    "babylon.epoching.v1.EventWrappedUndelegate": ["newWrappedUndelegate"],
+    "babylon.epoching.v1.EventWrappedUndelegate": ["newUndelegate"],
 
+    // BtcLightClient Module
     "babylon.btclightclient.v1.EventBTCHeaderInserted.header": [
         "newBTCHeaderInserted",
     ],
 
+    // Checkpointing Module
     "babylon.checkpointing.v1.EventCheckpointAccumulating.checkpoint": [
         "newCheckpointStatusChange",
         "newCheckpointAccumulating",
@@ -217,10 +220,31 @@ export default class SPClient extends EventEmitter {
         // Custom (Babylon) Events
         if (result.events) {
             for (let key in customEvents) {
-                let value = customEvents[key];
-                if (result.events.hasOwnProperty(key)) {
+                // key is the COSMOS event name
+                let value = customEvents[key]; // value is the frontend event name
+
+                var propertyNames = Object.keys(result.events).filter(function (
+                    propertyName
+                ) {
+                    // filter for event names that has key as prefix
+                    return propertyName.indexOf(key) === 0;
+                });
+
+                if (propertyNames.length == 1) {
+                    //asking for a specific value: return a value
                     for (let customEvent of value) {
                         this.emit(customEvent, result.events[key]);
+                    }
+                } else if (propertyNames.length != 0) {
+                    // asking for the entire event: return an object
+                    var obj = {};
+                    for (let propertyName of propertyNames) {
+                        let propertyKey = propertyName.replace(key + ".", ""); // replace the shared part in name. Example: babylon.epoching.v1.EventWrappedUndelegate.val_addr => val_addr
+                        let propertyValue = result.events[propertyName];
+                        obj[propertyKey] = propertyValue;
+                    }
+                    for (let customEvent of value) {
+                        this.emit(customEvent, obj);
                     }
                 }
             }

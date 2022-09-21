@@ -54,11 +54,24 @@ export default defineComponent({
                 "checkpointing/checkpointStats/getEpochStatusCount"
             ];
         },
+        allUnbondingStats() {
+            return this.$store.getters[
+                "unbonding/unbondingStats/getAllUnbondingStats"
+            ];
+        },
     },
     methods: {
         convertDate(date) {
             date = new Date(date);
             return date.toLocaleString().substring(10);
+        },
+        btcBlockHasCheckpoint(epochNum) {
+            return this.$store.getters[
+                ("btccheckpoint/btcCheckpointStats/blockHasCheckpoint",
+                epochNum)
+            ]
+                ? "yes"
+                : "no";
         },
     },
 })
@@ -122,8 +135,9 @@ export default defineComponent({
                             <div class="compress section-compress-width-2">
                                 {{ block.hash }}
                             </div>
-                            <!-- TODO: implement this -->
-                            <div class="font-bold" style="color: red">yes</div>
+                            <div class="font-bold">
+                                {{ btcBlockHasCheckpoint(block.height) }}
+                            </div>
                         </div>
                     </template>
                 </BlockTableSection>
@@ -192,28 +206,39 @@ export default defineComponent({
                             </div>
                         </div>
                         <div class="item flex justify-between">
-                            <div>Standby</div>
-                            <div class="font-bold">
-                                {{ validatorStatistic.num_standby }}
-                            </div>
-                        </div>
-                        <div class="item flex justify-between">
                             <div>Unbonding</div>
                             <div class="font-bold">
                                 {{ validatorStatistic.num_unbonding }}
                             </div>
                         </div>
                         <div class="item flex justify-between">
-                            <div>Unbonded (last 24h)</div>
-                            <!-- TODO: implement this -->
-                            <div class="font-bold" style="color: red">
-                                {{ validatorStatistic.num_unbonded_24h }}
+                            <div>Standby</div>
+                            <div class="font-bold">
+                                {{ validatorStatistic.num_standby }}
                             </div>
                         </div>
                         <div class="item flex justify-between">
                             <div>Penalized / Jail</div>
                             <div class="font-bold">
                                 {{ validatorStatistic.num_penalized }}
+                            </div>
+                        </div>
+                        <div class="item flex justify-between">
+                            <div>Ongoing Undelegating Requests</div>
+                            <div class="font-bold">
+                                {{
+                                    allUnbondingStats.ongoingUndelegatingRequests
+                                }}
+                            </div>
+                        </div>
+                        <div class="item flex justify-between">
+                            <div>
+                                Completed Undelegating Requests (last 24h)
+                            </div>
+                            <div class="font-bold">
+                                {{
+                                    allUnbondingStats.completedUndelegatingRequests
+                                }}
                             </div>
                         </div>
                     </template>

@@ -1,67 +1,125 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-    name: 'ApprovalTable',
-})
+<script>
+export default {
+    name: "ApprovalTable",
+    computed: {
+        allUnbondingStats() {
+            return this.$store.getters[
+                "unbonding/unbondingStats/getAllUnbondingStats"
+            ];
+        },
+    },
+};
 </script>
 
 <template>
     <div>
         <div class="card p-2 mx-auto">
             <div class="left-badge">
-                <img src="../../assets/approval-badge-left.svg" alt="approval-badge-left" />
+                <img
+                    src="../../assets/approval-badge-left.svg"
+                    alt="approval-badge-left"
+                />
             </div>
             <div class="right-badge">
-                <img src="../../assets/approval-badge-right.svg" alt="approval-badge-right" />
+                <img
+                    src="../../assets/approval-badge-right.svg"
+                    alt="approval-badge-right"
+                />
             </div>
             <div>
                 <div>
                     <div class="imgcont">
-                        <img class="home-img" src="../../assets/homeimg.png" alt="homeimg">
+                        <img
+                            class="home-img"
+                            src="../../assets/homeimg.png"
+                            alt="homeimg"
+                        />
                         <div class="centered">
-                            <img class="ring" src="../../assets/clock-ring.svg" alt="ring">
-                            <img class="clock" src="../../assets/clock.svg" alt="clock">
-                            <div class="subheading">Average Unbonding Time</div>
-                            <div class="heading mt-2">5 mins ± 30s</div>
+                            <img
+                                class="ring"
+                                src="../../assets/clock-ring.svg"
+                                alt="ring"
+                            />
+                            <img
+                                class="clock"
+                                src="../../assets/clock.svg"
+                                alt="clock"
+                            />
+                            <div class="subheading">
+                                Average Undelegating Time
+                            </div>
+                            <div class="heading mt-2">
+                                {{ allUnbondingStats.averageUndelegatingTime }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="table-heading flex items-center">
+                    <div class="w-1/4 table-item">Undelegating Delegators</div>
                     <div class="w-1/4 table-item">
-                        Unbonding
-                        validators
-                    </div>
-                    <div class="w-1/4 table-item">
-                        Equested @
-                        <br>
+                        Requested @
+                        <br />
                         <span class="ml-2">epoch #</span>
                     </div>
                     <div class="w-1/4 table-item">
                         Checkpointed
                         <span class="ml-1">@BTC block</span>
                     </div>
-                    <div class="w-1/4 table-item">
-                        Approved
-                    </div>
+                    <div class="w-1/4 table-item">Approved</div>
                 </div>
-                <div class="ml-2 table-content border-bottom flex px-3 items-center">
-                    <div class="w-1/4 item">A1B2C3D4</div>
-                    <div class="w-1/4 item flex justify-center pr-3">13</div>
-                    <div class="w-1/4 item flex justify-center pr-3">—</div>
+                <div
+                    v-for="request in allUnbondingStats.topThreeRequests"
+                    class="ml-2 table-content border-bottom flex px-3 items-center"
+                >
+                    <div class="w-1/4 item compress section-compress-width">
+                        {{ request.delegator }}
+                    </div>
+                    <div class="w-1/4 item flex justify-center pr-3">
+                        {{ request.epoch }}
+                    </div>
+                    <div class="w-1/4 item flex justify-center pr-3">
+                        {{ request.btcHeight }}
+                    </div>
                     <div class="w-1/4 item ml-3">
-                        <img class="p-0 mr-2" src="../../assets/not-approved.svg" alt="x">
-                        <span class="text-notApproved p-0 font-bold">Not approved</span>
+                        <img
+                            class="p-0 mr-2"
+                            src="../../assets/pending.svg"
+                            alt="x"
+                            v-if="!request.approved"
+                        />
+                        <img
+                            class="p-0 mr-2"
+                            src="../../assets/approved.svg"
+                            alt="x"
+                            v-if="request.approved"
+                        />
+                        <span
+                            class="p-0 font-bold"
+                            :class="
+                                request.approved
+                                    ? 'text-approved'
+                                    : 'text-pending'
+                            "
+                            >{{
+                                request.approved ? "Approved" : "Pending"
+                            }}</span
+                        >
                     </div>
                 </div>
-                <div class="ml-2 table-content border-bottom flex px-3 pt-2 items-center">
+                <!-- <div
+                    class="ml-2 table-content border-bottom flex px-3 pt-2 items-center"
+                >
                     <div class="w-1/4 item">A1B2C3D4</div>
                     <div class="w-1/4 item flex justify-center pr-3">13</div>
                     <div class="w-1/4 item flex justify-center pr-3">1220</div>
                     <div class="w-1/4 item ml-3">
-                        <img class="p-0 mr-2" src="../../assets/pending.svg" alt="x">
+                        <img
+                            class="p-0 mr-2"
+                            src="../../assets/pending.svg"
+                            alt="x"
+                        />
                         <span class="text-pending p-0 font-bold">Pending</span>
                     </div>
                 </div>
@@ -70,20 +128,36 @@ export default defineComponent({
                     <div class="w-1/4 item flex justify-center pr-3">13</div>
                     <div class="w-1/4 item flex justify-center pr-3">1220</div>
                     <div class="w-1/4 item ml-3">
-                        <img class="p-0 mr-2" src="../../assets/approved.svg" alt="x">
-                        <span class="text-approved p-0 font-bold">Approved</span>
+                        <img
+                            class="p-0 mr-2"
+                            src="../../assets/approved.svg"
+                            alt="x"
+                        />
+                        <span class="text-approved p-0 font-bold"
+                            >Approved</span
+                        >
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-
 .home-img {
     border-radius: 9px;
     z-index: 1000;
+}
+
+.compress {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.section-compress-width {
+    width: 110px;
 }
 
 .left-badge {
@@ -120,7 +194,7 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 1fr 2fr;
     max-width: 800px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0 27px 81px rgba(0, 0, 0, 0.3);
     border-radius: 9px;
 }
@@ -142,7 +216,7 @@ export default defineComponent({
 }
 
 .border-bottom {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .item {
@@ -165,7 +239,7 @@ export default defineComponent({
     font-weight: 700;
     font-size: 31px;
     line-height: 29px;
-    color: #23A5DC;
+    color: #23a5dc;
 }
 
 .ring {
@@ -187,14 +261,13 @@ export default defineComponent({
 }
 
 .ring {
-    --tw-ring-shadow:  0 0 0 calc(0 + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    --tw-ring-shadow: 0 0 0 calc(0 + var(--tw-ring-offset-width))
+        var(--tw-ring-color);
 }
 
-@media(max-width: 1040px) {
+@media (max-width: 1040px) {
     .card {
         display: none;
     }
 }
-
-
 </style>

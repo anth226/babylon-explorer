@@ -25,18 +25,61 @@ export default {
 
             for (let key in counts) {
                 let value = counts[key];
-                state[key] = value;
+                state[key] = parseInt(value);
             }
+        },
+        INCREMENT_ACCUMULATING_COUNT(state) {
+            state.CKPT_STATUS_ACCUMULATING += 1;
+        },
+        INCREMENT_SEALED_COUNT(state) {
+            state.CKPT_STATUS_ACCUMULATING -= 1;
+            state.CKPT_STATUS_SEALED += 1;
+        },
+        INCREMENT_SUBMITTED_COUNT(state) {
+            state.CKPT_STATUS_SEALED -= 1;
+            state.CKPT_STATUS_SUBMITTED += 1;
+        },
+        INCREMENT_CONFIRMED_COUNT(state) {
+            state.CKPT_STATUS_SUBMITTED -= 1;
+            state.CKPT_STATUS_CONFIRMED += 1;
+        },
+        INCREMENT_FINALIZED_COUNT(state) {
+            state.CKPT_STATUS_CONFIRMED -= 1;
+            state.CKPT_STATUS_FINALIZED += 1;
         },
     },
     actions: {
-        async init({ dispatch, rootGetters }) {
+        async init({ dispatch, commit, rootGetters }) {
             dispatch("getCheckpointStatus");
             if (rootGetters["common/env/client"]) {
                 rootGetters["common/env/client"].on(
-                    "newCheckpointStatusChange",
+                    "newCheckpointAccumulating",
                     () => {
-                        dispatch("getCheckpointStatus");
+                        commit("INCREMENT_ACCUMULATING_COUNT");
+                    }
+                );
+                rootGetters["common/env/client"].on(
+                    "newCheckpointSealed",
+                    () => {
+                        commit("INCREMENT_SEALED_COUNT");
+                    }
+                );
+                rootGetters["common/env/client"].on(
+                    "newCheckpointSubmitted",
+                    () => {
+                        commit("INCREMENT_SUBMITTED_COUNT");
+                    }
+                );
+                rootGetters["common/env/client"].on(
+                    "newCheckpointConfirmed",
+                    () => {
+                        commit("INCREMENT_CONFIRMED_COUNT");
+                    }
+                );
+                rootGetters["common/env/client"].on(
+                    "newCheckpointFinalized",
+                    () => {
+                        commit("INCREMENT_FINALIZED_COUNT");
                     }
                 );
             }
