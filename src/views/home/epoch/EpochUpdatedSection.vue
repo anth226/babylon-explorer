@@ -23,7 +23,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div :style="{ left: distance + 'px' }" class="main-section animate__animated animate__backInRight mx-4">
+    <div class="main-section animate__animated animate__backInRight mx-4">
         <div class="flex items-center">
             <EpochBlock
                 has-arrow

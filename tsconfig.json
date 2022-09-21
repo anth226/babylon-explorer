@@ -6,6 +6,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "strictNullChecks": false,
     "allowJs": true,
     "noImplicitAny": false,
     "strictPropertyInitialization": false,
