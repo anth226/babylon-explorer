@@ -1,6 +1,7 @@
 <script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: 'CurvedArrow',
     props: {
         curveCoordinatesTop: {
@@ -24,7 +25,7 @@ export default {
             default: false
         }
     }
-}
+})
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     name: 'EpochSmallBlock',
     props: {
         hasArrow: {
@@ -16,7 +17,7 @@ export default {
             default: false
         }
     }
-}
+})
 </script>
 
 <template>
@@ -40,7 +41,7 @@ export default {
     width: 36px;
     background: white;
     position: absolute;
-    top: 13px;
+    top: 11px;
     right: -8px;
 }
 
@@ -53,11 +54,11 @@ export default {
 .capsul-long{
     border-radius: 50px;
     display: flex;
-    width: 168px;
+    width: 80px;
     background: white;
     position: absolute;
-    top: 13px;
-    right: -8px;
+    top: 11px;
+    right: -7px;
 }
 
 .capsul-circle {
@@ -74,7 +75,7 @@ export default {
 
 .capsul-long-line {
     position: relative;
-    width: 140px;
+    width: 52px;
     left: 6px;
 }
 
@@ -84,8 +85,8 @@ export default {
 }
 
 .small-block {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background: rgba(1, 12, 194);
     border-radius: 10px;
     margin: 0 14px

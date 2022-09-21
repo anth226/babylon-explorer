@@ -2,7 +2,7 @@ import axios from "axios";
 
 let epochingQueryPrefix = "/babylon/epoching/v1/";
 
-export async function getCurrentEpoch(apiCosmos) {
+export async function getCurrentEpoch(  apiCosmos) {
     try {
         let currentEpoch = await axios.get(
             apiCosmos + epochingQueryPrefix + "current_epoch"
@@ -14,6 +14,11 @@ export async function getCurrentEpoch(apiCosmos) {
         );
     }
 }
+
+export async function getRecentEpochs() {
+
+}
+
 
 export async function getParams(apiCosmos) {
     try {

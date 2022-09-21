@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
 import NavBarComponent from "../../components/NavBarComponent.vue";
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     components: {
         NavBarComponent,
     },
@@ -66,7 +68,7 @@ export default {
             });
         },
     },
-};
+})
 </script>
 
 <template>
